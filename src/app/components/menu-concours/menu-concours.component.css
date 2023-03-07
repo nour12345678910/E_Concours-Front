@@ -1,0 +1,27 @@
+#box{
+  position: relative;
+
+  width: 450px;
+  height: 50px;
+  left: 700px;
+  bottom: 920px;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #2ddffa 10%, #ed55e3 46%, #FFCC70 100%);
+ padding: 5px 5px;
+ box-shadow: 10px 10px 10px gainsboro;
+
+}
+a{
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+  margin-right: 40px;
+}
+
+.v-line{
+  border-left: thick solid white;
+  height:90%;
+  left: 40%;
+  bottom: 10%;
+  position: absolute;
+ }

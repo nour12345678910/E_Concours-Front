@@ -6,35 +6,35 @@ import { ConcoursService } from 'src/app/services/concours.service';
 import { InscriptionServiceService } from 'src/app/services/inscription-service.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-liste-concours',
+  templateUrl: './liste-concours.component.html',
+  styleUrls: ['./liste-concours.component.css']
 })
-export class HomeComponent implements OnInit {
-  loginStatus:boolean;
+export class ListeConcoursComponent implements OnInit {
+
   lesConcours: Concours[]=[];
+  loginStatus:boolean;
   user:User;
 
-  constructor(private cs:ConcoursService ,private  router:Router,private is:InscriptionServiceService) { }
+  constructor(
+    private cs: ConcoursService,
+    private router: Router,
+    private is:InscriptionServiceService
+  ) {}
 
   ngOnInit(): void {
     this.cs.getConcours().subscribe(response => this.lesConcours=response);
     this.loginStatus=this.is.isLoggedIn;
   }
 
-  /*isLoggedIn() {
-    if (localStorage.getItem('user')) {
-      return true;
-    }
-    return false;
-  }*/
+  submit(){
+    if(this.loginStatus=true)
+    {
+      this.router.navigate(["/login"]);
+      alert("Vous avez s'authentifié avec succées ")
+    }else{
+    this.router.navigate(["/inscription"]);}}
 
-  logOut(){
-    this.router.navigate(["/profil"]);
-    this.is.logoutUser();
-    this.loginStatus=false;
-  }
 
 
 }
-

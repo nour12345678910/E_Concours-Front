@@ -1,0 +1,49 @@
+<div class="login-box">
+  <div class="signin topline" >
+
+  <div id="box" style="height: 10px;">
+ <h1> Ajouter un Concours </h1>
+<form #addForm="ngForm" (ngSubmit)="onAddConcours(addForm)">
+<div class="row">
+<div class="col">
+<label  class="col-form-label col-form-label-lg">Poste du Concours</label>
+<input type="text"class="form-control form-control-lg"  ngModel name="poste" id="" placeholder="Nom de la Poste" required> <br>
+
+<label class="col-form-label col-form-label-lg" > Description du concours</label>
+<textarea type="text" class="form-control form-control-lg" style="height:180px;"  ngModel name="description" id="description" required ></textarea> <br>
+
+
+</div>
+<div class="col">
+<label class="col-form-label col-form-label-lg" > Photo</label>
+<input type="text"class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
+
+<label class="col-form-label col-form-label-lg"> Date de l'examen</label>
+<input type="date"class="form-control form-control-lg"  ngModel name="dateExamen" id="dE" required> <br>
+
+<label class="col-form-label col-form-label-lg"> Date délais du concours</label>
+<input type="date"class="form-control form-control-lg"  ngModel name="dateDelais" id="dD" required> <br>
+
+</div>
+</div>
+
+
+
+
+<table>
+  <tr>
+    <td><button type="submit" style="margin-right:200px;" [disabled]="addForm.invalid"  class="button-88">ajouter</button><br>
+
+    </td>
+    <td><button type="reset"  style="margin-left:200px;" class="button-88">réinitialiser</button>
+    </td>
+  </tr>
+</table>
+
+
+</form>
+</div>
+
+  </div>
+</div>
+

@@ -30,7 +30,7 @@
               placeholder="رقم بطاقة التعريف"
 
             />
-            <div class="alert alert-warning" style="text-align : right;" *ngIf="cin.touched && cin.errors?.['required']"> خانة رقم بطاقة التعريف</div>
+            <div class="alert alert-warning" style="text-align : right;" *ngIf="cin.touched && cin.errors?.['required']"> خانة رقم بطاقة التعريف ضرورية</div>
             <div  class="alert alert-warning" style="text-align : right;" *ngIf="cin.touched && cin.errors?. ['minlength'] || cin.errors?. ['maxlength']">خانة رقم بطاقة التعريف متكونة من 8 أرقام</div>
           </div>
 
@@ -195,6 +195,7 @@
                 (click)="signup(f)"
                   >تسجيل الحساب</button>
 
+                  <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
 
 
 

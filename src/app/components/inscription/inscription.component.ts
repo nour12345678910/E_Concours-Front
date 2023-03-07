@@ -13,10 +13,7 @@ export class InscriptionComponent implements OnInit{
   par: User = new User();
   exist: boolean = false;
   wrongCred: boolean = false;
-
-
-
-
+  errorMessage:string=''
 
   constructor(
     private is: InscriptionServiceService,
@@ -39,7 +36,7 @@ export class InscriptionComponent implements OnInit{
 
       (err) => {
         if (err.error == 'NAME_TAKEN') this.exist = true;
-        console.log(err.error);
+        this.errorMessage=err.message
       }
     );
   }

@@ -1,0 +1,82 @@
+
+<body>
+  <div class="side_wrapper">
+    <section class="about-dev">
+      <header class="profile-card_header">
+        <div class="profile-card_header-container">
+          <div class="profile-card_header-imgbox">
+            <img src="assets/img/team-2.jpg" alt="Mewy Pawpins" />
+          </div>
+          <h1>{{u.nom}} {{u.prenom}} <span>informations personnelles</span></h1>
+        </div>
+      </header>
+      <div class="profile-card_about">
+        <h2>À propos de moi</h2>
+        <p>Nom: {{u.nom}}</p>
+        <p>Prenom: {{u.prenom}}</p>
+        <p>Email: {{u.email}}</p>
+        <p>Mot de pass: {{u.motdepasse}}</p>
+        <p>telephone: {{u.telephone}}</p>
+        <p>Cin: {{u.cin}}</p>
+              <footer class="profile-card_footer">
+          <div class="social-row">
+            <div class="heart-icon" title="No Health Issues">
+            <a routerLink="/home" class="btn btn-warning">retour<i class="fa-solid fa-turn-down-left"></i></a>
+            </div>
+
+
+          </div>
+
+          <p><button class="back-to-profile" (click)="open()" >Modifier profile</button></p>
+        </footer>
+      </div>
+    </section>
+  </div>
+  </body>
+
+
+
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #add>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+             <label for="name">Nom</label>
+             <input type="text" ngModel="{{u.nom}}" name="nom" class="form-control" id="nom" aria-describedby="emailHelp" placeholder="Nom">
+          </div>
+          <input type="hidden"  [(ngModel)]="u.role" name="role" class="form-control" id="id" placeholder="role">
+
+          <div class="form-group">
+             <label>prenom</label>
+             <input type="text"  [(ngModel)]="u.prenom" name="prenom" class="form-control" id="prenom" placeholder="prenom">
+          </div>
+          <div class="form-group">
+             <label >cin</label>
+             <input type="text" name="infosSupp.cin" [(ngModel)]="u.cin" class="form-control" id="cin" placeholder="cin">
+          </div>
+
+          <div class="form-group">
+            <label >email</label>
+            <input type="text" name="email" class="form-control" [(ngModel)]="u.email" id="email" placeholder="email">
+         </div>
+         <div class="form-group">
+          <label >mot de passe</label>
+          <input type="text" name="password" class="form-control" [(ngModel)]="u.motdepasse" id="motdepasse" placeholder="mot de passe">
+         </div>
+         <div class="form-group">
+          <label >telephone</label>
+          <input type="text" name="infosSupp.cin" [(ngModel)]="u.telephone" class="form-control" id="telephone" placeholder="telephone">
+       </div>
+
+          <div class="modal-footer">
+             <button type="button" id="" data-dismiss="modal" class="btn btn-secondary" (click)="close()">fermer</button>
+             <button (click)="onUpdateUser()" data-dismiss="modal" class="btn btn-primary" >enregistrer</button>
+          </div>
+
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
+
