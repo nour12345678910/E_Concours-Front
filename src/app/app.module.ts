@@ -16,6 +16,9 @@ import { ListeconcoursComponent } from './components/listeconcours/listeconcours
 import { ListeConcoursComponent } from './components/liste-concours/liste-concours.component';
 import { ProfilCandidatComponent } from './components/profil-candidat/profil-candidat.component';
 import { CandidatureComponent } from './components/candidature/candidature.component';
+import { EtablissementComponent } from './components/etablissement/etablissement.component';
+import { ProfilAdminComponent } from './components/profil-admin/profil-admin.component';
+import { ModifEtablissementComponent } from './components/modif-etablissement/modif-etablissement.component';
 
 
 
@@ -32,7 +35,10 @@ import { CandidatureComponent } from './components/candidature/candidature.compo
     ListeconcoursComponent,
     ListeConcoursComponent,
     ProfilCandidatComponent,
-    CandidatureComponent
+    CandidatureComponent,
+    EtablissementComponent,
+    ProfilAdminComponent,
+    ModifEtablissementComponent
   ],
   imports: [
     BrowserModule,

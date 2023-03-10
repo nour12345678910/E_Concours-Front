@@ -1,0 +1,41 @@
+<div class="login-box">
+  <div class="signin topline">
+
+  <div id="box">
+ <h1> A propos l'établissement : </h1>
+<form  *ngFor="let e of etablissemen">
+<div class="row">
+<div class="col">
+<label  class="col-form-label col-form-label-lg">Nom</label>
+<input type="text"class="form-control form-control-lg"  [(ngModel)]="e.nom" name="nom"  [disabled]="actif"> <br>
+</div>
+<div class="col">
+<label class="col-form-label col-form-label-lg"> Adresse</label>
+<input type="text"class="form-control form-control-lg"   [(ngModel)]="e.adresse" name="prenom"  [disabled]="actif"> <br>
+</div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col">
+  <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
+  <input type="text"class="form-control form-control-lg"  [(ngModel)]="e.telephone" name="tel"  [disabled]="actif"> <br>
+  </div>
+  <div class="col">
+  <label class="col-form-label col-form-label-lg">Numéro Fixe</label>
+  <input type="text"class="form-control form-control-lg"   [(ngModel)]="e.numFix" name="photo"  [disabled]="actif"> <br>
+  </div>
+
+  </div>
+
+
+ <label class="col-form-label col-form-label-lg"> email</label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="e.email"  name="email" [disabled]="actif"> <br>
+<label class="col-form-label col-form-label-lg">Logo  </label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="e.logo" name="password" [disabled]="actif"> <br>
+
+<button type="submit" class="button-88" [routerLink]="[ e.id]" (click)="activer()" *ngIf="actif">Modifier</button>
+
+

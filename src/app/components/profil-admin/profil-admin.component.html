@@ -1,0 +1,53 @@
+<div class="login-box">
+  <div class="signin topline">
+
+  <div id="box">
+ <h1> Mon profile </h1>
+<form>
+<div class="row">
+<div class="col">
+<label  class="col-form-label col-form-label-lg">Nom</label>
+<input type="text"class="form-control form-control-lg"  [(ngModel)]="user.nom" name="nom"  [disabled]="actif"> <br>
+</div>
+<div class="col">
+<label class="col-form-label col-form-label-lg"> prenom</label>
+<input type="text"class="form-control form-control-lg"   [(ngModel)]="user.prenom" name="prenom"  [disabled]="actif"> <br>
+</div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col">
+  <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
+  <input type="text"class="form-control form-control-lg"  [(ngModel)]="user.telephone" name="tel"  [disabled]="actif"> <br>
+  </div>
+  <div class="col">
+  <label class="col-form-label col-form-label-lg"> photo</label>
+  <input type="text"class="form-control form-control-lg"   [(ngModel)]="user.photo" name="photo"  [disabled]="actif"> <br>
+  </div>
+
+  </div>
+
+
+
+<label class="col-form-label col-form-label-lg"> email</label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.email"  name="email" [disabled]="actif"> <br>
+<label class="col-form-label col-form-label-lg"> mot de passe </label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.motdepasse" name="password" [disabled]="actif"> <br>
+
+
+<label class="col-form-label col-form-label-lg"> CIN </label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.motdepasse" name="cin" [disabled]="actif"> <br>
+
+
+
+<button type="submit" class="button-88" (click)="activer()" *ngIf="actif">Modifier</button>
+<button type="submit" class="button-44" (click)="update()" *ngIf="!actif">enregistrer</button>
+
+</form>
+</div>
+
+  </div>
+</div>

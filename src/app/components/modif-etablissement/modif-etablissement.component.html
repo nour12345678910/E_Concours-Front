@@ -1,0 +1,51 @@
+<div class="login-box">
+  <div class="signin topline">
+
+  <div id="box">
+ <h1> Modifier Les Données de l'établissement </h1>
+<form >
+<div class="row">
+<div class="col">
+
+  <label class="col-form-label col-form-label-lg">entreprise</label>
+  <input type="text" class="form-control form-control-lg" [(ngModel)]="etablissement.nom" name="entrprise" id=""> <br>
+
+</div>
+<div class="col">
+<label class="col-form-label col-form-label-lg"> Adresse</label>
+<input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.adresse" name="prenom"  > <br>
+</div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col">
+  <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
+  <input type="text"class="form-control form-control-lg"  [(ngModel)]="etablissement.telephone" name="tel"  > <br>
+  </div>
+  <div class="col">
+  <label class="col-form-label col-form-label-lg">Numéro Fixe</label>
+  <input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.numFix" name="photo"> <br>
+  </div>
+
+  </div>
+
+
+ <label class="col-form-label col-form-label-lg"> email</label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="etablissement.email"  name="email" > <br>
+<label class="col-form-label col-form-label-lg">Logo  </label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="etablissement.logo" name="password"> <br>
+
+
+      <button type="submit"  class="btn btn-primary" (click)="modifierEtab()" *ngIf="etablissement.id" class="button-44" >Modifier</button>
+
+
+
+
+
+
+
+
+
