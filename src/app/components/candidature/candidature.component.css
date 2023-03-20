@@ -1,0 +1,92 @@
+
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: right;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: #128992;
+}
+
+.cadre{
+  background-color: rgb(222, 243, 247);
+  width: 1200px;
+  margin-left: 350px;
+}
+
+h1{
+  text-align: center;
+  color: #128992;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+}
+
+fieldset{
+  background: linear-gradient(0deg, rgb(161, 219, 177) 0%, rgb(101, 205, 246) 100%);
+  color: white;
+  height: 50px;
+  font-size: 25px;
+  width: 100%;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+text-align: center;
+
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: right;
+
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: right;
+
+}
+
+input[type="text"],
+select {
+  display: block;
+  text-align: right;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="text"]:focus,
+select:focus {
+  text-align: right;
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: linear-gradient(0deg, rgb(161, 219, 177) 0%, rgb(101, 205, 246) 100%);
+}
+
+button[type="submit"]:hover {
+  background-color: #0458b2;
+}
+
+.error-message {
+  text-align: right;
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}

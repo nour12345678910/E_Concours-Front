@@ -12,6 +12,11 @@ import { ConcoursService } from 'src/app/services/concours.service';
 })
 export class AjouterConcoursComponent {
   lesConcourss:Concours[]=[]
+  userFile;
+  imgURL:any;
+  public imagePath;
+  public message:string;
+
   constructor(private router:Router,private cs:ConcoursService) { }
 
   getConcours():void{
@@ -44,6 +49,30 @@ export class AjouterConcoursComponent {
   ngOnInit(): void {
     this.getConcours();
   }
+
+
+  onSelectFile(event){
+    if(event.target.files.length >0)
+    {
+      const file=event.target.files[0];
+      this.userFile=file;
+      //this.f['profile'].setValue(file);
+
+      var mimeType=event.target.files[0].type;
+      if(mimeType.match(/image\/*/) == null){
+        this.message="Only images are supported.";
+        return;
+      }
+
+      var reader=new FileReader();
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload =(_event)=>{
+        this.imgURL=reader.result;
+      }
+    }
+  }
+
 
 }
 

@@ -15,8 +15,11 @@
 
 </div>
 <div class="col">
-<label class="col-form-label col-form-label-lg" > Photo</label>
-<input type="text"class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
+<label class="col-form-label col-form-label-lg" > Photo  upload </label>
+<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
+<img [src]="imgURL" height="200" *ngIf="imgURL">
+
+
 
 <label class="col-form-label col-form-label-lg"> Date de l'examen</label>
 <input type="date"class="form-control form-control-lg"  ngModel name="dateExamen" id="dE" required> <br>

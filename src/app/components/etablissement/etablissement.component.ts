@@ -47,52 +47,6 @@ etablissemen:Etablissement[]=[];
 
 
   ngOnInit(): void {
-
-    // this.activatedRoute.params.subscribe((paramas) => {
-    //   let id: number = paramas['id'];
-    //   if (id) {
-    //     this.es
-    //       .obtenirEtab(id)
-    //       .subscribe((response) => (this.etablissement = response));
-    //   }
-    // });
-
-
-    // this.editForm=this.formBuilder.group(
-    //   {nom:[Validators.required],
-    //   adresse:[Validators.required],
-    //   telephone:[Validators.required],
-    //   numFix:[Validators.required],
-    //   email:[[Validators.email,Validators.required ]],
-    // })
-
-
-
-    //  this.getEtablissement();
-
-
     this.es.getEtablissement().subscribe(response => this.etablissemen=response)
-
   }
-
-
-
-  // onUpdateInfosEtablissement(){
-  //   this.es.updateEtab(this.etablis).subscribe(
-  //     (response:Etablissement)=>{
-  //       console.log(response);
-  //       console.log(this.etablis)
-  //       localStorage.setItem('etablissement', JSON.stringify(response));
-  //     },
-  //     (error:HttpErrorResponse)=> {
-  //       alert(error.message)
-  //     }
-
-  //   )
-  //   this.actif=true; }
-
-
-
-
-
 }
