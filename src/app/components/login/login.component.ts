@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ERole } from 'src/app/models/User';
+import { ERole, User } from 'src/app/models/User';
 import { InscriptionServiceService } from 'src/app/services/inscription-service.service';
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ typeUser=Object.values(ERole);
   ngOnInit(): void {}
 
   login() {
+    console.log(localStorage.getItem('user'))
     this.is.login(this.cin, this.motdepasse).subscribe(
       (data) => {
         localStorage.setItem('user', JSON.stringify(data));

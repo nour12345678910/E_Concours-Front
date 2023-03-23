@@ -10,9 +10,20 @@ export class User {
   role!: ERole;
 
 
+
+
+  getId(): number {
+    return this.id;
+  }
+
+  setId(value: number) {
+    this.id = value;
+  }
   constructor(){
   }
 }
+
+
 
 export enum ERole {
   ADMIN= 'ADMIN',

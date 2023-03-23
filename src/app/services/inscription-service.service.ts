@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { User } from '../models/User';
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,15 @@ export class InscriptionServiceService {
       return this.http.post<User>(`${this.baseUrl}`+ '/login', user);
     }
 
+    // login(cin: string, motdepasse: string): Observable<User> {
+    //   this.isLoggedIn=true;
+    //   let params = new HttpParams()
+    //     .append('cin', cin)
+    //     .append('motdepasse', motdepasse);
+
+    //   return this.http.get<User>(`${this.baseUrl}`+ '/login', { params: params });
+
+    // }
     login(cin: string, motdepasse: string): Observable<User> {
       this.isLoggedIn=true;
       let params = new HttpParams()
@@ -41,6 +50,31 @@ export class InscriptionServiceService {
       return this.http.get<User>(`${this.baseUrl}`+ '/login', { params: params });
 
     }
+
+    // login(cin: string, motdepasse: string): Observable<User> {
+    //   this.isLoggedIn=true;
+    //   let params = new HttpParams()
+    //     .append('cin', cin)
+    //     .append('motdepasse', motdepasse);
+
+    //     return this.http.get<User>(`${this.baseUrl}`+ '/login', { params: params })
+    //     .pipe(
+    //       tap((user: User) => console.log('L\'utilisateur ' + user.id + ' est connecté avec succès ! userId : ' + localStorage.getItem('userId'))),
+    //       catchError(this.handleError<User>('login'))
+    //     );
+
+    // }
+    // private handleError<T>(operation = 'operation', result?: T) {
+    //   return (error: any): Observable<T> => {
+
+    //     console.error(error);
+
+    //     console.log(`${operation} failed: ${error.message}`);
+
+    //     return of(result as T);
+    //   };
+    // }
+
 
     modifier(user:User):Observable<User>{
       return this.http.put<User>(`${this.baseUrl}`+'/update', user);

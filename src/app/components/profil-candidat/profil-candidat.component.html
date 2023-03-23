@@ -21,7 +21,7 @@
               <footer class="profile-card_footer">
           <div class="social-row">
             <div class="heart-icon" title="No Health Issues">
-            <a routerLink="/home" class="btn btn-warning">retour<i class="fa-solid fa-turn-down-left"></i></a>
+            <!-- <a routerLink="/home" class="btn btn-warning">retour<i class="fa-solid fa-turn-down-left"></i></a> -->
             </div>
 
 
@@ -42,8 +42,13 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
+            <label>CIN</label>
+            <input type="text"  [(ngModel)]="u.cin" name="cin" class="form-control" id="cin" placeholder="cin">
+         </div>
+
+          <div class="form-group">
              <label for="name">Nom</label>
-             <input type="text" ngModel="{{u.nom}}" name="nom" class="form-control" id="nom" aria-describedby="emailHelp" placeholder="Nom">
+             <input type="text" [(ngModel)]="u.nom" name="nom" class="form-control" id="nom" aria-describedby="emailHelp" placeholder="Nom">
           </div>
           <input type="hidden"  [(ngModel)]="u.role" name="role" class="form-control" id="id" placeholder="role">
 
@@ -51,10 +56,7 @@
              <label>prenom</label>
              <input type="text"  [(ngModel)]="u.prenom" name="prenom" class="form-control" id="prenom" placeholder="prenom">
           </div>
-          <div class="form-group">
-             <label >cin</label>
-             <input type="text" name="infosSupp.cin" [(ngModel)]="u.cin" class="form-control" id="cin" placeholder="cin">
-          </div>
+
 
           <div class="form-group">
             <label >email</label>
