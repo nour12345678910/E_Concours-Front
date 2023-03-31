@@ -19,6 +19,7 @@ import { CandidatureComponent } from './components/candidature/candidature.compo
 import { EtablissementComponent } from './components/etablissement/etablissement.component';
 import { ProfilAdminComponent } from './components/profil-admin/profil-admin.component';
 import { ModifEtablissementComponent } from './components/modif-etablissement/modif-etablissement.component';
+import { MenConcoursComponent } from './components/men-concours/men-concours.component';
 
 
 
@@ -38,7 +39,8 @@ import { ModifEtablissementComponent } from './components/modif-etablissement/mo
     CandidatureComponent,
     EtablissementComponent,
     ProfilAdminComponent,
-    ModifEtablissementComponent
+    ModifEtablissementComponent,
+    MenConcoursComponent
   ],
   imports: [
     BrowserModule,

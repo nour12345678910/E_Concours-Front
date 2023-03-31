@@ -11,68 +11,43 @@ import { ConcoursService } from 'src/app/services/concours.service';
   styleUrls: ['./ajouter-concours.component.css']
 })
 export class AjouterConcoursComponent {
-  lesConcourss:Concours[]=[]
-  userFile;
-  imgURL:any;
+  lesConcourss: Concours[] = [];
+  selectedFile: File;
+  imgURL: any;
   public imagePath;
-  public message:string;
+  public message: string;
 
-  constructor(private router:Router,private cs:ConcoursService) { }
+  constructor(private router: Router, private cs: ConcoursService) {}
 
-  getConcours():void{
-    this.cs.getConcours().subscribe(
-      (response:Concours[] )=> {
-         this.lesConcourss = response;
-      },
-      (error:HttpErrorResponse)=>{
-        alert(error.message)
-      }
-    );
+  onAddConcours(addForm: NgForm) {
+    const dateExamen: Date = new Date(addForm.value.dateExamen);
+    const dateDelais: Date = new Date(addForm.value.dateDelais);
+    this.cs.addConcours(addForm.value.poste, addForm.value.description, dateExamen, dateDelais, this.selectedFile)
+      .subscribe((data) => {
+        console.log(data);
+        addForm.resetForm();
+        this.router.navigate(['/admin/concours/listeconcours']);
+      });
   }
 
-  onAddConcours(addForm:NgForm){
-
-    this.cs.addConcours(addForm.value).subscribe(
-      (response:Concours)=>{
-        console.log(response);
-        console.log(addForm.value);
-        this.getConcours();
-
-      },
-      (error:HttpErrorResponse)=> {
-        alert(error.message)
-      }
-    )
-    this.router.navigate(['admin/concours/listeconcours']);
-
-  }
-  ngOnInit(): void {
-    this.getConcours();
-  }
-
-
-  onSelectFile(event){
-    if(event.target.files.length >0)
-    {
-      const file=event.target.files[0];
-      this.userFile=file;
+  onSelectFile(event): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.selectedFile = file;
       //this.f['profile'].setValue(file);
 
-      var mimeType=event.target.files[0].type;
-      if(mimeType.match(/image\/*/) == null){
-        this.message="Only images are supported.";
+      const mimeType = event.target.files[0].type;
+      if (!mimeType.match(/image\/*/)) {
+        this.message = 'Only images are supported.';
         return;
       }
 
-      var reader=new FileReader();
+      const reader = new FileReader();
       this.imagePath = file;
       reader.readAsDataURL(file);
-      reader.onload =(_event)=>{
-        this.imgURL=reader.result;
-      }
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      };
     }
   }
-
-
 }
-

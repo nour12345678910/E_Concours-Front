@@ -12,9 +12,10 @@ import { InscriptionServiceService } from 'src/app/services/inscription-service.
 })
 export class ListeConcoursComponent implements OnInit {
 
-  lesConcours: Concours[]=[];
   loginStatus:boolean;
   user:User;
+  concoursList: Concours[];
+
 
   constructor(
     private cs: ConcoursService,
@@ -22,9 +23,14 @@ export class ListeConcoursComponent implements OnInit {
     private is:InscriptionServiceService
   ) {}
 
+
   ngOnInit(): void {
-    this.cs.getConcours().subscribe(response => this.lesConcours=response);
-    this.loginStatus=this.is.isLoggedIn;
+
+    this.cs.getAllConcours()
+    .subscribe((concoursList) => {
+      this.concoursList = concoursList;
+    });
+     this.loginStatus=this.is.isLoggedIn;
   }
 
   submit(){
@@ -34,7 +40,5 @@ export class ListeConcoursComponent implements OnInit {
       alert("Vous avez s'authentifié avec succées ")
     }else{
     this.router.navigate(["/inscription"]);}}
-
-
 
 }

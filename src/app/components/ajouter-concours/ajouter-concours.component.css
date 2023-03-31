@@ -4,29 +4,11 @@
     display:inline-flex;
     position: relative;
     bottom: 900px;
-    left: 600px;
+    left: 500px;
   padding: 15rem 15rem;
   background-color:white;
 }
-.topline:after {
-      content: "";
-      position: absolute;
-      width: 20%;
-      transform: scaleX(1);
 
-      height: 5px;
-      top: -5px;
-      left: 0;
-
-    }
-@media screen and (max-width: 776px) {
-  .login-box {
-    padding: 40rem 2rem !important;
-    right: unset !important;
-    width: 100px;
-    max-width: 1000px;
-  }
-}
 
 #box{
   position: relative;

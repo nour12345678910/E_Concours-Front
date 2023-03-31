@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private cs:ConcoursService ,private  router:Router,private is:InscriptionServiceService) { }
 
   ngOnInit(): void {
-    this.cs.getConcours().subscribe(response => this.lesConcours=response);
+    this.cs.getAllConcours().subscribe(response => this.lesConcours=response);
     this.loginStatus=this.is.isLoggedIn;
   }
 

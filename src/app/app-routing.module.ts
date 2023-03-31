@@ -23,11 +23,10 @@ const routes: Routes =[
     {path:'etablissement/:id', component:ModifEtablissementComponent},
     {path:'MonProfile',component:ProfilAdminComponent},
     {path:'concours', component:MenuConcoursComponent,
-
-
   children:[
-    {path:'listeconcours', component:ListeconcoursComponent},
     {path:'ajouterconcours', component:AjouterConcoursComponent},
+    {path:'listeconcours', component:ListeconcoursComponent},
+
 
   ]},
   // {path:'MonProfile',component:ProfileAdminComponent},

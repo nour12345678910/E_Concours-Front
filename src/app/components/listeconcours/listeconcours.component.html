@@ -1,1 +1,23 @@
-<p>listeconcours works!</p>
+<tr class="table-light" *ngFor="let c of concoursList; index as i">
+  <th scope="row">{{i+1}}</th>
+
+  <td>
+    <img [src]="'data:image/jpeg;base64,' + c.imageData" style="width: 500px;height: 500px;" />
+  </td>
+
+  <td id="ligne">{{c.poste}}</td>
+  <td id="ligne">{{c.dateExamen}}</td>
+  <td id="ligne">{{c.dateDelais}}</td>
+  <td id="ligne">{{c.description}}</td>
+  <td id="ligne">
+      <div class="form-group row">
+          <div class="col-md-5"><button class="button-1" role="button">modifier</button></div>
+          <div class="col-md-5"><button class="button-5" role="button">supprimer</button></div>
+      </div>
+  </td>
+</tr>
+
+
+
+
+

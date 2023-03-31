@@ -1,49 +1,12 @@
-
-.login-box {
-  height: 100px;
-  z-index: 10;
-  border-radius: 50px;
-  position: relative;
-
-}
-
-  .login-box .login {
-    display: none;
-  }
-  .login-box .signin {
-    animation: fadeIn 0.8s;
-  }
-
   .topline {
     display: inline-block;
     position: relative;
     bottom: 900px;
     left: 700px;
-  min-width: 300px;
-  min-height: 100px;
+
   padding: 10rem 10rem;
   background-color: white;
 }
-.topline:after {
-      content: "";
-      position: absolute;
-      width: 20%;
-      transform: scaleX(1);
-
-      height: 5px;
-      top: -5px;
-      left: 0;
-
-    }
-@media screen and (max-width: 776px) {
-  .login-box {
-    padding: 40rem 2rem !important;
-    right: unset !important;
-    width: 1000px !important;
-    max-width: 1000px;
-  }
-}
-
 #box{
   position: relative;
   bottom: 130px;

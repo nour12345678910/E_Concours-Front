@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { User } from '../models/User';
@@ -41,14 +41,9 @@ export class InscriptionServiceService {
     //   return this.http.get<User>(`${this.baseUrl}`+ '/login', { params: params });
 
     // }
-    login(cin: string, motdepasse: string): Observable<User> {
-      this.isLoggedIn=true;
-      let params = new HttpParams()
-        .append('cin', cin)
-        .append('motdepasse', motdepasse);
-
-      return this.http.get<User>(`${this.baseUrl}`+ '/login', { params: params });
-
+    login(params: HttpParams): Observable<User> {
+      this.isLoggedIn = true;
+      return this.http.post<User>(`${this.baseUrl}/login`, params);
     }
 
     // login(cin: string, motdepasse: string): Observable<User> {

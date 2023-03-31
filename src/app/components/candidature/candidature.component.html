@@ -32,16 +32,14 @@
     <input style="text-align: right;" type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"  [disabled]="actif">
   </div>
 
-  <div>
-  <fieldset>المؤهلات العلمية</fieldset>
-  </div>
+
 
   <div class="form-group">
     <label for="sex">الجنس</label>
     <select class="form-control" id="sex" name="sex" [(ngModel)]="candidat.sex" required>
       <option value="" disabled selected>اختر الجنس</option>
-      <option value="male">ذكر</option>
-      <option value="female">أنثى</option>
+      <option value="ذكر">ذكر</option>
+      <option value="أنثى">أنثى</option>
     </select>
   </div>
   <div class="form-group">
@@ -56,10 +54,10 @@
     <label for="civilStatus">الحالة الاجتماعية</label>
     <select class="form-control" id="civilStatus" name="civilStatus" [(ngModel)]="candidat.statutCivil"  required>
       <option value="" disabled selected>اختر الحالة الاجتماعية</option>
-      <option value="single">أعزب/عزباء</option>
-      <option value="married">متزوج/متزوجة</option>
-      <option value="divorced">مطلق/مطلقة</option>
-      <option value="widowed">أرمل/أرملة</option>
+      <option value="أعزب/عزباء">أعزب/عزباء</option>
+      <option value="متزوج/متزوجة">متزوج/متزوجة</option>
+      <option value="مطلق/مطلقة">مطلق/مطلقة</option>
+      <option value="أرمل/أرملة">أرمل/أرملة</option>
     </select>
   </div>
 
@@ -78,7 +76,33 @@
 
       <div class="col-sm-4">
         <label for="state">الولاية</label>
-    <input type="text" class="form-control" id="state" name="state" [(ngModel)]="candidat.etatVille" required>
+        <select name="governorate" class="form-control" id="state" name="state" [(ngModel)]="candidat.etatVille" required>
+
+          <option value="أريانة">أريانة</option>
+          <option value="باجة">باجة</option>
+          <option value="بن عروس">بن عروس</option>
+          <option value="بنزرت">بنزرت</option>
+          <option value="قابس">قابس</option>
+          <option value="قفصة">قفصة</option>
+          <option value="جندوبة">جندوبة</option>
+          <option value="القصرين">القصرين</option>
+          <option value="القيروان">القيروان</option>
+          <option value="الكاف">الكاف</option>
+          <option value="قبلي">قبلي</option>
+          <option value="المهدية">المهدية</option>
+          <option value="منوبة">منوبة</option>
+          <option value="مدنين">مدنين</option>
+          <option value="المنستير">المنستير</option>
+          <option value="نابل">نابل</option>
+          <option value="صفاقس">صفاقس</option>
+          <option value="سيدي بوزيد">سيدي بوزيد</option>
+          <option value="سوسة">سوسة</option>
+          <option value="تطاوين">تطاوين</option>
+          <option value="توزر">توزر</option>
+          <option value="تونس">تونس</option>
+
+        </select>
+
   </div>
 
   <div class="col-sm-4">
@@ -90,19 +114,29 @@
   </div>
 
 
-  <button type="submit">Soumettre</button>
 
 
-
-
-
-
+  <div>
+    <fieldset>المؤهلات العلمية</fieldset>
+    </div>
 
 
   <div class="form-group">
     <label for="scientificCertificate">الشهادة العلمية</label>
-    <input type="text" class="form-control" id="scientificCertificate" name="scientificCertificate"  required>
+    <select class="form-control" id="civilStatus" name="civilStatus" [(ngModel)]="candidat.statutCivil"  required>
+      <option value="شهادة البكالوريا">شهادة البكالوريا</option>
+      <option value="شهادة الماجستير">شهادة الماجستير</option>
+      <option value="شهادة الدكتوراه">شهادة الدكتوراه</option>
+    </select>
   </div>
+
+
+
+  <div class="form-group">
+    <label for="specialite"> إسم التخصص</label>
+    <input type="text" class="form-control" id="specialite" name="specialite"  required>
+  </div>
+
   <div class="form-group">
     <label for="university">الجامعة أو المدرسة</label>
     <input type="text" class="form-control" id="university" name="university"  required>
@@ -112,25 +146,26 @@
     <input type="text" class="form-control" id="graduationYear" name="graduationYear"  required>
   </div>
   <div class="form-group">
-    <label for="lastYearRate">نسبة النجاح للسنوات الثلاث الأخيرة</label>
+    <label for="lastYearRate"> معدلات الثلاث سنوات الأخيرة المكللة بالنجاح </label>
     <div class="row">
       <div class="col-sm-4">
-        <label for="lastYearRate1">السنة الأولى</label>
-        <input type="text" class="form-control" id="lastYearRate1" name="lastYearRate1"  required>
+        <label for="lastYearRate3">السنة الثالثة</label>
+        <input type="text" class="form-control" id="lastYearRate3" name="lastYearRate3"  required  placeholder="  XX.XX   معدل3">
       </div>
       <div class="col-sm-4">
         <label for="lastYearRate2">السنة الثانية</label>
-        <input type="text" class="form-control" id="lastYearRate2" name="lastYearRate2" required>
+        <input type="text" class="form-control" id="lastYearRate2" name="lastYearRate2" placeholder="  XX.XX   معدل2" required>
       </div>
+
       <div class="col-sm-4">
-        <label for="lastYearRate3">السنة الثالثة</label>
-        <input type="text" class="form-control" id="lastYearRate3" name="lastYearRate3"  required>
+        <label for="lastYearRate1">السنة الأولى</label>
+        <input type="text" class="form-control" id="lastYearRate1" name="lastYearRate1" placeholder="  XX.XX   معدل1"  required>
       </div>
     </div>
   </div>
   <div class="form-group">
     <label for="baccalaureateRate">نسبة النجاح في البكالوريا</label>
-    <input type="text" class="form-control" id="baccalaureateRate" name="baccalaureateRate"  required>
+    <input type="text" class="form-control" id="baccalaureateRate" name="baccalaureateRate"  placeholder=" XX.XX معدل الباكالوريا " required>
   </div>
   <button type="submit" class="btn btn-primary">إرسال</button>
 
