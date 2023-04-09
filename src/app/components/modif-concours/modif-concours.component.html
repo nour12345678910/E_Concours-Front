@@ -1,0 +1,77 @@
+<div class="login-box">
+  <div class="signin topline" >
+
+  <div id="box" style="height: 10px;">
+ <h1> Modifier  Concours </h1>
+ <form  (submit)="onSubmit()"
+  >
+<div class="row">
+<div class="col">
+<label  class="col-form-label col-form-label-lg">Poste du Concours</label>
+<input type="text"class="form-control form-control-lg" name="poste" placeholder="{{concours.poste}}" [(ngModel)]="concours.poste" required><br>
+
+
+
+<label class="col-form-label col-form-label-lg" > Description du concours</label>
+<textarea name="description" class="form-control form-control-lg" style="height:180px;" [(ngModel)]="concours.description" required placeholder="{{concours.description}}" ></textarea><br>
+
+
+</div>
+<div class="col">
+<label class="col-form-label col-form-label-lg" > Photo  upload </label><br>
+<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  formControlName="imageData" id="" name="image" (change)="handleFileInput($event)"  > <br>
+<img [src]="imgURL" height="200" *ngIf="imgURL">
+
+
+
+<label class="col-form-label col-form-label-lg"> Date de l'examen </label>
+<input type="date" name="dateExamen"  class="form-control form-control-lg" [(ngModel)]="concours.dateExamen" required><br>
+
+
+
+<label class="col-form-label col-form-label-lg"> Date délais du concours</label>
+<input type="date" class="form-control form-control-lg" name="dateDelais" [(ngModel)]="concours.dateDelais" required><br>
+
+
+
+</div>
+</div>
+
+<button type="submit" class="button-88">Update</button>
+
+
+</form>
+</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+ <!-- <form (submit)="onSubmit()">
+  <div>
+    <label for="poste">Poste:</label>
+    <input type="text" name="poste" [(ngModel)]="concours.poste" required>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea name="description" [(ngModel)]="concours.description" required></textarea>
+  </div>
+  <div>
+    <label for="dateExamen">Date Examen:</label>
+    <input type="date" name="dateExamen" [(ngModel)]="concours.dateExamen" required>
+  </div>
+  <div>
+    <label for="dateDelais">Date Delais:</label>
+    <input type="date" name="dateDelais" [(ngModel)]="concours.dateDelais" required>
+  </div>
+  <div>
+    <label for="image">Image:</label>
+    <input type="file" name="image" (change)="handleFileInput($event)">
+  </div>
+  <button type="submit">Update</button>
+</form> -->

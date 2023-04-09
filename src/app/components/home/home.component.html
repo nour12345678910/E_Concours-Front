@@ -3,39 +3,52 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid bg-white position-relative">
+    <div class="container-fluid bg-white position-relative" >
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+          <img  class="img1" src="assets/img/LOGO.png" alt="logo">
+
             <a href="index.html" class="navbar-brand text-secondary">
-                <h1 class="display-4 text-uppercase">E-Concours</h1>
             </a>
+            <h1 class="display-4 text-uppercase">E-Concours</h1>
+
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0 pr-3 border-right">
-                    <a href="index.html" class="nav-item nav-link active">Accueil</a>
                     <!-- <a href="index.html" class="nav-item nav-link">procédures</a> -->
                     <!-- <a href="about.html" class="nav-item nav-link">A propos</a> -->
-                    <a href="service.html" class="nav-item nav-link">Concours</a>
-                    <a href="price.html" class="nav-item nav-link">Résultats</a>
-
-                    <a routerLink="/login"  *ngIf="!loginStatus" class="nav-item nav-link" >se connecter</a>
 
 
 
 
 
 
-                    <a href="contact.html" class="nav-item nav-link">Contacte</a>
-                    <a   *ngIf="loginStatus" style="z-index: 3;" class="nav-item nav-link" (click)="logOut()" style="color: red;">Déconnexion</a>
 
-                    <div class="nav-item dropdown">
-                      <a  class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="loginStatus">Connexion</a>
-                      <div class="dropdown-menu rounded-0 m-0">
-                          <a  *ngIf="loginStatus" routerLink="/profil" class="dropdown-item">profile</a>
-                          <a  *ngIf="loginStatus" href="testimonial.html" class="dropdown-item" (click)="logOut()">Déconnexion</a>
+                    <a href="contact.html" class="nav-item nav-link"  style="font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">للإتصال بنا</a>
+                    <a   *ngIf="loginStatus" style="z-index: 3;" class="nav-item nav-link" (click)="logOut()" style="color: red;"  style="font-size: 25pxpx">غلق الحساب</a>
+
+                    <div class="nav-item dropdown" style="font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                      <a  class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="loginStatus">تسجيل الدخول</a>
+                      <div class="dropdown-menu rounded-0 m-0"  style="font-size: 25px ;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                          <a  *ngIf="loginStatus" routerLink="/profil" class="dropdown-item">معلومات عن المستعمل</a>
+                          <a  *ngIf="loginStatus" href="testimonial.html" class="dropdown-item" (click)="logOut()">غلق الحساب</a>
                       </div>
                   </div>
+
+                  <a href="price.html" class="nav-item nav-link" style="font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;">نتائج المناظرات</a>
+
+
+                  <a routerLink="/lesConcours" class="nav-item nav-link" style="font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">المناظرات المتوفرة </a>
+
+
+                  <a routerLink="/inscription"  *ngIf="!loginStatus" class="nav-item nav-link"  style="font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">إنشاءحساب شخصي</a>
+
+
+                  <a routerLink="/login"  *ngIf="!loginStatus" class="nav-item nav-link" style="font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" >تسجيل الدخول</a>
+
+                  <a href="index.html" class="nav-item nav-link active" style="font-size: 25px;font-weight: bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الإستقبال</a>
+
 
                   </div>
 
@@ -48,17 +61,17 @@
     <!-- Header Start -->
     <div class="bg" style="margin-bottom: 90px;">
         <div class="row mx-0 align-items-center bg">
-            <div class="col-lg-6 px-md-5 text-center text-lg-left">
-                <h1 class="display-2 text-uppercase mb-3">Ministère de la Justice</h1>
-                <p class="text-dark mb-4">Le Ministère de la Justice lance ses concours pour recruter les salariés correspondants dans des emplois bien définis,
-                   à postuler en appuyant sur le bouton de démarrage suivant:</p>
-                <a href="" class="btn btn-dark text-uppercase mt-1 py-3 px-5">Commencer</a>
+            <div class="conteneur-texte">
+                <h1 style="color:rgb(179, 183, 61);text-shadow: -1px -1px 0 black, 4px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+                " class="display-2 text-uppercase mb-3">مناظرة المركز الوطني للإعلامية</h1><br><br><br>
+                <button class="button-black" onclick="window.location.href='#etapes'"style="scroll-behavior: smooth;">كيفية المشاركة </button>
+
             </div>
-            <div class="col-lg-6 px-0 text-right">
-                <img class="img-fluid mt-5 mt-lg-0" src="assets/img/ministére-removebg-preview.png" alt="">
-            </div>
+                <img  style=" width: 100%;height: 700px;" src="assets/img/cni.jpg" alt="">
+
         </div>
     </div>
+
     <!-- Header End -->
 
 
@@ -82,36 +95,36 @@
 
 
     <!-- Services Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5" id="etapes">
         <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5">Our Creative Services</h1>
-            <div class="row">
-                <div class="col-lg-3 mb-2">
-                    <div class="service-item rounded p-5 mb-4">
-                        <i class="fa fa-3x fa-laptop-code text-primary mb-4"></i>
-                        <h4 class="text-uppercase mb-4">Web <span class="d-block text-body">Design</span></h4>
-                        <p class="m-0">Vero amet vero eos kasd justo ipsum diam sed elitr</p>
-                    </div>
+            <h1 class="display-4 text-uppercase text-center mb-5">مراحل المشاركة في المناظرة</h1>
+            <div class="row" style="text-align:right;">
+              <div class="col-lg-3 mb-2">
+                <div class="service-item rounded p-5 mb-4">
+                    <i class="fa fa-3x fa-edit text-primary mb-4"></i>
+                    <h4 class="text-uppercase mb-4" style="text-align: center;">4 المرحلة الرابعة</h4>
+                    <p class="m-0" style="font-size: 27px;text-align: right;">تعمير إستمارة طلب الترشح للمناظرة   </p>
                 </div>
-                <div class="col-lg-3 mb-2">
-                    <div class="service-item rounded p-5 mb-4">
-                        <i class="fa fa-3x fa-code text-primary mb-4"></i>
-                        <h4 class="text-uppercase mb-4">Web <span class="d-block text-body">Development</span></h4>
-                        <p class="m-0">Vero amet vero eos kasd justo ipsum diam sed elitr</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 mb-2">
-                    <div class="service-item rounded p-5 mb-4">
-                        <i class="fa fa-3x fa-envelope-open-text text-primary mb-4"></i>
-                        <h4 class="text-uppercase mb-4">Digital <span class="d-block text-body">Marketing</span></h4>
-                        <p class="m-0">Vero amet vero eos kasd justo ipsum diam sed elitr</p>
-                    </div>
-                </div>
+            </div>
+            <div class="col-lg-3 mb-2">
+              <div class="service-item rounded p-5 mb-4">
+                  <i class="fa fa-3x fa-edit text-primary mb-4"></i>
+                  <h4 class="text-uppercase mb-4" style="text-align: center;">3 المرحلة الثالثة</h4>
+                  <p class="m-0" style="font-size: 27px;text-align: right;">إختيار المناظرة المناسبة للمشاركة فيها</p>
+              </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="service-item rounded p-5 mb-4">
+                <i class="fa fa-3x fa-edit text-primary mb-4"></i>
+                <h4 class="text-uppercase mb-4" style="text-align: center;">2 المرحلة الثانية  </h4>
+                <p class="m-0" style="font-size: 27px;text-align: right;">إلقاء نظرة على مختلف المناظرات المتوفرة</p>
+            </div>
+        </div>
                 <div class="col-lg-3 mb-2">
                     <div class="service-item rounded p-5 mb-4">
                         <i class="fa fa-3x fa-edit text-primary mb-4"></i>
-                        <h4 class="text-uppercase mb-4">Content <span class="d-block text-body">Writing</span></h4>
-                        <p class="m-0">Vero amet vero eos kasd justo ipsum diam sed elitr</p>
+                        <h4 class="text-uppercase mb-4" style="text-align: center;">1 المرحلة الأولى</h4>
+                        <p class="m-0" style="font-size: 27px;text-align: right;">إنشاء حسابك الخاص</p>
                     </div>
                 </div>
             </div>
@@ -121,189 +134,6 @@
 
 
     <app-liste-concours></app-liste-concours>
-
-    <!-- Pricing Plan Start -->
-    <!-- <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5">Competitive Pricing</h1>
-            <div class="row">
-                <div class="col-lg-4 mb-2">
-                    <div class="bg-light rounded text-center pt-5 mt-lg-5 mb-4">
-                        <h2 class="text-uppercase">Basic</h2>
-                        <h6 class="text-uppercase text-body mb-5">The Best Choice</h6>
-                        <div class="text-center bg-dark rounded-circle p-4 mb-2">
-                            <h1 class="display-4 text-white mb-0">
-                                <small class="align-top"
-                                    style="font-size: 22px; line-height: 45px;">$</small>49<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/
-                                    Mo</small>
-                            </h1>
-                        </div>
-                        <div class="text-center py-4">
-                            <p>HTML5 & CSS3</p>
-                            <p>Bootstrap v4</p>
-                            <p>Responsive Layout</p>
-                            <p>Compatible With All Browsers</p>
-                            <a href="" class="btn btn-dark text-uppercase py-2 px-4 my-3">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-2">
-                    <div class="bg-dark rounded text-center pt-5 mb-4">
-                        <h2 class="text-uppercase text-white">Standard</h2>
-                        <h6 class="text-uppercase text-secondary mb-5">The Best Choice</h6>
-                        <div class="text-center bg-primary rounded-circle p-4 mb-2">
-                            <h1 class="display-4 mb-0">
-                                <small class="align-top"
-                                    style="font-size: 22px; line-height: 45px;">$</small>99<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/
-                                    Mo</small>
-                            </h1>
-                        </div>
-                        <div class="text-center text-secondary py-4">
-                            <p>HTML5 & CSS3</p>
-                            <p>Bootstrap v4</p>
-                            <p>Responsive Layout</p>
-                            <p>Compatible With All Browsers</p>
-                            <a href="" class="btn btn-primary text-uppercase py-2 px-4 my-3">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-2">
-                    <div class="bg-light rounded text-center pt-5 mt-lg-5 mb-4">
-                        <h2 class=" text-uppercase">Extended</h2>
-                        <h6 class="text-uppercase text-body mb-5">The Best Choice</h6>
-                        <div class="text-center bg-dark rounded-circle p-4 mb-2">
-                            <h1 class="display-4 text-white mb-0">
-                                <small class="align-top"
-                                    style="font-size: 22px; line-height: 45px;">$</small>149<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/
-                                    Mo</small>
-                            </h1>
-                        </div>
-                        <div class="text-center py-4">
-                            <p>HTML5 & CSS3</p>
-                            <p>Bootstrap v4</p>
-                            <p>Responsive Layout</p>
-                            <p>Compatible With All Browsers</p>
-                            <a href="" class="btn btn-dark text-uppercase py-2 px-4 my-3">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Pricing Plan End -->
-
-
-    <!-- Team Start -->
-    <!-- <div class="container-fluid py-5">
-        <div class="container py-5">
-            <h1 class="display-4 text-uppercase text-center mb-5">Meet Our Team</h1>
-            <div class="owl-carousel team-carousel position-relative" style="padding-left: 30px;">
-                <div class="team-item rounded overflow-hidden">
-                    <div class="position-relative">
-                        <img class="img-fluid w-100" src="assets/img/team-1.jpg" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light text-center p-4">
-                        <h4 class="text-uppercase">John Doe</h4>
-                        <p class="m-0">CEO, Founder</p>
-                    </div>
-                </div>
-                <div class="team-item rounded overflow-hidden">
-                    <div class="position-relative">
-                        <img class="img-fluid w-100" src="assets/img/team-2.jpg" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light text-center p-4">
-                        <h4 class="text-uppercase">Kate Wilson</h4>
-                        <p class="m-0">Designer</p>
-                    </div>
-                </div>
-                <div class="team-item rounded overflow-hidden">
-                    <div class="position-relative">
-                        <img class="img-fluid w-100" src="assets/img/team-3.jpg" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light text-center p-4">
-                        <h4 class="text-uppercase">John Brown</h4>
-                        <p class="m-0">Developer</p>
-                    </div>
-                </div>
-                <div class="team-item rounded overflow-hidden">
-                    <div class="position-relative">
-                        <img class="img-fluid w-100" src="assets/img/team-4.jpg" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-light text-center p-4">
-                        <h4 class="text-uppercase">Paul Watson</h4>
-                        <p class="m-0">Marketer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Team End -->
-
-
-    <!-- Testimonial Start -->
-    <!-- <div class="container-fluid py-5">
-        <div class="container py-5">
-            <h1 class="display-4 text-uppercase text-center mb-5">Our Client's Say</h1>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item position-relative text-center rounded p-4">
-                    <img class="img-fluid rounded mx-auto my-4" src="assets/img/testimonial-1.jpg" alt="">
-                    <h5 class="text-uppercase">Client Name</h5>
-                    <p class="text-uppercase">Profession</p>
-                    <p class="text-secondary">Tempor lorem dolor sea et ipsum, lorem justo kasd dolore vero eos. Lorem duo ipsum sea amet et clita dolor</p>
-                </div>
-                <div class="testimonial-item position-relative text-center rounded p-4">
-                    <img class="img-fluid rounded mx-auto my-4" src="assets/img/testimonial-2.jpg" alt="">
-                    <h5 class="text-uppercase">Client Name</h5>
-                    <p class="text-uppercase">Profession</p>
-                    <p class="text-secondary">Tempor lorem dolor sea et ipsum, lorem justo kasd dolore vero eos. Lorem duo ipsum sea amet et clita dolor</p>
-                </div>
-                <div class="testimonial-item position-relative text-center rounded p-4">
-                    <img class="img-fluid rounded mx-auto my-4" src="assets/img/testimonial-3.jpg" alt="">
-                    <h5 class="text-uppercase">Client Name</h5>
-                    <p class="text-uppercase">Profession</p>
-                    <p class="text-secondary">Tempor lorem dolor sea et ipsum, lorem justo kasd dolore vero eos. Lorem duo ipsum sea amet et clita dolor</p>
-                </div>
-                <div class="testimonial-item position-relative text-center rounded p-4">
-                    <img class="img-fluid rounded mx-auto my-4" src="assets/img/testimonial-4.jpg" alt="">
-                    <h5 class="text-uppercase">Client Name</h5>
-                    <p class="text-uppercase">Profession</p>
-                    <p class="text-secondary">Tempor lorem dolor sea et ipsum, lorem justo kasd dolore vero eos. Lorem duo ipsum sea amet et clita dolor</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Testimonial End -->
 
 
     <!-- Contact Start -->

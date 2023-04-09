@@ -14,6 +14,8 @@ export class InscriptionComponent implements OnInit{
   exist: boolean = false;
   wrongCred: boolean = false;
   errorMessage:string=''
+  champsVides: boolean = false;
+
 
   constructor(
     private is: InscriptionServiceService,

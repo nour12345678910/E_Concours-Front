@@ -13,21 +13,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./listeconcours.component.css']
 })
 export class ListeconcoursComponent implements OnInit {
+[x: string]: any;
   concours:Concours;
   loginStatus:boolean;
   user:User;
   concoursListe: Concours[];
   lesConcours: Concours[]=[];
   safeImageUrl: SafeUrl = '';
-
-
-
   selectedFile: File;
   retrievedImage: any;
   base64Data: any;
   retrieveResonse: any;
   message: string;
   imageName: any;
+  editeConcours:Concours;
+  deleteConcours:Concours;
+
+
+
+  lesConcourss: Concours[] = [];
+  imgURL: any;
+  public imagePath;
 
   constructor(
     private cs: ConcoursService,
@@ -39,6 +45,103 @@ export class ListeconcoursComponent implements OnInit {
       this.lesConcours = [];
     }
 
+    deletConcours(id:number){
+      this.cs.deleteConcours(id).subscribe(() => {
+        this.concoursList = this.concoursList.filter(p => p.id !== id);
+        console.log(`Concours with ID ${id} deleted successfully`);
+      },
+      error => console.error(error)
+    );
+    }
+    // onUpdateFormateur(concours:Concours):void{
+
+    //   this.cs.addConcours(concours).subscribe(
+    //     (response:Formateur)=>{
+    //       console.log(response);
+    //       this.getFormateur()
+
+    //     },
+    //     (error:HttpErrorResponse)=> {
+    //       alert(error.message)
+    //     }
+    //   )
+
+    // }
+
+    // onDeleteFormateur(idf:number):void{
+
+    //   this.cs.deleteFormateur(idf).subscribe(
+    //     (response:void)=>{
+    //       console.log(response);
+    //       this.getFormateur()
+
+    //     },
+    //     (error:HttpErrorResponse)=> {
+    //       alert(error.message)
+    //     }
+    //   )
+
+    // }
+
+
+    onSelectFile(event): void {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        this.selectedFile = file;
+        //this.f['profile'].setValue(file);
+
+        const mimeType = event.target.files[0].type;
+        if (!mimeType.match(/image\/*/)) {
+          this.message = 'Only images are supported.';
+          return;
+        }
+
+        const reader = new FileReader();
+        this.imagePath = file;
+        reader.readAsDataURL(file);
+        reader.onload = (_event) => {
+          this.imgURL = reader.result;
+        };
+      }
+    }
+
+    public onOpenModal(concours: Concours, mode: string): void {
+      const container = document.getElementById('main-container');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.style.display = 'none';
+      button.setAttribute('data-toggle', 'modal');
+      if (mode === 'edit') {
+        this.editeConcours=concours;
+        button.setAttribute('data-target', '#updateEmployeeModal');
+      }
+      if (mode === 'delete') {
+        this.deleteConcours=concours;
+        button.setAttribute('data-target', '#deleteEmployeeModal');
+      }
+      container?.appendChild(button);
+      button.click();
+    }
+
+
+
+
+
+
+    // editConcours(id: number) {
+    //   const formData = new FormData();
+    //   // Add the updated data to the formData object
+    //   formData.append('poste', 'new poste');
+    //   formData.append('description', 'new description');
+    //   formData.append('dateExamen', '2023-04-05');
+    //   formData.append('dateDelais', '2023-04-10');
+    //   formData.append('image', this.selectedFile);
+
+    //   // Call the updateConcours method passing the id and formData
+    //   this.cs.updateConcours(id, formData).subscribe((data) => {
+    //     console.log(data);
+    //   });
+    // }
 
 
 

@@ -10,7 +10,8 @@ import { User } from '../models/User';
 })
 export class CandidatServiceService {
   private URL = environment.apiBaseUrl;
-  private baseUrl = 'http://localhost:8087/api/candidat';
+  private baseUrl = 'http://localhost:8087/api/addCandidat';
+
 
 
   constructor(private http: HttpClient) {}
@@ -22,21 +23,15 @@ export class CandidatServiceService {
       'userId':JSON.stringify( JSON.parse(localStorage.getItem('user')).id)
     })
   }
-  createCandidat(candidat: CandidatInfo): Observable<CandidatInfo> {
-    return this.http.post<CandidatInfo>(`${this.baseUrl}`, JSON.stringify(candidat), this.httpOptions);
-  }
 
-  saveCandidat(candidat: CandidatInfo): Observable<CandidatInfo> {
-    return this.http.post<CandidatInfo>(`${this.baseUrl}`, candidat);
+  ajouterCandidat(candidat: CandidatInfo, userId: number): Observable<CandidatInfo> {
+    const headers = new HttpHeaders({ 'userId': userId.toString() });
 
+    return this.http.post<CandidatInfo>(this.baseUrl, candidat, { headers });
   }
 
   getCandidatInfo(): Observable<CandidatInfo[]> {
     return this.http.get<CandidatInfo[]>(`${this.URL}/api/all`);
   }
-
-  // addConcours(c: CandidatInfo): Observable<CandidatInfo> {
-  //   return this.http.post<CandidatInfo>(`${this.URL}/api/candidat/add`, c);
-  // }
 
 }

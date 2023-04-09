@@ -1,14 +1,19 @@
-export class CandidatInfo  {
-  id:number;
+import { Diplome } from "./Diplome";
+
+export class CandidatInfo {
+  id: number;
   userId: number;
   sex: string;
   dateNaissance: Date;
   placeNaissnce: string;
   statutCivil: string;
-  adress: Date;
+  adress: string;
   ville: string;
   etatVille: string;
   zipCode: string;
+  diplomes: Diplome[];
+
+
 
 
   getId(): number {

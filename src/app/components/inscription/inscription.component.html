@@ -3,10 +3,10 @@
   <!-- Sign up form -->
   <section class="signup inscri">
 
-    <div class="container">
+    <div class="container" style="border-radius: 40px;">
 
       <div class="signup-content">
-        <h2  style="background-color: #6dabe4; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">إنشاء    حساب    شخصي</h2>
+        <h2  style="background-color: #6dabe4; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;border-radius: 40px;">إنشاء    حساب    شخصي</h2>
 
         <div class="signup-form">
           <form
@@ -194,6 +194,9 @@
                 [disabled]="f.invalid "
                 (click)="signup(f)"
                   >تسجيل الحساب</button>
+                   <!-- <div *ngIf="champsVides">
+    Veuillez remplir tous les champs
+  </div> -->
 
                   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
 

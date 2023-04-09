@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CandidatInfo } from 'src/app/models/CandidatInfo';
 import { User } from 'src/app/models/User';
 import { CandidatServiceService } from 'src/app/services/candidat-service.service';
+import { Diplome } from 'src/app/models/Diplome';
 
 @Component({
   selector: 'app-candidature',
@@ -17,9 +18,10 @@ export class CandidatureComponent implements OnInit  {
   candidatureForm: FormGroup;
   lesCandidats:CandidatInfo[]=[]
   user:User;
+  diplome: Diplome = new Diplome();
   actif=true;
-
-
+  diplomes: Diplome[] = [new Diplome()];
+  newDiplome: Diplome = new Diplome();
   errorMessage = '';
 
   constructor(
@@ -30,13 +32,27 @@ export class CandidatureComponent implements OnInit  {
     ) { }
 
 
-  ngOnInit(): void {
-    // this.getCoandidat();
-
-    //  this.candidat.userId==this.user.id
-    // this.candidat.setUserId(this.user.getId())
+    ngOnInit(): void {
       this.user=JSON.parse(localStorage.getItem('user'));
   }
+
+    addDiplome() {
+      this.diplomes.push(new Diplome());
+    }
+    submitForm() {
+
+      console.log(JSON.parse(localStorage.getItem('user')).id);
+
+      console.log(this.user.id);
+
+      this.candidat.diplomes = this.diplomes;
+     this.candidat.userId = this.user.id;
+      this.cs.ajouterCandidat(this.candidat, this.candidat.userId)
+        .subscribe((candidat) => {
+          console.log('Candidat ajouté avec succès:', candidat);
+        });
+    }
+
 
   getCoandidat():void{
     this.cs.getCandidatInfo().subscribe(
@@ -49,89 +65,12 @@ export class CandidatureComponent implements OnInit  {
     );
   }
 
+  deleteDiplome(index: number) {
+    if (this.diplomes.length > 0) {
+      this.diplomes.splice(index, 1);
+    }}
 
 
-  onSubmit(form: any) {
-    console.log(JSON.parse(localStorage.getItem('user')).id);
 
-     console.log(this.user.id);
-     this.candidat.userId = this.user.id; // Set the User ID in the CandidatInfo object
-     this.cs.createCandidat(this.candidat).subscribe(
-       data => {
-         console.log('Candidature submitted successfully');
-         form.reset(); // Reset the form
-       },
-       error => {
-         console.error(error);
-         this.errorMessage = error.message;
-       }
-     );
-  }
-
-  onSubmit1(form: NgForm) {
-    if (form.valid) {
-      // this.candidat.userId==this.user.id
-      this.cs.saveCandidat(this.candidat).subscribe(
-        result => console.log('Candidature soumise'),
-        error => console.error('Erreur lors de la soumission', error)
-      );
-    }
-  }
 }
-
-
-
-
-
-
-
-  // // onSubmit() {
-  // //   // console.log('Form submitted:', this.candidate);
-  // //   // You can add your logic for submitting the form data to the backend here
-
-
-  // // }
-
-  // onResumeUpload(event: any) {
-  //   const file = event.target.files[0];
-  //   console.log('Resume uploaded:', file);
-  //   // You can add your logic for handling the uploaded file here
-  // }
-
-
-  // onSubmit(candidateForm: NgForm) {
-  //   // const userId = localStorage.getItem('userId');
-  //   // this.user.id = Number(userId);
-  //   // this.cs.addCandidat(this.candidat).subscribe(
-  //   //   (response) => {
-  //   //     console.log(response);
-  //   //     candidateForm.reset();
-  //   //   },
-  //   //   (error) => {
-  //   //     console.log(error);
-  //   //   }
-  //   // );
-  // }
-
-
-
-
-
-  // onAddCandidat(candidateForm:NgForm){
-
-  //   this.cs.addConcours(candidateForm.value).subscribe(
-  //     (response:CandidatInfo)=>{
-  //       console.log(response);
-  //       console.log(candidateForm.value);
-  //       this.getCoandidat();
-
-  //     },
-  //     (error:HttpErrorResponse)=> {
-  //       alert(error.message)
-  //     }
-  //   )
-  //   this.router.navigate(['admin/concours/listeconcours']);
-
-  // }
-
 

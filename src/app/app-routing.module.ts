@@ -13,6 +13,7 @@ import { MenuConcoursComponent } from './components/menu-concours/menu-concours.
 import { ModifEtablissementComponent } from './components/modif-etablissement/modif-etablissement.component';
 import { ProfilAdminComponent } from './components/profil-admin/profil-admin.component';
 import { ProfilCandidatComponent } from './components/profil-candidat/profil-candidat.component';
+import { ModifConcoursComponent } from './components/modif-concours/modif-concours.component';
 
 const routes: Routes =[
 
@@ -26,6 +27,7 @@ const routes: Routes =[
   children:[
     {path:'ajouterconcours', component:AjouterConcoursComponent},
     {path:'listeconcours', component:ListeconcoursComponent},
+    {path:'modifConcours/:id', component:ModifConcoursComponent},
 
 
   ]},

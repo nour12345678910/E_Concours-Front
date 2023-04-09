@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Concours } from '../models/Concours';
 
@@ -12,9 +12,46 @@ export class ConcoursService {
   private URL = environment.apiBaseUrl;
   constructor(private http:HttpClient) { }
 
-
+  private baseUrl2 = 'http://localhost:8087/api/concours';
     private baseUrl = 'http://localhost:8087/api/concours';
     private apiUrl = 'http://localhost:8087/api/concours/all';
+
+
+
+
+    updateConcours(id: number, postData: FormData): Observable<Concours> {
+      return this.http.put<Concours>(`${this.baseUrl}/hhh/${id}`, postData);
+    }
+
+
+
+
+    private handleError(error: any) {
+      console.error(error);
+      return throwError(error);
+    }
+
+
+
+    getConcours(id: number): Observable<Concours> {
+      const url = `${this.baseUrl2}/${id}`;
+      return this.http.get<Concours>(url).pipe(
+        catchError(this.handleError)
+      );
+    }
+
+
+    deleteConcours(idf:number):Observable<void>{
+      return this.http.delete<void>(`${this.URL}/api/concours/delete/${idf}`);
+      }
+
+
+      getConcoursById(id:any): Observable<Concours> {
+        return this.http.get<Concours>(`${this.URL}/api/concours/${id}`);
+      }
+
+
+
 
 
     getAllConcours(): Observable<Concours[]> {
@@ -33,16 +70,24 @@ export class ConcoursService {
   }
 
 
+  updateConcourss(c:Concours, file: File): Observable<Concours> {
+    const formData = new FormData();
+    formData.append('id', c.id.toLocaleString());
+  formData.append('poste', c.poste);
+  formData.append('description', c.description);
 
-      updateConcours(c:Concours):Observable<Concours>{
-        return this.http.put<Concours>(`${this.URL}/api/concours/update`, c);
-        }
+  formData.append('image', file);
+    return this.http.put<Concours>(`${this.URL}/api/concours/update`, formData);
+    }
+
+
+      // updateConcours(c:Concours):Observable<Concours>{
+      //   return this.http.put<Concours>(`${this.URL}/api/concours/update`, c);
+      //   }
 
 
 
-      deleteConcours(idf:number):Observable<void>{
-        return this.http.delete<void>(`${this.URL}/api/concours/delete/${idf}`);
-        }
+
 
 
 

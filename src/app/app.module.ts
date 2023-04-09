@@ -20,6 +20,7 @@ import { EtablissementComponent } from './components/etablissement/etablissement
 import { ProfilAdminComponent } from './components/profil-admin/profil-admin.component';
 import { ModifEtablissementComponent } from './components/modif-etablissement/modif-etablissement.component';
 import { MenConcoursComponent } from './components/men-concours/men-concours.component';
+import { ModifConcoursComponent } from './components/modif-concours/modif-concours.component';
 
 
 
@@ -40,7 +41,8 @@ import { MenConcoursComponent } from './components/men-concours/men-concours.com
     EtablissementComponent,
     ProfilAdminComponent,
     ModifEtablissementComponent,
-    MenConcoursComponent
+    MenConcoursComponent,
+    ModifConcoursComponent
   ],
   imports: [
     BrowserModule,

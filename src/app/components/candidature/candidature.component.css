@@ -79,6 +79,20 @@ button[type="submit"] {
   line-height: 1.5;
   background: linear-gradient(0deg, rgb(161, 219, 177) 0%, rgb(101, 205, 246) 100%);
 }
+.bajout {
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: linear-gradient(0deg, rgb(10, 117, 188) 0%, rgb(18, 152, 119) 100%);
+  float: right;
+}
+
 
 button[type="submit"]:hover {
   background-color: #0458b2;

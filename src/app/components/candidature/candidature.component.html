@@ -5,7 +5,7 @@
 <div style="height: 80px; background-color:rgb(222, 243, 247);width: 1200px;margin-left: 350px;"></div>
 <div class="cadre">
 
-<form (ngSubmit)="onSubmit(candidatureForm)" #candidatureForm="ngForm" >
+<form (submit)="submitForm()" #candidatureForm="ngForm" >
     <div >
       <fieldset>المعطيات الشخصية </fieldset>
     </div>
@@ -119,11 +119,14 @@
   <div>
     <fieldset>المؤهلات العلمية</fieldset>
     </div>
+    <div *ngFor="let diplome of diplomes; let i = index">
 
 
   <div class="form-group">
     <label for="scientificCertificate">الشهادة العلمية</label>
-    <select class="form-control" id="civilStatus" name="civilStatus" [(ngModel)]="candidat.statutCivil"  required>
+    <!-- <select class="form-control" id="civilStatus" name="civilStatus" [(ngModel)]="diplome.diplome"  required> -->
+      <select class="form-control" type="text" name="diplome{{ i + 1 }}" [(ngModel)]="diplomes[i].diplome" required>
+
       <option value="شهادة البكالوريا">شهادة البكالوريا</option>
       <option value="شهادة الماجستير">شهادة الماجستير</option>
       <option value="شهادة الدكتوراه">شهادة الدكتوراه</option>
@@ -134,43 +137,85 @@
 
   <div class="form-group">
     <label for="specialite"> إسم التخصص</label>
-    <input type="text" class="form-control" id="specialite" name="specialite"  required>
+    <!-- <input type="text" class="form-control" id="specialite" name="specialite" [(ngModel)]="diplome.specialite"  required> -->
+    <input type="text" name="specialite{{ i + 1 }}" [(ngModel)]="diplomes[i].specialite" required>
   </div>
 
   <div class="form-group">
     <label for="university">الجامعة أو المدرسة</label>
-    <input type="text" class="form-control" id="university" name="university"  required>
+    <!-- <input type="text" class="form-control" id="university" name="university" [(ngModel)]="diplome.faculte" required> -->
+    <input type="text" name="faculte{{ i + 1 }}" [(ngModel)]="diplomes[i].faculte" required>
   </div>
   <div class="form-group">
     <label for="graduationYear">سنة التخرج</label>
-    <input type="text" class="form-control" id="graduationYear" name="graduationYear"  required>
+    <!-- <input type="text" class="form-control" id="graduationYear" name="graduationYear" [(ngModel)]="diplome.anneeObtention" required> -->
+    <input type="text" name="anneeObtention{{ i + 1 }}" [(ngModel)]="diplomes[i].anneeObtention" required>
+
   </div>
+
   <div class="form-group">
     <label for="lastYearRate"> معدلات الثلاث سنوات الأخيرة المكللة بالنجاح </label>
     <div class="row">
       <div class="col-sm-4">
         <label for="lastYearRate3">السنة الثالثة</label>
-        <input type="text" class="form-control" id="lastYearRate3" name="lastYearRate3"  required  placeholder="  XX.XX   معدل3">
+        <!-- <input type="text" class="form-control" id="lastYearRate3" name="lastYearRate3"  required  placeholder="  XX.XX   معدل3" [(ngModel)]="diplome.moyenne3"> -->
+        <input type="text" name="moyenne3{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenne3" required>
+
       </div>
       <div class="col-sm-4">
         <label for="lastYearRate2">السنة الثانية</label>
-        <input type="text" class="form-control" id="lastYearRate2" name="lastYearRate2" placeholder="  XX.XX   معدل2" required>
+        <!-- <input type="text" class="form-control" id="lastYearRate2" name="lastYearRate2" placeholder="  XX.XX   معدل2" required [(ngModel)]="diplome.moyenne2"> -->
+        <input type="text" name="moyenne2{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenne2" required>
+
       </div>
 
       <div class="col-sm-4">
         <label for="lastYearRate1">السنة الأولى</label>
-        <input type="text" class="form-control" id="lastYearRate1" name="lastYearRate1" placeholder="  XX.XX   معدل1"  required>
+        <!-- <input type="text" class="form-control" id="lastYearRate1" name="lastYearRate1" placeholder="  XX.XX   معدل1"  required [(ngModel)]="diplome.moyenne1"> -->
+        <input type="text" name="moyenne1{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenne1" required>
+
       </div>
     </div>
   </div>
   <div class="form-group">
     <label for="baccalaureateRate">نسبة النجاح في البكالوريا</label>
-    <input type="text" class="form-control" id="baccalaureateRate" name="baccalaureateRate"  placeholder=" XX.XX معدل الباكالوريا " required>
+    <!-- <input type="text" class="form-control" id="baccalaureateRate" name="baccalaureateRate"  placeholder=" XX.XX معدل الباكالوريا " required [(ngModel)]="diplome.moyenneBac"> -->
+    <input type="text" name="moyenneBac{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenneBac" required>
+
   </div>
+  <button type="button" class="bajout" (click)="deleteDiplome(i)">حذف هذه الشهادة العلمية</button>
+<br><br>
+    </div><br>
+    <button type="button" class="bajout" (click)="addDiplome()">إضافة شهادة علمية أخرى</button>
+
+    <br><br><br><br>
   <button type="submit" class="btn btn-primary">إرسال</button>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div *ngFor="let diplome of diplomes; let i=index" class="diplome-inputs">
+    <h4>Diplôme {{ i + 1 }}</h4>
+    <label>Diplôme:</label>
+    <input type="text" name="diplome{{ i + 1 }}" [(ngModel)]="diplomes[i].diplome" required>
+
+    <label>Spécialité:</label>
+    <input type="text" name="specialite{{ i + 1 }}" [(ngModel)]="diplomes[i].specialite" required> -->
+
+    <!-- ... Other inputs for the diploma ... -->
+
+    <!-- <button type="button" (click)="deleteDiplome(i)">Supprimer ce diplôme</button> -->
+  <!-- </div> -->
 
 
 
