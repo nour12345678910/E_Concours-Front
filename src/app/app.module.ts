@@ -21,6 +21,20 @@ import { ProfilAdminComponent } from './components/profil-admin/profil-admin.com
 import { ModifEtablissementComponent } from './components/modif-etablissement/modif-etablissement.component';
 import { MenConcoursComponent } from './components/men-concours/men-concours.component';
 import { ModifConcoursComponent } from './components/modif-concours/modif-concours.component';
+import { CommonModule } from '@angular/common';
+import { LescandidaturesComponent } from './components/lescandidatures/lescandidatures.component';
+import { LesDiplomesComponent } from './components/les-diplomes/les-diplomes.component';
+import { ListeCandidatsComponent } from './components/liste-candidats/liste-candidats.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterCandidatPipe } from './pipes/filter-candidat.pipe';
+import { FilterScorePipe } from './pipes/filter-score.pipe';
+import { RecuComponent } from './components/recu/recu.component';
+import { AgesStatComponent } from './components/ages-stat/ages-stat.component';
+import { StatSexComponent } from './components/stat-sex/stat-sex.component';
+import { ListeCandidatsReussisComponent } from './components/liste-candidats-reussis/liste-candidats-reussis.component';
+import { ReponseContactComponent } from './components/reponse-contact/reponse-contact.component';
+import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
+import { ReclamationComponent } from './components/reclamation/reclamation.component';
 
 
 
@@ -42,9 +56,24 @@ import { ModifConcoursComponent } from './components/modif-concours/modif-concou
     ProfilAdminComponent,
     ModifEtablissementComponent,
     MenConcoursComponent,
-    ModifConcoursComponent
+    ModifConcoursComponent,
+    LescandidaturesComponent,
+    LesDiplomesComponent,
+    ListeCandidatsComponent,
+    FilterPipe,
+    FilterCandidatPipe,
+    FilterScorePipe,
+    RecuComponent,
+    AgesStatComponent,
+    StatSexComponent,
+    ListeCandidatsReussisComponent,
+    ReponseContactComponent,
+    ListeReclamationComponent,
+    ReclamationComponent,
+
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

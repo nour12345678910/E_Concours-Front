@@ -19,9 +19,12 @@
                     </div>
                 </div>
             </div> -->
+<br><br>
+            <div class="text-center">
 
-
-<table  *ngFor="let c of concoursList, index as i" style="text-align: center;">
+                <i style="padding: 20px;" class="fa fa-search "></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث "style="text-align: right;">
+            </div><br>
+<table  *ngFor="let c of concoursList |filter:term, index as i" style="text-align: center;">
 <tr style="text-align: center; margin-bottom: 1000px;" >
 
   <td style="width: 200px;">
@@ -33,8 +36,8 @@
     <div style="text-align : right; font-size: 27px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"><strong>موعد إجتياز الإمتحان : </strong>{{c.dateExamen}}</div><br>
     <div  style="text-align : right; font-size: 27px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"><strong> الموعد النهائي :</strong>{{c.dateDelais}}</div><br>
     <div  style="text-align : right; font-size: 27px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{c.description}}</div><br><br><br>
-    <button style="width: 200px;height:50px;  margin-right:0px;border-radius: 14px; text-align: center;" class="btn btn-primary" *ngIf="loginStatus" routerLink="/candidature"> طلب المشاركة في المناظرة</button>
-    <button *ngIf="!loginStatus" style="background-color: rgb(241, 167, 48); height: 60px; text-align: center; color: white;font-size: 25px; border-radius:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" routerLink="/login">للتمكن من المشاركة في المناظرة يجب عليك تسجيل حسابك الخاص والمشاركة به</button>
+    <button style="width: 200px;height:50px;  margin-right:0px;border-radius: 14px; text-align: center;" class="btn btn-primary" *ngIf="loginStatus"  [routerLink]="['/candidature', c.id]"> طلب المشاركة في المناظرة</button>
+    <button *ngIf="!loginStatus" style="background-color: rgb(241, 167, 48); height: 70px; text-align: center; color: white;font-size: 25px; border-radius:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" routerLink="/login">للتمكن من المشاركة في المناظرة يجب عليك تسجيل حسابك الخاص والمشاركة به</button>
 
 </td>
 

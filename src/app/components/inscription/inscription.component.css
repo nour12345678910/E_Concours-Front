@@ -43,6 +43,7 @@
   .container {
     width: 700px;
     background: #fff;
+    border-radius: 500;
 
      }
 
@@ -103,8 +104,7 @@
   .signup-form {
     margin-left: 75px;
     margin-right: 75px;
-    padding-left: 34px;
-  }
+    padding-left: 34px; }
 
   .register-form {
     width: 100%; }

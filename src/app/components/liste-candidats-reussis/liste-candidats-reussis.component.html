@@ -1,0 +1,67 @@
+<p>liste-candidats-reussis works!</p>
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Date de naissance</th>
+      <th>Lieu de naissance</th>
+      <th>Statut civil</th>
+      <th>Adresse</th>
+      <th>Ville</th>
+      <th>État/Ville</th>
+      <th>Code postal</th>
+      <th>Score</th>
+      <th>Concours réussis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidat of successfulCandidates">
+      <td>{{ candidat.userId['nom'] }}
+      </td>
+      <td>{{ candidat.userId['prenom'] }}</td>
+      <td>{{ candidat.dateNaissance | date }}</td>
+      <td>{{ candidat.placeNaissnce }}</td>
+      <td>{{ candidat.statutCivil }}</td>
+      <td>{{ candidat.adress }}</td>
+      <td>{{ candidat.ville }}</td>
+      <td>{{ candidat.etatVille }}</td>
+      <td>{{ candidat.zipCode }}</td>
+      <td>{{ candidat.score }}</td>
+      <td>
+        <ng-container *ngIf="candidat.concoursId === selectedConcoursId">
+          <span class="sticker" *ngIf="candidat.reussite">&#10004;</span>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+<div class="login-box">
+  <div class="signin topline" >
+
+  <div id="box" style="height: 10px;">
+ <h1> Liste des candidats réussis :  </h1>
+ <table>
+
+<div *ngFor="let c of successfulCandidates; index as i">
+  <div *ngFor="let u of users; index as j">
+    <div class="table-light" *ngIf="c.userId==u.id">
+      <tr>
+        <th id="ligne"><i class="fas fa-check-circle" style="color: green"></i></th>
+        <th scope="row">{{i+1}}</th>
+        <th id="ligne">{{u.prenom}}</th>
+        <th id="ligne">{{u.nom}}</th>
+        <th id="ligne">{{u.email}}</th>
+        <th id="ligne">{{c.adress}}</th>
+        <th id="ligne">{{c.dateNaissance}}</th>
+        <th id="ligne">{{c.sex}}</th>
+        <th id="ligne">{{c.statutCivil}}</th>
+        <th id="ligne">{{c.ville}}</th>
+        <th id="ligne">{{c.zipCode}}</th>
+        <th id="ligne">{{c.score}}</th>
+      </tr>
+    </div>
+  </div>
+</div>

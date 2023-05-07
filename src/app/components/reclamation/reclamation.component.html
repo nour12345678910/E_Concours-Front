@@ -1,0 +1,54 @@
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5 px-0">
+      <div class="row mt-5 mx-0">
+        <div class="col-12 px-0" style="height: 500px;">
+          <div class="position-relative h-100">
+              <iframe class="position-relative w-100 h-100"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.381610879033!2d10.165838815227253!3d36.81269387994922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd3386aae7a5f9%3A0x48d6f4f6afb7d57!2sCentre%20National%20de%20l&#39;Informatique%20(CNI)%20-%20%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%20%D9%84%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A%D8%A9!5e0!3m2!1sen!2sus!4v1650522826152!5m2!1sen!2sus"
+                  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                  tabindex="0"></iframe>
+          </div>
+      </div>
+      </div>
+      <div class="row mx-0 justify-content-center" style="margin-top: -200px;">
+          <div class="col-lg-6 col-md-8 col-sm-10 px-0">
+              <div class="contact-form bg-white rounded p-5">
+                  <div id="success"></div>
+                  <form name="sentMessage" id="contactForm" novalidate="novalidate" (ngSubmit)="enregistrer()">
+                      <div class="form-row" style="text-align : right;">
+
+                          <div class="col-md-6">
+                              <div class="control-group">
+                                  <input  style="text-align : right;"  type="email" class="form-control bg-light border-0 p-4" id="email" placeholder="  البريد الإلكتروني" required="required" data-validation-required-message="Please enter your email"  [(ngModel)]="reclamation.email"  ngModel name="email"   />
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                          </div>
+
+
+                          <div class="col-md-6">
+                            <div class="control-group">
+                                <input type="text"  style="text-align : right;" class="form-control bg-light border-0 p-4" id="name" placeholder="الإسم و اللقب" required="required" data-validation-required-message="Please enter your name"  [(ngModel)]="reclamation.nom" ngModel name="nom" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                      </div>
+                      <div class="control-group">
+                          <input type="text" style="text-align : right;" class="form-control bg-light border-0 p-4" id="subject" placeholder="الموضوع" required="required" data-validation-required-message="Please enter a subject"  [(ngModel)]="reclamation.sujet" ngModel name="sujet"  />
+                          <p class="help-block text-danger"></p>
+                      </div>
+                      <div class="control-group">
+                          <textarea style="text-align : right;" class="form-control bg-light border-0 py-3 px-4" rows="5" id="message" placeholder="المحتوى" required="required" data-validation-required-message="Please enter your message"    [(ngModel)]="reclamation.message"  ngModel name="message"
+                          ></textarea>
+                          <p class="help-block text-danger"></p>
+                      </div>
+                      <div class="text-center">
+                          <button class="btn btn-primary text-uppercase py-3 px-5" type="submit" id="sendMessageButton">الإرسال</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Contact End -->

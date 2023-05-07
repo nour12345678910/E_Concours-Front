@@ -1,40 +1,89 @@
 
-<body>
+<body><br>
+  <div class="container">
+    <div class="row">
+
+
+<div class="col-8 ">
+<h1 style="text-align: center;" >طلبات الترشح </h1><br>
+
+<table >
+  <div *ngFor="let c of candidatlist; index as i" >
+    <div *ngFor="let co of listconcours; index as j">
+    <div class="table-light" *ngIf="c.concoursId==co.id && c.userId==u.id">
+    <tr>
+      <th><button class="btn btn-light" *ngIf="c.etat==true" [routerLink]="['/profil/recu',c.id]">طباعة</button></th>
+      <th>
+      <ng-container *ngIf="c.etat !== true && c.etat !== false">
+        <p>لم يتم الاطلاع بعد</p>
+      </ng-container>
+      <ng-container *ngIf="c.etat === true">
+        <p>مقبول</p>
+      </ng-container>
+      <ng-container *ngIf="c.etat === false">
+        <p>مرفوض</p>
+      </ng-container></th>
+      <th id="ligne">{{c.score}}</th>
+      <th id="ligne">{{co.dateDelais}}</th>
+      <th id="ligne">{{co.description}}</th>
+      <th id="ligne">{{co.dateExamen}}</th>
+      <th id="ligne">{{co.poste}}</th>
+
+
+
+
+
+
+
+  </tr></div></div></div>
+
+</table>
+
+
+
+</div>
+<div class="col-4 ">
   <div class="side_wrapper">
     <section class="about-dev">
       <header class="profile-card_header">
         <div class="profile-card_header-container">
           <div class="profile-card_header-imgbox">
-            <img src="assets/img/team-2.jpg" alt="Mewy Pawpins" />
+            <img [src]="'data:image/jpeg;base64,' + u.photo" alt="Mewy Pawpins" />
           </div>
-          <h1>{{u.nom}} {{u.prenom}} <span>informations personnelles</span></h1>
+          <h1> {{u.prenom}} {{u.nom}}  <span> معلومات شخصية</span></h1>
         </div>
       </header>
       <div class="profile-card_about">
-        <h2>À propos de moi</h2>
-        <p>Nom: {{u.nom}}</p>
-        <p>Prenom: {{u.prenom}}</p>
-        <p>Email: {{u.email}}</p>
-        <p>Mot de pass: {{u.motdepasse}}</p>
-        <p>telephone: {{u.telephone}}</p>
-        <p>Cin: {{u.cin}}</p>
+
+
+
+        <p> الإسم :  {{u.prenom}}</p>
+        <p>اللقب :  {{u.nom}} </p>
+        <p >{{u.email}} : البريد  </p>
+        <p> كلمة العبور </p>
+        <p> الهاتف: {{u.telephone}}</p>
+        <p> رقم بطاقة التعريف : {{u.cin}}</p>
+
+
               <footer class="profile-card_footer">
           <div class="social-row">
             <div class="heart-icon" title="No Health Issues">
-            <!-- <a routerLink="/home" class="btn btn-warning">retour<i class="fa-solid fa-turn-down-left"></i></a> -->
             </div>
 
 
           </div>
 
-          <p><button class="back-to-profile" (click)="open()" >Modifier profile</button></p>
+          <p>    <button  class="back-to" (click)="logOut()" >غلق الحساب </button>
+            <button class="back-to-profile" (click)="open()" >تغيير الحساب</button></p>
+
         </footer>
       </div>
     </section>
   </div>
-  </body>
 
 
+
+<!-- modifier données  -->
 
 <div class="modal fade my-modal" tabindex="-1" role="dialog" #add>
   <div class="modal-dialog">
@@ -81,4 +130,10 @@
     </div>
   </div>
 </div>
+
+<!--  partie  reçu de candidature  -->
+
+
+  </div></div></div>
+</body>
 

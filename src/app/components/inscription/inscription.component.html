@@ -3,10 +3,10 @@
   <!-- Sign up form -->
   <section class="signup inscri">
 
-    <div class="container" style="border-radius: 40px;">
+    <div class="container">
 
       <div class="signup-content">
-        <h2  style="background-color: #6dabe4; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;border-radius: 40px;">إنشاء    حساب    شخصي</h2>
+        <h2  style="background-color: #6dabe4; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">إنشاء    حساب    شخصي</h2>
 
         <div class="signup-form">
           <form
@@ -115,15 +115,13 @@
 
 
             <div class="form-group">
-              <label for=" photo"><i class="zmdi zmdi-lock"></i></label>
-              <input
-                type="text"
-                name="photo"
-                id="photo"
-                style="text-align : right;"
-                [(ngModel)]="par.photo"
-                placeholder="الصورة"
-              />
+              <label for=" photo"><i class="zmdi zmdi-lock"></i></label> 
+              <span style="margin-left: 420px;"> الصورة</span>
+              
+              <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id=""  > <br>
+               <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+            
             </div>
 
 
@@ -194,9 +192,6 @@
                 [disabled]="f.invalid "
                 (click)="signup(f)"
                   >تسجيل الحساب</button>
-                   <!-- <div *ngIf="champsVides">
-    Veuillez remplir tous les champs
-  </div> -->
 
                   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
 

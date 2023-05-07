@@ -1,8 +1,12 @@
 import { Diplome } from "./Diplome";
 
 export class CandidatInfo {
+  [x: string]: any;
   id: number;
   userId: number;
+  concoursId: number;
+  etat:boolean
+  reussite:boolean;
   sex: string;
   dateNaissance: Date;
   placeNaissnce: string;
@@ -11,6 +15,7 @@ export class CandidatInfo {
   ville: string;
   etatVille: string;
   zipCode: string;
+  score: number;
   diplomes: Diplome[];
 
 

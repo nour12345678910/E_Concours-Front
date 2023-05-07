@@ -15,19 +15,24 @@ export class EtablissementComponent implements OnInit {
 actif=true;
 etablissement:Etablissement=new Etablissement()
 editForm: FormGroup
-etablissemen:Etablissement[]=[];
-
+etablissemen:Etablissement[]=[]
+listetab: Etablissement[];
 
 
   constructor(private router:Router,private es:EtablissementService,private formBuilder:FormBuilder,private activatedRoute: ActivatedRoute) { }
 
-
-  modifierEtab() {
-    this.es
-      .updateEtablissement(this.etablissement)
-      .subscribe((response) => console.log('modifiee !'));
-    this.router.navigate(['admin']);
+  
+  
+  ngOnInit(): void {
+    this.es.getEtablissement().subscribe((listetab) => {
+      this.listetab = listetab;
+    })
+  } 
+  
+  activer(){
+    this.actif=false;
   }
+  
 
 
 
@@ -41,12 +46,8 @@ etablissemen:Etablissement[]=[];
       }
     );
     }
-    activer(){
-      this.actif=false;
-    }
+   
 
 
-  ngOnInit(): void {
-    this.es.getEtablissement().subscribe(response => this.etablissemen=response)
-  }
+ 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Concours } from 'src/app/models/Concours';
 import { User } from 'src/app/models/User';
 import { ConcoursService } from 'src/app/services/concours.service';
@@ -39,7 +39,7 @@ export class ListeconcoursComponent implements OnInit {
     private cs: ConcoursService,
     private router: Router,
     private is:InscriptionServiceService,
-    private http: HttpClient,
+    private http: HttpClient,private route:ActivatedRoute,
     private sanitizer: DomSanitizer  ) {
       this.concoursListe = [];
       this.lesConcours = [];
@@ -236,5 +236,10 @@ getImage() {
       .subscribe((concoursList) => {
         this.concoursList = concoursList;
       });
+
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.cs.getConcoursById(id).subscribe(concours => {
+        this.concours = concours;
+        console.log(this.concours.id)});
   }
 }

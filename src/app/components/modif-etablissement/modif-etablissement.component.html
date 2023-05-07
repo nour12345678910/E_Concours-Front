@@ -3,43 +3,49 @@
 
   <div id="box">
  <h1> Modifier Les Données de l'établissement </h1>
-<form >
-<div class="row">
-<div class="col">
+<form  (submit)="onSubmit()" >
+
+
 
   <label class="col-form-label col-form-label-lg">entreprise</label>
   <input type="text" class="form-control form-control-lg" [(ngModel)]="etablissement.nom" name="entrprise" id=""> <br>
 
-</div>
-<div class="col">
+
+
 <label class="col-form-label col-form-label-lg"> Adresse</label>
 <input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.adresse" name="prenom"  > <br>
-</div>
-
-</div>
 
 
 
-<div class="row">
-  <div class="col">
+
+
+
+
+
   <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
-  <input type="text"class="form-control form-control-lg"  [(ngModel)]="etablissement.telephone" name="tel"  > <br>
-  </div>
-  <div class="col">
-  <label class="col-form-label col-form-label-lg">Numéro Fixe</label>
-  <input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.numFix" name="photo"> <br>
-  </div>
+  <input type="text"class="form-control form-control-lg"  [(ngModel)]="etablissement.telephone" name="telelephone"  > <br>
 
-  </div>
+
+  <label class="col-form-label col-form-label-lg">Numéro Fixe</label>
+  <input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.numFix" name="numFix"> <br>
+
+
+
 
 
  <label class="col-form-label col-form-label-lg"> email</label>
 <input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="etablissement.email"  name="email" > <br>
-<label class="col-form-label col-form-label-lg">Logo  </label>
-<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="etablissement.logo" name="password"> <br>
+<label class="col-form-label col-form-label-lg">Iamge Fond  </label>
+<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"    id="" name="logo" (change)="handleFileInput($event)"  > <br>
+<img [src]="imgURL" height="200" *ngIf="imgURL"><br>
+
+<label class="col-form-label col-form-label-lg">Logo   </label>
+<input type="file" accept="image/*" (change)="onSelectLogo($event)"  class="form-control form-control-lg"    id="" name="imagefond" (change)="handlelogoInput($event)"  > <br>
+<img [src]="logoURL" height="200" *ngIf="logoURL"><br>
 
 
-      <button type="submit"  class="btn btn-primary" (click)="modifierEtab()" *ngIf="etablissement.id" class="button-44" >Modifier</button>
+
+      <button type="submit"  class="btn btn-success"   >Modifier</button>
 
 
 

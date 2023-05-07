@@ -134,6 +134,7 @@ body {
   padding: 1.5em 2rem;
   color: #222;
   font-family: 'Lato', sans-serif;
+  text-align: center;
 }
 
 .profile-card_about h2 {
@@ -209,7 +210,7 @@ body {
 .back-to-profile,
 .back-to-profile:visited {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.2em;
   padding-bottom: 0.1em;
   color: #222;
   text-decoration: none;
@@ -228,6 +229,32 @@ body {
 
 .back-to-profile:hover,
 .back-to-profile:focus {
+  border-top-color: #222;
+  border-bottom-color: #fdc1a0;
+}
+
+.back-to,
+.back-to:visited {
+  display: inline-block;
+  padding-left: 0.2em;
+  padding-bottom: 0.1em;
+  color: #222;
+  text-decoration: none;
+  font-weight: bold;
+  border-top: 0.3125rem solid rgba(0, 0, 0, 0);
+  border-bottom: 0.3125rem solid #97ece1;
+  -webkit-transition: border 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
+}
+
+.back-to::after {
+  content: "\25b6";
+  margin: 0 0.75em;
+  color: #222;
+}
+
+.back-to:hover,
+.back-to:focus {
   border-top-color: #222;
   border-bottom-color: #fdc1a0;
 }
@@ -253,7 +280,7 @@ body {
 
 @media screen and (min-height: 46em) {
   .side_wrapper {
-    width: 120%;
+    width: 100%;
     max-width: 70rem;
     margin: 0;
     position: absolute;
@@ -268,4 +295,11 @@ body {
 
   }
 }
+th{  background: linear-gradient(transparent, rgba(250, 214, 195, .8)),linear-gradient(350deg, rgba(250, 214, 195, .8) 30%, #B0EAE8 120%);
+  background: -webkit-linear-gradient(transparent, rgba( 110, 110, 110, .3)), -webkit-linear-gradient(100deg, rgba(250, 214, 195, .8) 30%, #B0EAE8 120%);
+text-align: right;
+} 
+h1{ text-align: center;}
+th{width: 150px;height: 10px;text-align: center;}
 
+button{background-color: transparent;}

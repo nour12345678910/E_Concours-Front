@@ -11,7 +11,7 @@ import { InscriptionServiceService } from 'src/app/services/inscription-service.
   styleUrls: ['./liste-concours.component.css']
 })
 export class ListeConcoursComponent implements OnInit {
-
+  term:any
   loginStatus:boolean;
   user:User;
   concoursList: Concours[];

@@ -14,21 +14,39 @@ import { ModifEtablissementComponent } from './components/modif-etablissement/mo
 import { ProfilAdminComponent } from './components/profil-admin/profil-admin.component';
 import { ProfilCandidatComponent } from './components/profil-candidat/profil-candidat.component';
 import { ModifConcoursComponent } from './components/modif-concours/modif-concours.component';
+import { LescandidaturesComponent } from './components/lescandidatures/lescandidatures.component';
+import { LesDiplomesComponent } from './components/les-diplomes/les-diplomes.component';
+import { ListeCandidatsComponent } from './components/liste-candidats/liste-candidats.component';
+import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
+import { ReponseContactComponent } from './components/reponse-contact/reponse-contact.component';
+import { AgesStatComponent } from './components/ages-stat/ages-stat.component';
+import { StatSexComponent } from './components/stat-sex/stat-sex.component';
+import { ListeCandidatsReussisComponent } from './components/liste-candidats-reussis/liste-candidats-reussis.component';
+import { RecuComponent } from './components/recu/recu.component';
 
 const routes: Routes =[
 
   {path:'admin', component:AdminComponent ,
   children:[
 
+    {path:'listeReclamation', component:ListeReclamationComponent},
     {path:'etablissement', component:EtablissementComponent},
     {path:'etablissement/:id', component:ModifEtablissementComponent},
     {path:'MonProfile',component:ProfilAdminComponent},
+    { path: 'statAge', component:AgesStatComponent },
+    { path: 'statSex', component:StatSexComponent },
+    {path:'reussis', component:ListeCandidatsReussisComponent},
+
+
+
     {path:'concours', component:MenuConcoursComponent,
+
   children:[
     {path:'ajouterconcours', component:AjouterConcoursComponent},
     {path:'listeconcours', component:ListeconcoursComponent},
+    {path:'listeCandidats', component:ListeCandidatsComponent},
     {path:'modifConcours/:id', component:ModifConcoursComponent},
-
+    {path:'candidats/:id', component:LescandidaturesComponent},
 
   ]},
   // {path:'MonProfile',component:ProfileAdminComponent},
@@ -41,7 +59,13 @@ const routes: Routes =[
   {path:'admin', component:AdminComponent},
   {path:'lesConcours', component:ListeConcoursComponent},
   {path:'profil', component:ProfilCandidatComponent},
-  {path:'candidature', component:CandidatureComponent},
+  {path:'candidature/:id', component:CandidatureComponent},
+  { path: 'reponse/:id', component:ReponseContactComponent },
+
+  {path:'profil/recu/:id', component:RecuComponent},
+  {path:'diplomes/:id', component:LesDiplomesComponent},
+
+
 
   {path:'',redirectTo :'home',pathMatch:'full'},
 

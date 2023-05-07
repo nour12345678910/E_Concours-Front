@@ -1,0 +1,49 @@
+<div class="login-box">
+  <div class="signin topline" >
+
+  <div id="box" style="height: 10px;">
+    <br><br>
+            <div class="text-center">
+                
+                <i style="padding: 20px;" class="fa fa-search "></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث "style="text-align: right;"> 
+            </div><br>
+ <h1> les candidats </h1>
+ <table>
+ <!-- <tr>
+  <th >Candidat</th>
+  <th >Prenom</th>
+  <th >nom</th>
+  <th >email</th>
+  <th>Adresse</th>
+  <th>Date Naissance</th>
+  <th>Sex</th>
+  <th>Statut Civil</th>
+  <th>Ville</th>
+  <th>code Postal</th>
+  <br>
+</tr> -->
+<div *ngFor="let c of candidats; index as i" >
+  <div *ngFor="let u of users |filterCandidat:term; index as j">
+  <div class="table-light" *ngIf="c.userId==u.id">
+  <tr>
+ <th scope="row">  {{i+1}}</th>
+  <th id="ligne">{{u.prenom}}</th>
+  <th id="ligne">{{u.nom}}</th>
+  <th id="ligne">{{u.email}}</th>
+  <th id="ligne">{{c.adress}}</th>
+  <th id="ligne">{{c.dateNaissance}}</th>
+  <th id="ligne">{{c.sex}}</th>
+  <th id="ligne">{{c.statutCivil}}</th>
+  <th id="ligne">{{c.ville}}</th>
+  <th id="ligne">{{c.zipCode}}</th>
+  <th id="ligne">{{c.score}}</th>
+
+
+
+</tr>
+
+</div></div></div></table>
+
+</div></div></div>
+
+

@@ -13,63 +13,124 @@ import { EtablissementService } from 'src/app/services/etablissement.service';
 })
 export class ModifEtablissementComponent implements OnInit {
   actif=true;
-  etablissement:Etablissement=new Etablissement()
+  etablissement:Etablissement;
   editForm: FormGroup
   etablissemen:Etablissement[]
+
+  selectedFile: File;
+  selectedLogo: File;
+  imgURL: any;
+  public imagePath;
+  logoURL: any;
+  public logoPath;
+  public message: string;
+
+  imageFile: File;
+  logoFile:File
 
 
 
     constructor(private router:Router,private es:EtablissementService,private formBuilder:FormBuilder,private activatedRoute: ActivatedRoute) { }
 
 
-    modifierEtab() {
-      this.es
-        .updateEtablissement(this.etablissement)
-        .subscribe((response) => console.log('modifiee !'));
-      this.router.navigate(['admin/etablissement']);
-    }
 
-
-
-    getEtablissement():void{
-      this.es.getEtablissement().subscribe(
-        (response:Etablissement[] )=> {
-           this.etablissemen = response;
-        },
-        (error:HttpErrorResponse)=>{
-          alert(error.message)
-        }
-      );
-      }
-      activer(){
-        this.actif=false;
-      }
-
-
-    ngOnInit(): void {
-
-      this.activatedRoute.params.subscribe((paramas) => {
-        let id: number = paramas['id'];
-        if (id) {
-          this.es
-            .obtenirEtab(id)
-            .subscribe((response) => (this.etablissement = response));
-        }
+    ngOnInit() {
+      const id = +this.activatedRoute.snapshot.paramMap.get('id');
+      this.es.getEtablissementById(id).subscribe(etablissement => {
+        // Parse date strings into Date objects
+        this.etablissement = etablissement;
       });
-
-
-      this.editForm=this.formBuilder.group(
-        {nom:[Validators.required],
-        adresse:[Validators.required],
-        telephone:[Validators.required],
-        numFix:[Validators.required],
-        email:[[Validators.email,Validators.required ]],
-      })
-
-
-
-       this.getEtablissement();
     }
+
+    onImagePicked(event: Event) {
+      const file = (event.target as HTMLInputElement).files[0];
+      this.imageFile = file;
+    }
+
+    onLogoPicked(event: Event) {
+      const file = (event.target as HTMLInputElement).files[0];
+      this.logoFile = file;
+    }
+
+    handlelogoInput(event: any) {
+      this.logoFile = event.target.files[0];
+    }
+
+    handleFileInput(event: any) {
+      this.imageFile = event.target.files[0];
+    }
+
+
+
+
+    onSubmit() {
+      const postData = new FormData();
+      postData.append('nom', this.etablissement.nom);
+      postData.append('email', this.etablissement.email);
+      postData.append('adresse', this.etablissement.adresse);
+      postData.append('telephone', this.etablissement.telephone);
+      postData.append('numfix', this.etablissement.numFix);
+     
+
+      if (this.imageFile) {
+        postData.append('imagefond', this.imageFile, this.imageFile.name);
+      }
+      if (this.logoFile) {
+        postData.append('logo', this.logoFile, this.logoFile.name);
+      }
+      this.es.updateEtablissement(this.etablissement.id, postData).subscribe(etablissement => {
+        this.etablissement = etablissement;
+      });
+      this.router.navigate(['/admin/etablissement']);
+    }
+
+
+
+
+
+  onSelectFile(event): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.selectedFile = file;
+      //this.f['profile'].setValue(file);
+
+      const mimeType = event.target.files[0].type;
+      if (!mimeType.match(/image\/*/)) {
+        this.message = 'Only images are supported.';
+        return;
+      }
+
+      const reader = new FileReader();
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      };
+    }
+    
+  }
+  onSelectLogo(event): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.selectedLogo = file;
+      //this.f['profile'].setValue(file);
+
+      const mimeType = event.target.files[0].type;
+      if (!mimeType.match(/image\/*/)) {
+        this.message = 'Only images are supported.';
+        return;
+      }
+
+      const reader = new FileReader();
+      this.logoPath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.logoURL = reader.result;
+      };
+    }
+
+
+}
 
 
 

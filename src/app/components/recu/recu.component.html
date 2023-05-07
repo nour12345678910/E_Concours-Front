@@ -1,0 +1,16 @@
+<div id="content">
+    <div  *ngFor="let l of listetab; index as i" style="text-align: end; margin-right: 80px;">
+        <img [src]="'data:image/jpeg;base64,' + l.logo" style="width: 270px;height: 140px; "/>
+<h1 style="text-align: center;">وصل قبول المشاركة في {{l.nom}}</h1></div><br>
+
+<div style="text-align: center; color: black; font-size: 25px;">
+ نعلم السيد(ة) {{user.prenom}}  {{user.nom}}   صاحب(ة)   بطاقة التعريف الوطنية تحت عدد {{user.cin}} <br>
+ .  انه قد تم قبولك  في مناظرة   {{concours.poste}} بمجموع {{candidats.score}}<br>
+ . نعلمك ان تاريخ اجتياز المناظرة سيكون يوم {{concours.dateExamen}}<br>
+ . حظ موفق
+
+ </div><br><br><br></div>
+
+ <div style="text-align: center; color: black; font-size: 25px;">
+ <button class="print-button btn btn-success" style="margin-right: 10px;"(click)="print()"> طباعة</button>  
+ <button class="print-button  btn btn-info" (click)="download()">تحميل </button>  </div>

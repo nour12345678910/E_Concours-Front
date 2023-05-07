@@ -4,9 +4,9 @@
   display:inline-flex;
   position: relative;
   bottom: 900px;
-  left: 600px;
+  left: 300px;
 padding: 15rem 15rem;
-background-color:white;
+background-color:transparent;
 }
 .topline:after {
     content: "";

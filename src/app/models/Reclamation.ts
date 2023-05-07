@@ -1,0 +1,12 @@
+import { Response } from "./Response";
+
+export class Reclamation {
+  id: number;
+  nom: string;
+  email: string;
+  sujet: string;
+  message: string;
+  response: Response;
+}
+export { Response };
+

@@ -2,10 +2,10 @@
     display: inline-block;
     position: relative;
     bottom: 900px;
-    left: 700px;
+    left: 350px;
 
   padding: 10rem 10rem;
-  background-color: white;
+  background-color: transparent;
 }
 #box{
   position: relative;
@@ -77,3 +77,4 @@ position: relative;
 .button-44:active {
   box-shadow: 0 0.3em 1em -0.5em #14a73e98;
 }
+h1{text-align: center;}

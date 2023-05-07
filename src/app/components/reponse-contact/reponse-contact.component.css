@@ -1,0 +1,41 @@
+#center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+    background-image: url("src/assets/img/bg4.jpg");
+    background-size: cover; /* adjust to your needs */
+    background-position: center center; /* adjust to your needs */
+
+  }
+
+
+
+form {
+  background-color: #f7f7f7;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
+}
+
+form h1 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+height: 500px;
+}

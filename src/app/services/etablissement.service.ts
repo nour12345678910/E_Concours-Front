@@ -23,8 +23,8 @@ export class EtablissementService {
     return this.http.post<Etablissement>(`${this.baseUrl}/add`, e);
     }
 
-        updateEtablissement(e:Etablissement):Observable<Etablissement>{
-          return this.http.put<Etablissement>(`${this.baseUrl}`+'/update', e);
+        updateEtablissement(id: number, postData: FormData):Observable<Etablissement>{
+          return this.http.put<Etablissement>(`${this.baseUrl}`+`/update/${id}`, postData );
         }
 
 
@@ -38,7 +38,7 @@ export class EtablissementService {
           return this.http.get<Etablissement[]>(`${this.URL}/etablissement/all`);
           }
 
-          obtenirEtab(id:number):Observable<Etablissement>{
+          getEtablissementById(id:number):Observable<Etablissement>{
             return this.http.get<Etablissement>(this.lien+'/'+id)
           }
 

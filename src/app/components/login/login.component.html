@@ -20,7 +20,8 @@
             method="POST"
             class="register-form"
             id="login-form"
-            (ngSubmit)="login()"
+
+            (ngSubmit)="login(); $event.preventDefault()"
           >
             <div class="form-group">
               <label for="your_name"
@@ -74,9 +75,12 @@
                 value="تسجيل الدخول"
               />
             </div>
+            <br><br><br>
+            <button (click)="resetPassword()">reset password</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 </div>
+

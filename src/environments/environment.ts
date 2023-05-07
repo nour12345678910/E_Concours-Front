@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:'http://localhost:8087'
+  apiBaseUrl: 'http://localhost:8087',
+  sendGridApiKey: 'b6b4b265a98f9b383481495ce8e0a81c-2cc48b29-d3f457ee'
 };
 
 /*

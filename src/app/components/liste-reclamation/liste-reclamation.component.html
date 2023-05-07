@@ -1,0 +1,29 @@
+<p>liste-reclamation works!</p>
+<div class="login-box">
+  <div class="signin topline" >
+    <div id="box" style="height: 10px;">
+      <h1> Liste des Réclamations  </h1>
+      <table>
+        <tr>
+          <th>index</th>
+          <th>Prenom et Nom</th>
+          <th>Email</th>
+          <th>Sujet</th>
+          <th>Message</th>
+          <th>Réponse</th>
+
+        </tr>
+        <tr *ngFor="let r of reclamation; index as i" class="table-light">
+          <td scope="row">{{i+1}}</td>
+          <td id="ligne">{{r.nom}}</td>
+          <td id="ligne">{{r.email}}</td>
+          <td id="ligne">{{r.sujet}}</td>
+          <td id="ligne">{{r.message}}</td>
+          <button class="btn btn-success" routerLink="/reponse/{{r.id}}" style="margin-right: 10px;">Répondre</button>
+          <button class="btn btn-danger" role="button" (click)="deleteQuestion(r.id)" style="margin-left: 10px;">supprimer</button>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -11,8 +11,22 @@ export class InscriptionServiceService {
   isLoggedIn:boolean;
     constructor(private http: HttpClient) {}
 
-    inscrire(user: User): Observable<User> {
-      return this.http.post<User>(`${this.baseUrl}`, user);
+    resetPassword(email: string) {
+      return this.http.post(`${this.baseUrl}/reset-password`, { email });
+    }
+
+
+    inscrire(user: User,image: File): Observable<User> {
+      const formData = new FormData();
+      formData.append('cin',user.cin );
+      formData.append('nom',user.nom );
+      formData.append('prenom',user.prenom);
+      formData.append('telephone',user.telephone );
+      formData.append('motdepasse',user.motdepasse );
+      formData.append('email',user.email );
+      formData.append('photo',image );
+      formData.append('role',"CANDIDAT" );
+      return this.http.post<User>(`${this.baseUrl}`, formData);
     }
 
 
@@ -80,5 +94,4 @@ export class InscriptionServiceService {
       localStorage.removeItem('user');
 
     }
-
   }

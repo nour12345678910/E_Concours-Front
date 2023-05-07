@@ -1,0 +1,68 @@
+<body>
+<div class="login-box">
+  <div class="signin topline">
+    <div id="box" style="height: 10px;">
+      <br><br>
+            <div class="text-center">
+
+                <i style="padding: 20px;" class="fa fa-search "></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث "style="text-align: right;">
+            </div><br>
+      <h1>les candidatures</h1><br>
+      <table>
+        <div *ngFor="let c of candidats |filterScore:term; index as i">
+          <div *ngFor="let u of users; index as j">
+            <div class="table-light" *ngIf="c.userId==u.id">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <th id="ligne">{{u.prenom}}</th>
+                <th id="ligne">{{u.nom}}</th>
+                <th id="ligne">score : {{c.score}}</th>
+
+
+                <th id="ligne">
+                  <div class="form-group row">
+                    L'etat :
+                    <ng-container *ngIf="c.etat !== true && c.etat !== false">
+                      <p>En cours</p>
+                    </ng-container>
+                    <ng-container *ngIf="c.etat === true">
+                      <p>candidat accepted</p>
+                    </ng-container>
+                    <ng-container *ngIf="c.etat === false">
+                      <p>candidat refused</p>
+                    </ng-container>
+                  </div>
+                </th>
+                <th id="ligne">
+                  <div class="form-group row">
+                    <div class="col-md-5">
+                      <button  style="width: 150px;" class="btn btn-info" role="button" [routerLink]="['/diplomes', c.id]">Fichier Candidat </button>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  La Réusiite
+                </th>
+                <th>
+                  <button  class="button-5" role="button" [ngClass]="{'green-button': c.reussite}" (click)="onAccepterClick(c)">Oui</button>
+                </th>
+                <th>
+                  <button class="button-5" role="button" [ngClass]="{'red-button': !c.reussite}" (click)="onRefuserClick(c)">Non</button>
+                </th>
+
+
+
+
+
+
+
+              </tr>
+            </div>
+          </div>
+        </div>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>

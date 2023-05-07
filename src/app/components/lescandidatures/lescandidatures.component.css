@@ -1,0 +1,77 @@
+
+.green-button {
+  background-color: green;
+  color: white;
+}
+
+.button5{
+  background-color: antiquewhite;
+}
+
+.red-button {
+  background-color: red;
+  color: white;
+}
+.topline {
+    display:inline-flex;
+    position: relative;
+    bottom: 1000px;
+    left: 230px;
+  padding: 15rem 15rem;
+  background-color:transparent;
+}
+
+
+#box{
+  position: relative;
+  bottom: 200px;
+
+}
+ h2{
+position: relative;
+ right: 220px;
+ bottom: 40px;
+ }
+
+
+
+
+
+
+
+
+
+
+.button-88:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.button-88:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+th{ padding: 20px;}
+
+
+
+
+
+
+
+.modal-backdrop.show {
+  opacity: .5;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.fade.show {
+  opacity: 1;
+}
+.my-modal {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 0;
+}
+
+h1{text-align: center;}

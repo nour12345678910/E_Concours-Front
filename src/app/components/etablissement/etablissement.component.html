@@ -1,41 +1,36 @@
 <div class="login-box">
-  <div class="signin topline">
+  <div class="signin topline" >
 
-  <div id="box">
- <h1> A propos l'établissement : </h1>
-<form  *ngFor="let e of etablissemen">
-<div class="row">
-<div class="col">
-<label  class="col-form-label col-form-label-lg">Nom</label>
-<input type="text"class="form-control form-control-lg"  [(ngModel)]="e.nom" name="nom"  [disabled]="actif"> <br>
-</div>
-<div class="col">
-<label class="col-form-label col-form-label-lg"> Adresse</label>
-<input type="text"class="form-control form-control-lg"   [(ngModel)]="e.adresse" name="prenom"  [disabled]="actif"> <br>
-</div>
+  <div id="box" style="height: 10px;" *ngFor="let c of listetab; index as i">
+<h1 style="text-align:center"> Données Etablissement </h1><br><br>
+<tr class="table-light" >
+  
+  <th style="width: 600px;">Logo</th>
+  <th style="width: 600px;">Nom</th>
+  <th style="width: 600px;">Adresse</th>
+  <th style="width: 600px;">Email</th>
+  <th style="width: 600px;">Telephone</th>
+  <th style="width: 600px;">Fond</th> </tr>
+ <tr  class="table-light" >
+  <td>
+    <img [src]="'data:image/jpeg;base64,' + c.logo" style="width: 180px;height: 120px;" />
+  </td>
 
-</div>
+  <td >{{c.nom}}</td>
+  <td >{{c.adresse}}</td>
+  <td >{{c.email}}</td>
+  <td >{{c.telephone}}</td>
+  
+  <td>
+    <img [src]="'data:image/jpeg;base64,' + c.imagefond" style="width: 180px;height: 180px;" />
+  </td>  </tr><br><br><br>
+ 
+      <div class="form-group row">
+          <div class="col-md-5" style="text-align: center;"><button class="btn btn-warning" role="button" [routerLink]="['/admin/etablissement/', c.id]">modifier</button></div>
+          </div>
+       
 
+</div></div></div>
 
-
-<div class="row">
-  <div class="col">
-  <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
-  <input type="text"class="form-control form-control-lg"  [(ngModel)]="e.telephone" name="tel"  [disabled]="actif"> <br>
-  </div>
-  <div class="col">
-  <label class="col-form-label col-form-label-lg">Numéro Fixe</label>
-  <input type="text"class="form-control form-control-lg"   [(ngModel)]="e.numFix" name="photo"  [disabled]="actif"> <br>
-  </div>
-
-  </div>
-
-
- <label class="col-form-label col-form-label-lg"> email</label>
-<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="e.email"  name="email" [disabled]="actif"> <br>
-<label class="col-form-label col-form-label-lg">Logo  </label>
-<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="e.logo" name="password" [disabled]="actif"> <br>
-
-<button type="submit" class="button-88" [routerLink]="[e.id]" (click)="activer()" *ngIf="actif">Modifier</button>
 
 

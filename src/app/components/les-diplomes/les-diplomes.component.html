@@ -1,0 +1,75 @@
+ <body><br>
+
+  <h1 style="text-align:center"> إستمارة المشاركة </h1><br><br>
+
+
+    <div class="container">
+      <div class="row">
+
+
+          <!--La classe bg-info ajoute un fond bleu à l'élément-->
+
+          <div class="col-8" ><h1 style="text-align: center;font-size: 30px;"> الشهائد العلمية</h1><br>
+            <table >
+
+              <tr class="table" *ngFor="let d of diplomes; index as i">
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenneBac}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenne3}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenne2}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenne1}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.faculte}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.anneeObtention}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.specialite}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.diplome}}</th>
+
+
+
+              </tr>
+            <br><br>
+            <tr>
+            <th></th><th><th>
+              <th >
+                <div class="form-group row">
+                  <button class="button-2" role="button" (click)="onAccepterClick(candidats)">accepter</button>
+                </div>
+              </th><th></th>
+
+
+
+              <th >
+                <div class="form-group row">
+                  <button class="button-5" role="button" (click)="onRefuserClick(candidats)">refuser</button>
+                </div>
+              </th></tr></table></div>
+
+
+
+          <!--La classe bg-info ajoute un fond bleu à l'élément-->
+
+          <div class="col-4 ">
+            <table><tr>
+    <td colspan="3">
+      <img [src]="'data:image/jpeg;base64,' + user.photo" style="width: 180px;height: 180px; text-align: right;" />
+    </td></tr><br>
+    <tr><th> {{user.prenom}} {{user.nom}} </th>
+      <th>: الاسم و اللقب</th>
+    </tr>
+    <tr><td >{{candidats.adress}}--{{candidats.ville}}</td>
+    <th> : العنوان كامل</th></tr>
+    <tr><td >{{candidats.zipCode}}</td>
+    <th> : الترقيم البريدي</th></tr>
+    <tr><td >{{candidats.statutCivil}}</td>
+    <th> : الحالة المدنية</th></tr>
+    <tr><td >{{candidats.score}}</td>
+      <th> مجموع النقاط</th></tr>
+
+
+
+  </table></div></div></div>
+
+
+
+
+
+ <br><br><br><br>
+  </body>

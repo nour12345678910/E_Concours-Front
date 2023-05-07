@@ -3,8 +3,8 @@
 
   <div id="box" style="height: 10px;">
  <h1> Modifier  Concours </h1>
- <form  (submit)="onSubmit()"
-  >
+ <!-- 
+ <form  (submit)="onSubmit()">
 <div class="row">
 <div class="col">
 <label  class="col-form-label col-form-label-lg">Poste du Concours</label>
@@ -19,9 +19,8 @@
 </div>
 <div class="col">
 <label class="col-form-label col-form-label-lg" > Photo  upload </label><br>
-<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  formControlName="imageData" id="" name="image" (change)="handleFileInput($event)"  > <br>
+<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
 <img [src]="imgURL" height="200" *ngIf="imgURL">
-
 
 
 <label class="col-form-label col-form-label-lg"> Date de l'examen </label>
@@ -47,31 +46,38 @@
 </div>
 
 
+ -->
 
 
 
+ <form (submit)="onSubmit()">
+  <div>
+    <label class="col-form-label col-form-label-lg" > Poste:</label>
+    <input class="form-control form-control-lg" type="text" name="poste" [(ngModel)]="concours.poste" required>
+  </div>
+  <div>
+    <label class="col-form-label col-form-label-lg" > Description:</label>
+    <textarea class="form-control form-control-lg" name="description" [(ngModel)]="concours.description" required></textarea>
+  </div>
+  <div>
+    <label class="col-form-label col-form-label-lg" >Date Examen:</label>
+    <input class="form-control form-control-lg" type="date" name="dateExamen" [(ngModel)]="concours.dateExamen" required>
+  </div>
+  <div>
+    <label class="col-form-label col-form-label-lg" > Date Delais:</label>
+    <input  class="form-control form-control-lg" type="date" name="dateDelais" [(ngModel)]="concours.dateDelais" required>
+  </div>
+  <div>
+    <label class="col-form-label col-form-label-lg" > Image:</label>
+    <!-- <input type="file" name="image" (change)="handleFileInput($event)"> -->
+    <input class="form-control form-control-lg"  type="file" accept="image/*" (change)="handleFileInput($event)" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
+    <img [src]="imgURL" height="200" *ngIf="imgURL" [(ngModel)]="concours.imageData">
 
 
- <!-- <form (submit)="onSubmit()">
-  <div>
-    <label for="poste">Poste:</label>
-    <input type="text" name="poste" [(ngModel)]="concours.poste" required>
+    <img [src]="'data:image/jpeg;base64,' + concours.imageData" style="width: 180px;height: 180px;" />
+
+
+
   </div>
-  <div>
-    <label for="description">Description:</label>
-    <textarea name="description" [(ngModel)]="concours.description" required></textarea>
-  </div>
-  <div>
-    <label for="dateExamen">Date Examen:</label>
-    <input type="date" name="dateExamen" [(ngModel)]="concours.dateExamen" required>
-  </div>
-  <div>
-    <label for="dateDelais">Date Delais:</label>
-    <input type="date" name="dateDelais" [(ngModel)]="concours.dateDelais" required>
-  </div>
-  <div>
-    <label for="image">Image:</label>
-    <input type="file" name="image" (change)="handleFileInput($event)">
-  </div>
-  <button type="submit">Update</button>
-</form> -->
+  <button class="btn btn-success" style="text-align: center;margin-left: 200px;" type="submit">Update</button>
+  </form>
