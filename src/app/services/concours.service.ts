@@ -58,10 +58,11 @@ export class ConcoursService {
       return this.http.get<Concours[]>(this.apiUrl);
     }
 
-    addConcours(poste: string, description: string, dateExamen: Date, dateDelais: Date, file: File): Observable<Concours> {
+    addConcours(poste: string, description: string, formule: string, dateExamen: Date, dateDelais: Date, file: File): Observable<Concours> {
       const formData = new FormData();
       formData.append('poste', poste);
       formData.append('description', description);
+      formData.append('formule', formule);
       formData.append('dateExamen', dateExamen.toISOString());
       formData.append('dateDelais', dateDelais.toISOString());
       formData.append('image', file);

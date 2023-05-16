@@ -3,10 +3,10 @@
 .topline {
   display: inline-block;
   position: relative;
-  bottom: 900px;
+  bottom: 1200px;
   left: 500px;
 
-  background-color: white;
+  background-color: transparent;
 }
 
 
@@ -170,3 +170,5 @@ th {
 .table-light {
   background-color: #fdfdfe;
 }
+
+h1{ text-align: center;}

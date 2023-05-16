@@ -6,7 +6,9 @@
     <div class="container">
 
       <div class="signup-content">
-        <h2  style="background-color: #6dabe4; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">إنشاء    حساب    شخصي</h2>
+        <h2  style="    background-color: #558db6;
+        ;
+        ; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">إنشاء    حساب    شخصي</h2>
 
         <div class="signup-form">
           <form
@@ -113,16 +115,14 @@
 
 
 
+<div class="form-group">
+    <label for="photo"><i class="zmdi zmdi-lock"></i></label>
+    <span style="margin-left: 420px;"> الصورة</span>
 
-            <div class="form-group">
-              <label for=" photo"><i class="zmdi zmdi-lock"></i></label> 
-              <span style="margin-left: 420px;"> الصورة</span>
-              
-              <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id=""  > <br>
-               <img [src]="imgURL" height="200" *ngIf="imgURL">
-
-            
-            </div>
+    <input type="file" accept="image/*" (change)="onSelectFile($event)" class="form-control form-control-lg" ngModel name="photo" id="" style="float:right;">
+    <br>
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+</div>
 
 
 
@@ -194,15 +194,8 @@
                   >تسجيل الحساب</button>
 
                   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
-
-
-
-              <!-- <div class="alert alert-warning" style="text-align : right;" *ngIf="f.invalid"> يحب عليك تعمير جميع الخانات المطلوبة</div> -->
-
-               <!-- <div class="alert alert-warning" style="text-align : right;" *ngIf="f.touched && cin.errors?.['required'] || tel.errors?.['required'] || name.errors?.['required']  || prenom.errors?.['required'] || motdepasseConfirm.errors?.['required'] || password.errors?.['required']||  email.errors?.['required']    "> يحب عليك تعمير جميع الخانات المطلوبة</div> -->
-
-
             </div>
+
 
 
 

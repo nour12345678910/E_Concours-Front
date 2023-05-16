@@ -81,6 +81,7 @@ button[type="submit"] {
 }
 .bajout {
   display: block;
+  margin-right: 23px;
   padding: 0.5rem;
   text-align: center;
   background-color: #007bff;
@@ -90,6 +91,21 @@ button[type="submit"] {
   font-size: 1rem;
   line-height: 1.5;
   background: linear-gradient(0deg, rgb(10, 117, 188) 0%, rgb(18, 152, 119) 100%);
+  float: right;
+}
+
+
+.bdelete {
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: rgb(192, 41, 41);
   float: right;
 }
 

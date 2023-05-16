@@ -21,7 +21,7 @@
                           <div class="col-md-6">
                               <div class="control-group">
                                   <input  style="text-align : right;"  type="email" class="form-control bg-light border-0 p-4" id="email" placeholder="  البريد الإلكتروني" required="required" data-validation-required-message="Please enter your email"  [(ngModel)]="reclamation.email"  ngModel name="email"   />
-                                  <p class="help-block text-danger"></p>
+                                  <p class="help-block text-danger" style="text-align: right;"></p>
                               </div>
                           </div>
 
@@ -29,22 +29,24 @@
                           <div class="col-md-6">
                             <div class="control-group">
                                 <input type="text"  style="text-align : right;" class="form-control bg-light border-0 p-4" id="name" placeholder="الإسم و اللقب" required="required" data-validation-required-message="Please enter your name"  [(ngModel)]="reclamation.nom" ngModel name="nom" />
-                                <p class="help-block text-danger"></p>
+                                <p class="help-block text-danger" style="text-align: right;"></p>
                             </div>
                         </div>
 
                       </div>
                       <div class="control-group">
                           <input type="text" style="text-align : right;" class="form-control bg-light border-0 p-4" id="subject" placeholder="الموضوع" required="required" data-validation-required-message="Please enter a subject"  [(ngModel)]="reclamation.sujet" ngModel name="sujet"  />
-                          <p class="help-block text-danger"></p>
+                          <p class="help-block text-danger" style="text-align: right;"></p>
                       </div>
                       <div class="control-group">
                           <textarea style="text-align : right;" class="form-control bg-light border-0 py-3 px-4" rows="5" id="message" placeholder="المحتوى" required="required" data-validation-required-message="Please enter your message"    [(ngModel)]="reclamation.message"  ngModel name="message"
                           ></textarea>
-                          <p class="help-block text-danger"></p>
+                          <p class="help-block text-danger" style="text-align: right;"></p>
                       </div>
                       <div class="text-center">
                           <button class="btn btn-primary text-uppercase py-3 px-5" type="submit" id="sendMessageButton">الإرسال</button>
+                          <!-- <button class="btn btn-primary text-uppercase py-3 px-5" type="submit" id="sendMessageButton" (click)="onSubmit()">الإرسال</button> -->
+
                       </div>
                   </form>
               </div>

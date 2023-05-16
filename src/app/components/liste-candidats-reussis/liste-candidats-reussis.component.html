@@ -42,12 +42,14 @@
   <div class="signin topline" >
 
   <div id="box" style="height: 10px;">
- <h1> Liste des candidats réussis :  </h1>
+<br> <h1> Liste des candidats réussis   </h1><br>
  <table>
 
 <div *ngFor="let c of successfulCandidates; index as i">
   <div *ngFor="let u of users; index as j">
-    <div class="table-light" *ngIf="c.userId==u.id">
+    <div *ngFor="let co of concours;">
+      <div class="table-light" *ngIf="c.userId==u.id && c.concoursId==co.id">
+     
       <tr>
         <th id="ligne"><i class="fas fa-check-circle" style="color: green"></i></th>
         <th scope="row">{{i+1}}</th>
@@ -55,13 +57,15 @@
         <th id="ligne">{{u.nom}}</th>
         <th id="ligne">{{u.email}}</th>
         <th id="ligne">{{c.adress}}</th>
-        <th id="ligne">{{c.dateNaissance}}</th>
+        <th id="ligne">{{u.cin}}</th>
         <th id="ligne">{{c.sex}}</th>
         <th id="ligne">{{c.statutCivil}}</th>
         <th id="ligne">{{c.ville}}</th>
         <th id="ligne">{{c.zipCode}}</th>
         <th id="ligne">{{c.score}}</th>
-      </tr>
+        <th id="ligne">{{co.poste}}</th>
+
+      </tr></div>
     </div>
   </div>
 </div>

@@ -23,10 +23,13 @@ import { AgesStatComponent } from './components/ages-stat/ages-stat.component';
 import { StatSexComponent } from './components/stat-sex/stat-sex.component';
 import { ListeCandidatsReussisComponent } from './components/liste-candidats-reussis/liste-candidats-reussis.component';
 import { RecuComponent } from './components/recu/recu.component';
+import { ResultsComponent } from './components/results/results.component';
+import { AuthGuard } from './guards/auth.guard';
+import { ProfilGuard } from './guards/profil.guard';
 
 const routes: Routes =[
 
-  {path:'admin', component:AdminComponent ,
+  {path:'admin', component:AdminComponent ,canActivate:[AuthGuard],
   children:[
 
     {path:'listeReclamation', component:ListeReclamationComponent},
@@ -58,9 +61,10 @@ const routes: Routes =[
   {path:'login', component:LoginComponent},
   {path:'admin', component:AdminComponent},
   {path:'lesConcours', component:ListeConcoursComponent},
-  {path:'profil', component:ProfilCandidatComponent},
+  {path:'profil', component:ProfilCandidatComponent,canActivate:[ProfilGuard]},
   {path:'candidature/:id', component:CandidatureComponent},
   { path: 'reponse/:id', component:ReponseContactComponent },
+  {path:'results', component:ResultsComponent},
 
   {path:'profil/recu/:id', component:RecuComponent},
   {path:'diplomes/:id', component:LesDiplomesComponent},

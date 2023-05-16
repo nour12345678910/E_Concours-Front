@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CandidatInfo } from 'src/app/models/CandidatInfo';
 import { Concours } from 'src/app/models/Concours';
 import { User } from 'src/app/models/User';
@@ -7,18 +7,18 @@ import { ConcoursService } from 'src/app/services/concours.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
-  selector: 'app-liste-candidats-reussis',
-  templateUrl: './liste-candidats-reussis.component.html',
-  styleUrls: ['./liste-candidats-reussis.component.css']
+  selector: 'app-results',
+  templateUrl: './results.component.html',
+  styleUrls: ['./results.component.css']
 })
-export class ListeCandidatsReussisComponent  implements OnInit {
-
+export class ResultsComponent {
   successfulCandidates: CandidatInfo[] = [];
   selectedConcoursId: number;
   users:User[]
   concours:Concours[]
+
   constructor(private candidatService: CandidatServiceService,
-    private us:UserServiceService, private concoursService: ConcoursService
+    private us:UserServiceService,private concoursService: ConcoursService
     ) { }
 
   ngOnInit() {
@@ -31,7 +31,6 @@ export class ListeCandidatsReussisComponent  implements OnInit {
       this.concoursService.getAllConcours().subscribe(concours=>{this.concours=concours})
       
   }
-
 
 
 }

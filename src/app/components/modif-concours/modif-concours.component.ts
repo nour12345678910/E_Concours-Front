@@ -45,7 +45,7 @@ export class ModifConcoursComponent implements OnInit {
     const postData = new FormData();
     postData.append('poste', this.concours.poste);
     postData.append('description', this.concours.description);
-
+    postData.append('formule', this.concours.formule);
     const dateExamen = new Date(this.concours.dateExamen).toISOString().slice(0, 10);
     const dateDelais = new Date(this.concours.dateDelais).toISOString().slice(0, 10);
     postData.append('dateExamen', dateExamen);

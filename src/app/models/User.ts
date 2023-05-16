@@ -27,7 +27,9 @@ export class User {
 
 export enum ERole {
   ADMIN= 'ADMIN',
-  PARTCIPANT = 'CANDIDAT'
+  PARTCIPANT = 'CANDIDAT',
+  CANDIDAT = 'CANDIDAT',
+
 }
 
 

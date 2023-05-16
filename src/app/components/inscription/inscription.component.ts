@@ -41,7 +41,7 @@ export class InscriptionComponent implements OnInit{
           text: 'تم إنشاء الحساب بنجاح',
           icon: 'success'
         });
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
 
 
       },

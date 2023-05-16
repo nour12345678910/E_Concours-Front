@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UserServiceService {
   private URL = environment.apiBaseUrl;
   private baseUrl = 'http://localhost:8087/api/user';
-  
+
   constructor(private http:HttpClient) { }
 
   getUserById(id:any): Observable<User> {
@@ -19,5 +19,5 @@ export class UserServiceService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.URL}/api/user/all`);
   }
-  
+
 }

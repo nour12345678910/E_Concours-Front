@@ -8,6 +8,7 @@ import { CandidatServiceService } from 'src/app/services/candidat-service.servic
 import { ConcoursService } from 'src/app/services/concours.service';
 import { InscriptionServiceService } from 'src/app/services/inscription-service.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profil-candidat',
@@ -17,6 +18,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class ProfilCandidatComponent implements OnInit {
   u:User;
   etat:boolean
+  reussite:boolean;
   listconcours:Concours[]=[];
   editUser:User;
   candidatlist:CandidatInfo[]
@@ -48,7 +50,17 @@ export class ProfilCandidatComponent implements OnInit {
           console.log(response);
           console.log(this.u)
           localStorage.setItem('user', JSON.stringify(response));
+          Swal.fire({
+            title: 'تغيير الحساب ',
+            text: 'تم   تغييرالحساب بنجاح',
+            icon: 'success'
+          });
+          this.elm1.classList.remove('show');
+           setTimeout(() => {
+        this.elm1.style.width = '0';
+         }, 75);
         },
+
         (error:HttpErrorResponse)=> {
           alert(error.message)
         }
@@ -76,17 +88,10 @@ export class ProfilCandidatComponent implements OnInit {
       this.elm1.style.width = '100vw';
 
     }
-    openRecu(): void {
-      this.elm2.classList.add('show');
-      this.elm2.style.width = '100vw';
 
-    }
-    closeRecu(): void {
-      this.elm2.classList.remove('show');
-      setTimeout(() => {
-        this.elm2.style.width = '0';
-      }, 75);
-    }
+
+
+
     logOut(){
 
       this.is.logoutUser();

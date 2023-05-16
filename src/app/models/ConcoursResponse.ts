@@ -8,6 +8,8 @@ export class Concours {
   dateExamen!: Date;
   dateDelais!: Date;
   photoUrl!: SafeUrl;
+  formule:string;
+
 
   constructor(){
   }

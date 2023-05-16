@@ -12,7 +12,7 @@
 
 
 
-<label class="col-form-label col-form-label-lg" > Description du concours</label>
+<label class="col-form-label col-form-label-lg" > formule du concours</label>
 <textarea name="description" class="form-control form-control-lg" style="height:180px;" [(ngModel)]="concours.description" required placeholder="{{concours.description}}" ></textarea><br>
 
 
@@ -58,6 +58,10 @@
   <div>
     <label class="col-form-label col-form-label-lg" > Description:</label>
     <textarea class="form-control form-control-lg" name="description" [(ngModel)]="concours.description" required></textarea>
+  </div>
+  <div>
+    <label class="col-form-label col-form-label-lg" > formule:</label>
+    <textarea class="form-control form-control-lg" name="formule" [(ngModel)]="concours.formule" required></textarea>
   </div>
   <div>
     <label class="col-form-label col-form-label-lg" >Date Examen:</label>

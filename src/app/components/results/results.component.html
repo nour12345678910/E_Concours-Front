@@ -1,0 +1,37 @@
+
+
+    <div id="box" style="height: 10px;">
+ <br>  <h1> قائمة الناجحين   </h1><br>
+   <table>
+
+  <div *ngFor="let c of successfulCandidates; index as i">
+    <div *ngFor="let u of users; index as j">
+    <div *ngFor="let co of concours;">
+    <div class="table-light" *ngIf="c.userId==u.id && c.concoursId==co.id">
+        <tr>
+          <th><img [src]="'data:image/jpeg;base64,' + co.imageData"   /></th>
+          <th id="ligne"> المناضرة : {{co.poste}}   </th>
+          <th id="ligne">{{c.score}} : المجموع</th>
+          <th id="ligne">{{c.zipCode}}</th>
+          <th id="ligne">{{c.adress}}</th>
+          <th id="ligne">{{u.cin}}</th>
+          <th id="ligne">{{u.nom}}</th>
+          <th id="ligne">{{u.prenom}}</th>
+          <th scope="row">{{i+1}}</th>
+          <th id="ligne"><i class="fas fa-check-circle" style="color: green"></i></th>
+
+
+
+
+
+
+
+
+
+
+
+        </tr>
+      </div>
+    </div>
+  </div>
+  </div>

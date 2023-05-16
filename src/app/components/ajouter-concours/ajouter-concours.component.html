@@ -7,35 +7,55 @@
 <div class="row">
 <div class="col">
 <label  class="col-form-label col-form-label-lg">Poste du Concours</label>
-<input type="text"class="form-control form-control-lg"  ngModel name="poste" id="" placeholder="Nom de la Poste" required> <br>
+<input type="text"class="form-control form-control-lg"  ngModel name="poste" id="poste" placeholder="Nom de la Poste" required> 
+<p class="help-block text-danger" style="text-align: right;"></p>
 
 <label class="col-form-label col-form-label-lg" > Description du concours</label>
-<textarea type="text" class="form-control form-control-lg" style="height:180px;"  ngModel name="description" id="description" required ></textarea> <br>
-
+<textarea type="text" class="form-control form-control-lg" style="height:180px;"  ngModel name="description" id="description" required ></textarea> 
+<p class="help-block text-danger" style="text-align: right;"></p>
 
 </div>
 <div class="col">
 <label class="col-form-label col-form-label-lg" > Photo  upload </label>
-<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
+<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="photo" placeholder="Photo" > 
 <img [src]="imgURL" height="200" *ngIf="imgURL">
+<p class="help-block text-danger" style="text-align: right;"></p>
 
 
 
 <label class="col-form-label col-form-label-lg"> Date de l'examen</label>
-<input type="date"class="form-control form-control-lg"  ngModel name="dateExamen" id="dE" required> <br>
+<input type="date"class="form-control form-control-lg"  ngModel name="dateExamen" id="dateExamen" required> 
+<p class="help-block text-danger" style="text-align: right;"></p>
 
 <label class="col-form-label col-form-label-lg"> Date délais du concours</label>
-<input type="date"class="form-control form-control-lg"  ngModel name="dateDelais" id="dD" required> <br>
+<input type="date"class="form-control form-control-lg"  ngModel name="dateDelais" id="dateDelais" required> 
+<p class="help-block text-danger" style="text-align: left;"></p>
+
+
+<label class="col-form-label col-form-label-lg"></label><button type="button"data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="open()">formule</button>
+<input type="text "class="form-control form-control-lg"  ngModel name="formule" id="formule" required>  
+<p class="help-block text-danger" style="text-align: left;"></p>
+
+
+
+
+
+
+
+
 
 </div>
 </div>
+
+
+
 
 
 
 
 <table>
   <tr>
-    <td><button type="submit" style="margin-right:200px;" [disabled]="addForm.invalid"  class="button-88">ajouter</button><br>
+    <td><button type="submit" style="margin-right:200px;"  class="button-88">ajouter</button><br>
 
     </td>
     <td><button type="reset"  style="margin-left:200px;" class="button-88">réinitialiser</button>
@@ -47,6 +67,49 @@
 </form>
 </div>
 
+
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #formule>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+
+<h1>calcul formule</h1>
+
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary"(click)="addBac()">moyenneBac</button>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne1()">moyenne1</button>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne2()">moyenne2</button>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne3()">moyenne3</button><br><br>
+
+<button type="button"  data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="add1()">1</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add2()">2</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add3()">3</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add4()">4</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add5()">5</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add6()">6</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add7()">7</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add8()">8</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add9()">9</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary"  (click)="par1()"> ( </button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary"  (click)="par2()">)</button>
+<br><br>
+
+
+
+
+
+<button type="button"  data-dismiss="modal" style=" margin: 3px;margin-left: 170px;"class="btn btn-secondary" (click)="add()">+</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="rest()">-</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="mult()">*</button>
+<button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="div()">/</button> <br><br>
+
+
+<button type="button" id="" data-dismiss="modal" class="btn btn-secondary" (click)="close()">fermer</button>
+<button type="button" id="" data-dismiss="modal" class="btn btn-warning" style="margin-left: 200px;" (click)="reset()" >réinitialiser formule</button>
+
+      </div></div></div></div>
+
   </div>
 </div>
+
+
 

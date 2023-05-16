@@ -20,22 +20,71 @@ reclamation: Reclamation=new Reclamation();
   constructor(private rs:ReclamationService,private router:Router){}
 
   enregistrer() {
-    this.rs.addReclamation(this.reclamation).subscribe(
-      () => {
-        this.router.navigate(['/home']); // navigate to the home page
-        Swal.fire({
-          title: 'تمت إضافة تساؤلك بنجاح',
-          // text: '  تم العبور الى المساحة الإدارية بنجاح',
-          icon: 'success'
-        });      },
-      (error) => {
-        console.error(error);
-        this.errorMessage = 'Erreur lors de l\'ajout de la réclamation.'; // display an error message
-        alert(this.errorMessage);
-      }
-    );
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const subjectInput = document.getElementById('subject') as HTMLInputElement;
+    const messageInput = document.getElementById('message') as HTMLInputElement;
+
+    let isFormValid = true;
+
+    // Check if any input is empty, and display an error message if it is
+    if (!emailInput.value) {
+      emailInput.style.borderColor = 'red';
+      emailInput.nextElementSibling.textContent = 'خانة البريد الالكتروني ضرورية *' ;
+      isFormValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+      emailInput.style.borderColor = 'red';
+      emailInput.nextElementSibling.textContent = 'البريد الالكتروني غير صالح *';
+      isFormValid = false;
+    } else {
+      emailInput.style.borderColor = '';
+      emailInput.nextElementSibling.textContent = '';
+    }
+
+    if (!nameInput.value) {
+      nameInput.style.borderColor = 'red';
+      nameInput.nextElementSibling.textContent = 'خانة الإسم و اللقب ضرورية *' ;
+      isFormValid = false;
+    } else {
+      nameInput.style.borderColor = '';
+      nameInput.nextElementSibling.textContent = '';
+    }
+
+    if (!subjectInput.value) {
+      subjectInput.style.borderColor = 'red';
+      subjectInput.nextElementSibling.textContent = ' خانة الموضوع ضرورية *';
+      isFormValid = false;
+    } else {
+      subjectInput.style.borderColor = '';
+      subjectInput.nextElementSibling.textContent = '';
+    }
+
+    if (!messageInput.value) {
+      messageInput.style.borderColor = 'red';
+      messageInput.nextElementSibling.textContent = ' خانة المحتوى ضرورية *';
+      isFormValid = false;
+    } else {
+      messageInput.style.borderColor = '';
+      messageInput.nextElementSibling.textContent = '';
+    }
+
+    // If the form is valid, submit the reclamation
+    if (isFormValid) {
+      this.rs.addReclamation(this.reclamation).subscribe(
+        () => {
+          this.router.navigate(['/home']); // navigate to the home page
+          Swal.fire({
+            title: 'تمت إضافة تساؤلك بنجاح',
+            // text: '  تم العبور الى المساحة الإدارية بنجاح',
+            icon: 'success'
+          });
+        },
+        (error) => {
+          console.error(error);
+          this.errorMessage = 'Erreur lors de l\'ajout de la réclamation.'; // display an error message
+          alert(this.errorMessage);
+        }
+      );
+    }
   }
-
-
-
 }

@@ -18,6 +18,7 @@ export interface Concours {
   dateDelais: Date;
   image: string; // Add this property to match ConcoursResponse
   photoUrl: string; // Add this property to match ConcoursResponse
+  formule:string;
 }
 
 

@@ -1,3 +1,23 @@
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #558db6;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #2e12b7;
+}
+
+
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signin-content, .social-login, .socials {
   display: flex;

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,8 @@ import { ListeCandidatsReussisComponent } from './components/liste-candidats-reu
 import { ReponseContactComponent } from './components/reponse-contact/reponse-contact.component';
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 import { ReclamationComponent } from './components/reclamation/reclamation.component';
+import { DiplomeFilterPipe } from './pipes/diplome-filter.pipe';
+import { ResultsComponent } from './components/results/results.component';
 
 
 
@@ -70,6 +73,10 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
     ReponseContactComponent,
     ListeReclamationComponent,
     ReclamationComponent,
+    DiplomeFilterPipe,
+    ResultsComponent,
+
+
 
   ],
   imports: [
@@ -79,6 +86,9 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
+    HttpClientModule
+
 
   ],
   providers: [],
