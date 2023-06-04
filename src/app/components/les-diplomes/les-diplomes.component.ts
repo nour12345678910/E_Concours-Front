@@ -19,9 +19,9 @@ export class LesDiplomesComponent {
   user:User
   concours:Concours
   candidats:CandidatInfo;
-  
+
 constructor(private candidatService:CandidatServiceService,private diplomeservice:DiplomeService,private router:Router ,private route:ActivatedRoute,private userService:UserServiceService,private concoursservice:ConcoursService){}
- 
+
   ngOnInit(): void {
     // this.candidatService.getCandidatInfo()
     // .subscribe((candidatlist) => {
@@ -44,17 +44,19 @@ constructor(private candidatService:CandidatServiceService,private diplomeservic
       )
 
 })}
-    
+
 onAccepterClick(candidat: CandidatInfo) {
   this.candidatService.updateCandidatEtat(candidat.id, true)
     .subscribe(updatedCandidat => candidat.etat = updatedCandidat.etat);
     this.router.navigate(['/admin/concours/candidats/'+candidat.concoursId])
+    window.location.reload;
 }
 
 onRefuserClick(candidat: CandidatInfo) {
   this.candidatService.updateCandidatEtat(candidat.id, false)
     .subscribe(updatedCandidat => candidat.etat = updatedCandidat.etat);
     this.router.navigate(['/admin/concours/candidats/'+candidat.concoursId])
-} 
-    
+    window.location.reload;
+}
+
     }

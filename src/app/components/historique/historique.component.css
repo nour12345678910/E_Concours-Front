@@ -1,0 +1,5 @@
+.tb { border-collapse: collapse; width:1800px;text-align: center; }
+.tb th, .tb td { padding: 10px; border: solid 1px #777; }
+.tb th { background-color: lightblue; }
+h1
+{text-align: center;}

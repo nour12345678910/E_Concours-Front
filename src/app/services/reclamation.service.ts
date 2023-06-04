@@ -13,7 +13,7 @@ export class ReclamationService {
 
   private URL = environment.apiBaseUrl;
   private RECLAMATION_API = this.URL + '/api/reclamation';
-  private RECLAMATION_API2 = this.URL + '/api/hhh';
+  private RECLAMATION_API2 = this.URL + '/api/response';
 
 
   constructor(private http:HttpClient) { }

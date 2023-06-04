@@ -2,86 +2,173 @@
   <div class="signin topline" >
 
   <div id="box" style="height: 10px;">
- <h1> Modifier  Concours </h1>
- <!-- 
- <form  (submit)="onSubmit()">
-<div class="row">
+ <h1> تغيير معلومات المناظرة  </h1>
+
+
+ <form (submit)="onSubmit()" style="margin-top: 100px;">
+  <div class="row" style="width: 150%;">
+    <div class="col" style="text-align: right;">
+  <div style="text-align: right;">
+    <label class="col-form-label col-form-label-lg" >: اسم الوظيفة </label>
+    <input id="poste" class="form-control form-control-lg" type="text" name="poste" [(ngModel)]="concours.poste" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+  </div>
+
+</div>
+
+
+
 <div class="col">
-<label  class="col-form-label col-form-label-lg">Poste du Concours</label>
-<input type="text"class="form-control form-control-lg" name="poste" placeholder="{{concours.poste}}" [(ngModel)]="concours.poste" required><br>
 
 
+  <form name="diplomes" style="font-size: 30px;" >
+    الشهادة العلمية <br>
 
-<label class="col-form-label col-form-label-lg" > formule du concours</label>
-<textarea name="description" class="form-control form-control-lg" style="height:180px;" [(ngModel)]="concours.description" required placeholder="{{concours.description}}" ></textarea><br>
+    <label style="font-weight: bold; font-size:25px;">
+      شهادة البكالوريا
+      <input [checked]="bac" type="checkbox" name="diploma" value="شهادة البكالوريا">
+    </label><br>
+    <label style="font-weight: bold; font-size:25px;">
+      شهاده الاجازة
+      <input  [checked]="licence" type="checkbox" name="diploma" value="شهاده الاجازة">
+    </label><br>
+    <label style="font-weight: bold; font-size:25px;">
+      شهاده هندسة
+      <input [checked]="ingenieurie" type="checkbox" name="diploma" value="شهاده هندسة">
+    </label><br>
+    <label style="font-weight: bold; font-size:25px;">
+      شهادة الدكتوراه
+      <input [checked]="doctora" type="checkbox" name="diploma" value="شهادة الدكتوراه">
+    </label> <br>
+    <label style="font-weight: bold; font-size:25px;">
+      شهادة الماجستير
+      <input   [checked]="master" type="checkbox" name="diploma" value="شهادة الماجستير">
+    </label>
 
+
+  </form></div>
+  <div class="col">
+
+
+    <label class="col-form-label col-form-label-lg"> موعد اجتياز امتحان المناظرة</label>
+    <input id="dateExamen" type="date"class="form-control form-control-lg" [(ngModel)]="concours.dateExamen" name="dateExamen" id="dateExamen" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+
+    <label class="col-form-label col-form-label-lg"> التاريخ النهائي للمناظرة</label>
+    <input  id="dateDelais" type="date"class="form-control form-control-lg"  [(ngModel)]="concours.dateDelais" name="dateDelais" id="dateDelais" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+
+    <label class="col-form-label col-form-label-lg"> تاريخ النتائج النهائية</label>
+    <input id="dateResultat" type="date"class="form-control form-control-lg"  [(ngModel)]="concours.dateResultat" name="dateResultat" id="dateResultat" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+
+
+  </div>
 
 </div>
-<div class="col">
-<label class="col-form-label col-form-label-lg" > Photo  upload </label><br>
-<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
-<img [src]="imgURL" height="200" *ngIf="imgURL">
 
-
-<label class="col-form-label col-form-label-lg"> Date de l'examen </label>
-<input type="date" name="dateExamen"  class="form-control form-control-lg" [(ngModel)]="concours.dateExamen" required><br>
-
-
-
-<label class="col-form-label col-form-label-lg"> Date délais du concours</label>
-<input type="date" class="form-control form-control-lg" name="dateDelais" [(ngModel)]="concours.dateDelais" required><br>
-
-
+<div class="row" style="width: 150%;">
+<div class="col" style="text-align: right;">
+<div style="text-align: right;">
+  <label class="col-form-label col-form-label-lg" > : معلومات عن الوظيفة </label>
+  <textarea class="form-control form-control-lg" id="description" name="description" [(ngModel)]="concours.description" required style="text-align: right;"></textarea> <p class="help-block text-danger" style="text-align: right;"></p>
+</div>
+<p class="help-block text-danger" style="text-align: right;"></p>
 
 </div>
 </div>
+<div class="row" style="width: 150%;text-align: right;">
+  <div class="col" style="text-align: right;">
 
-<button type="submit" class="button-88">Update</button>
-
-
-</form>
-</div>
+    <label class="col-form-label col-form-label-lg" style="text-align: right;" >: صياغة احتساب النتيجة </label>
+    <textarea id="formule" class="form-control form-control-lg" name="formule" [(ngModel)]="concours.formule" required style="text-align: right;"> </textarea> <p class="help-block text-danger" style="text-align: right;"></p>
+ </div>
+ </div>
+ <div class="row" style="text-align: right;">
+  <div class="col" style="text-align: right;">
+    <label class="col-form-label col-form-label-lg"></label><button class="button-44" type="button"data-dismiss="modal" style=" margin: 3px;" (click)="open()">صيغة احتساب النتيجة</button><br><br>
 
   </div>
 </div>
 
 
- -->
+
+<div class="row" style="text-align: right;">
 
 
 
- <form (submit)="onSubmit()">
-  <div>
-    <label class="col-form-label col-form-label-lg" > Poste:</label>
-    <input class="form-control form-control-lg" type="text" name="poste" [(ngModel)]="concours.poste" required>
-  </div>
-  <div>
-    <label class="col-form-label col-form-label-lg" > Description:</label>
-    <textarea class="form-control form-control-lg" name="description" [(ngModel)]="concours.description" required></textarea>
-  </div>
-  <div>
-    <label class="col-form-label col-form-label-lg" > formule:</label>
-    <textarea class="form-control form-control-lg" name="formule" [(ngModel)]="concours.formule" required></textarea>
-  </div>
-  <div>
-    <label class="col-form-label col-form-label-lg" >Date Examen:</label>
-    <input class="form-control form-control-lg" type="date" name="dateExamen" [(ngModel)]="concours.dateExamen" required>
-  </div>
-  <div>
-    <label class="col-form-label col-form-label-lg" > Date Delais:</label>
-    <input  class="form-control form-control-lg" type="date" name="dateDelais" [(ngModel)]="concours.dateDelais" required>
-  </div>
-  <div>
-    <label class="col-form-label col-form-label-lg" > Image:</label>
-    <!-- <input type="file" name="image" (change)="handleFileInput($event)"> -->
-    <input class="form-control form-control-lg"  type="file" accept="image/*" (change)="handleFileInput($event)" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" > <br>
-    <img [src]="imgURL" height="200" *ngIf="imgURL" [(ngModel)]="concours.imageData">
 
-
-    <img [src]="'data:image/jpeg;base64,' + concours.imageData" style="width: 180px;height: 180px;" />
 
 
 
   </div>
-  <button class="btn btn-success" style="text-align: center;margin-left: 200px;" type="submit">Update</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" style="width: 150%;text-align: right;">
+  <div class="col" style="text-align: right;">
+    <label class="col-form-label col-form-label-lg" >:صورة المناظرة </label>
+
+    <input class="form-control form-control-lg"  type="file" accept="image/*" (change)="handleFileInput($event)" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="" placeholder="Photo" style="text-align: left;" > <br>
+    <img [src]="imgURL" height="200" *ngIf="imgURL" [(ngModel)]="concours.image">
+  </div>
+  <div class="col">
+    <img [src]="'data:image/jpeg;base64,' + concours.image" style="width: 180px;height: 180px;" />
+    <!-- <img [src]="imgURL" height="200" *ngIf="imgURL" [(ngModel)]="concours.image"> -->
+    </div>
+
+  </div>
+  <button class="btn btn-success button-88" style="text-align: center;margin-left: 200px;" type="submit">تسجيل التغيير</button>
   </form>
+
+
+  <div class="modal fade my-modal" tabindex="-10" role="dialog" #formule >
+    <div class="modal-dialog" >
+      <div class="modal-content">
+        <div class="modal-body">
+
+  <h1>احتساب النتيجة</h1>
+
+  <button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary"(click)="addBac()">معدل الباكالوريا</button>
+  <button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne1()">معدل السنة الاولى</button>
+  <button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne2()">معدل السنة الثانية</button>
+  <button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne3()">معدل السنة الثالثة</button><br><br>
+
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="add1()">1</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add2()">2</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add3()">3</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add4()">4</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add5()">5</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add6()">6</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add7()">7</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add8()">8</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add9()">9</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary"  (click)="par1()"> ( </button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary"  (click)="par2()">)</button>
+  <br><br>
+
+
+
+
+
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;margin-left: 170px;"class="btn btn-secondary" (click)="add()">+</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="rest()">-</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="mult()">*</button>
+  <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="div()">/</button> <br><br>
+
+
+  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary" (click)="close()">fermer</button>
+  <button type="button" id="" data-dismiss="modal" class="btn btn-warning" style="margin-left: 200px;" (click)="reset()" >إعادة تعيين الصياغة</button>
+
+        </div></div></div></div>

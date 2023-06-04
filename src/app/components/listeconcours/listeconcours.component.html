@@ -1,33 +1,71 @@
-<div class="login-box">
+<div class="login-box" >
   <div class="signin topline" >
 
   <div id="box" style="height: 10px;">
-<h1 style="text-align:center"> Les Concours </h1>
-<tr class="table-light" *ngFor="let c of concoursList; index as i">
+<h1 style="margin-right: 550px;">قائمة المناظرات  </h1>
+<div style="margin-right: 100px;margin-top: 100px;">
 
-  <th scope="row">{{i+1}}</th><td style="width:20px;color:black"></td>
-  
-  <td>
-    <img [src]="'data:image/jpeg;base64,' + c.imageData" style="width: 180px;height: 180px;" />
+  <i  class="fa fa-search" style="color: rgb(3, 4, 4);font-size: 30px;margin-left: 25px;text-align: center;"></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" بحث...." style="border-radius: 20px;height: 50px;width: 200px;">
+</div><br><br><br>
+
+<table >
+  <tr style="text-align: center; background-color:blanchedalmond;" >
+
+    <th>العدد</th>
+    <th>الوظيفة</th>
+    <th>صورة المناظرة</th>
+    <th>تاريخ الاجتياز </th>
+    <th>التاريخ الأقصى للتسجيل</th>
+    <th>التفاصيل</th>
+    <th>قائمة المشاركين</th>
+    <th>الازالة\التغيير</th>
+    <!-- <th>معلومات عن المناظرة</th> -->
+
+
+  </tr>
+<tr class="table-light" *ngFor="let c of concoursList| filter:term; index as i">
+  <th scope="row">{{i+1}}</th>
+  <th scope="row">{{c.poste}}</th>
+  <td >
+    <img [src]="'data:image/jpeg;base64,' + c.image" style="width: 150px;height: 100px;" />
   </td>
 
-  <td id="ligne">{{c.poste}}</td>
   <td id="ligne">{{c.dateExamen}}</td>
+
   <td id="ligne">{{c.dateDelais}}</td>
-  <td id="ligne">{{c.description}}</td>
-  <td> <div class="col-md-5"><button class="button-2" role="button" 
-    [routerLink]="['/admin/concours/candidats', c.id]">Candidats </button></div>
+
+
+<td>
+  <button  class="btn btn-info" (click)="openDialog(c.description)">مزيد من التفاصيل</button><br><br>
+</td>
+
+  <td> <div class="col-md-5"><button class="button-2" role="button"
+    [routerLink]="['/admin/concours/candidats', c.id]">المترشحين </button></div>
  </td>
+
+
   <td id="ligne">
       <div class="form-group row">
-          <div class="col-md-5"><button class="button-1" role="button" [routerLink]="['/admin/concours/modifConcours', c.id]">modifier</button></div>
-          <div class="col-md-5"><button class="button-5" role="button" (click)="deletConcours(c.id)">supprimer</button></div>
+        <div class="col-md-5"><button class="button-5" role="button" (click)="deletConcours(c.id)">الازالة</button></div>
+
+          <div class="col-md-5"><button class="button-1" role="button" [routerLink]="['/admin/concours/modifConcours', c.id]">التغيير</button></div>
       </div>
   </td>
- 
+
 </tr>
+</table>
 
 </div></div></div>
 
 
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #add >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-body" *ngFor="let c of concoursList ">
+               {{c.description}}
+        <div class="modal-footer">
+          <button type="button" id="" data-dismiss="modal" class="btn btn-secondary" (click)="close()">اغلاق</button>
+      </div>
 
+
+      </div></div></div></div>

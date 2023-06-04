@@ -4,6 +4,7 @@ import { Reclamation } from 'src/app/models/Reclamation';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from 'src/app/models/Response';
 import Swal from 'sweetalert2';
+import { ActionHistoriqueServiceService } from 'src/app/services/action-historique-service.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class ReponseContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
-constructor(private rs:ReclamationService,private route:ActivatedRoute){}
+constructor(private rs:ReclamationService,private route:ActivatedRoute,
+  private actionHistoriqueService:ActionHistoriqueServiceService){}
 
 submitForm() {
   // get the ID of the reclamation from the route parameter
@@ -44,6 +46,15 @@ submitForm() {
     (error) => {
       this.errorMessage = "An error occurred while sending the response.";
       console.error('An error occurred:', error);
+    }
+  );
+
+  this.actionHistoriqueService.logActionHistorique('الاجابة', this.reclamation.id).subscribe(
+    response => {
+      console.log('Action logged successfully');
+    },
+    error => {
+      console.error('Failed to log action:', error);
     }
   );
 }

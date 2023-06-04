@@ -9,6 +9,8 @@ export class Concours {
   dateDelais!: Date;
   photoUrl!: SafeUrl;
   formule:string;
+  diplomes:string;
+  dateResultat!:Date;
 
 
   constructor(){

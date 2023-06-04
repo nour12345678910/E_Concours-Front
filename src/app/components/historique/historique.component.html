@@ -1,0 +1,39 @@
+<body><br><br>
+  <h1>  سجل تاريخ الإجراءات لقائمة المناظرات</h1>
+<br><br>
+  <div class="text-center">
+    <i style="color: rgb(3, 4, 4);font-size: 30px;margin-right: 25px;margin-left: 25px;" class="fa fa-search"></i>
+    <input  type="text" placeholder=" اليوم/الشهر/السنة" style="border-radius: 20px;text-align: center;font-size: 20px;" [(ngModel)]="searchDate" >
+  </div>
+
+
+  <br><br>
+  <table class="tb" style="margin-left: 50px;">
+    <thead>
+      <tr>
+        <th>الحذف</th>
+        <th>اسم المناظرة </th>
+        <th>المعرف للمناظرة</th>
+        <th>ساعة الإجراء</th>
+        <th>تاريخ الإجراء</th>
+        <th>الإجراء</th>
+        <th>العدد</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of actionLogs | dateFilter: searchDate ; index as i">
+        <td><button (click)="deleteLog(log.id)" class="btn btn-danger">حذف</button></td>
+        <td>{{ log. concoursName }}</td>
+        <td>{{ log.concoursId }}</td>
+        <td>{{ log.date | date:'HH:mm' }}</td>
+        <td>{{ log.date | date:'yyyy/MM/dd ' }}</td>
+        <td>{{ log.action }}</td>
+        <th scope="row">{{i+1}}</th>
+
+      </tr>
+    </tbody>
+  </table>
+</body>

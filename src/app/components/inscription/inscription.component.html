@@ -1,14 +1,10 @@
-<div class="main">
 
   <!-- Sign up form -->
-  <section class="signup inscri">
-
+  <body class="signup inscri">
     <div class="container">
 
       <div class="signup-content">
-        <h2  style="    background-color: #558db6;
-        ;
-        ; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">إنشاء    حساب    شخصي</h2>
+        <h2  style="background-color: #6dabe4; text-align: center;color: white;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">إنشاء    حساب    شخصي <i class="fa fa-user"></i> </h2>
 
         <div class="signup-form">
           <form
@@ -29,9 +25,10 @@
               name="cin"
               id="cin"
               [(ngModel)]="par.cin"
-              placeholder="رقم بطاقة التعريف"
+              placeholder="رقم بطاقة التعريف"/>
 
-            />
+            <p class="help-block text-danger" style="text-align: right;"></p>
+
             <div class="alert alert-warning" style="text-align : right;" *ngIf="cin.touched && cin.errors?.['required']"> خانة رقم بطاقة التعريف ضرورية</div>
             <div  class="alert alert-warning" style="text-align : right;" *ngIf="cin.touched && cin.errors?. ['minlength'] || cin.errors?. ['maxlength']">خانة رقم بطاقة التعريف متكونة من 8 أرقام</div>
           </div>
@@ -39,26 +36,23 @@
 
 
           <div class="form-group">
-            <label for="prenom"
-              ><i class="zmdi zmdi-account material-icons-name"></i
-            ></label>
-            <input
-            style="text-align : right;"  [(ngModel)]="par.prenom"
-            placeholder="الإسم" ngModel name="prenom" #prenom="ngModel" type="text" class="form-control"  required>
+            <label for="prenom"><i class="zmdi zmdi-account material-icons-name"></i></label>
+            <input style="text-align : right;"  [(ngModel)]="par.prenom" placeholder="الإسم" ngModel name="prenom" #prenom="ngModel" type="text" class="form-control"  id="prenom" required>
+            <p class="help-block text-danger" style="text-align: right;"></p>
             <div class="alert alert-warning" style="text-align : right;" *ngIf="prenom.invalid && prenom.touched">  خانة الإسم ضرورية</div>
           </div>
 
 
 
             <div class="form-group">
-              <label for="name"
-                ><i class="zmdi zmdi-account material-icons-name"></i
-              ></label>
+              <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
             <input  [(ngModel)]="par.nom" ngModel name="name" #name="ngModel" type="text"
             class="form-control"
             style="text-align : right;"
-            placeholder="اللقب" required>
-              <div  class="alert alert-warning" style="text-align : right;" *ngIf="name.invalid && name.touched">خانة اللقب ضرورية</div>
+            placeholder="اللقب" id="name" required/>
+
+         <p class="help-block text-danger" style="text-align: right;"></p>
+            <div  class="alert alert-warning" style="text-align : right;" *ngIf="name.invalid && name.touched">خانة اللقب ضرورية</div>
             </div>
 
 
@@ -73,6 +67,7 @@
                 placeholder="رقم الهاتف الجوال الشخصي"
                 style="text-align : right;"
               />
+              <p class="help-block text-danger" style="text-align: right;"></p>
             <div class="alert alert-warning" style="text-align : right;" *ngIf="tel.touched && tel.errors?.['required']">خانة الهاتف الشخصي ضرورية</div>
             <div  class="alert alert-warning" style="text-align : right;" *ngIf="tel.touched && tel.errors?. ['minlength']">خانة الهاتف الجوال متكونة متكونة 8 أرقام</div>
           </div>
@@ -80,18 +75,19 @@
 
 
           <div class="form-group">
-            <label for="pass"
+            <label for="password"
               ><i class="zmdi zmdi-lock-outline"></i
             ></label>
             <input
               type="password"
-              id="motpass"
+              id="password"
               [(ngModel)]="par.motdepasse"
               placeholder="كلمة العبور"
               style="text-align : right;"
               name="password" #password="ngModel"
               type="password" class="form-control" required
             />
+            <p class="help-block text-danger" style="text-align: right;"></p>
             <div class="alert alert-warning" style="text-align : right;" *ngIf="password.touched && password.errors?.['required']">خانة كلمة العبور ضرورية</div>
           </div>
 
@@ -109,20 +105,22 @@
               ngModel name="motdepasseConfirm" #motdepasseConfirm="ngModel" type="password" class="form-control" placeholder=" تأكيد كلمة العبور" required
               type="password" class="form-control" required
             />
-            <!-- <div class="alert alert-warning" style="text-align : right" *ngIf="motdepasseConfirm.touched && motdepasseConfirm.errors?.['required']">تأكيد كلمة العبور ضرورية</div> -->
+            <p class="help-block text-danger" style="text-align: right;"></p>
             <div class="alert alert-warning" style="text-align : right" *ngIf="motdepasseConfirm.value !== password.value && motdepasseConfirm.touched">كلمة العبور ليست نفسها  </div>
               </div>
 
 
 
-<div class="form-group">
-    <label for="photo"><i class="zmdi zmdi-lock"></i></label>
-    <span style="margin-left: 420px;"> الصورة</span>
 
-    <input type="file" accept="image/*" (change)="onSelectFile($event)" class="form-control form-control-lg" ngModel name="photo" id="" style="float:right;">
-    <br>
-    <img [src]="imgURL" height="200" *ngIf="imgURL">
-</div>
+            <div class="form-group">
+              <label for=" photo"><i class="zmdi zmdi-lock"></i></label>
+              <span style="margin-left: 420px;"> الصورة</span>
+
+              <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="photo"  > <br>
+               <img [src]="imgURL" height="200" *ngIf="imgURL">
+               <p class="help-block text-danger" style="text-align: right;"></p>
+
+            </div>
 
 
 
@@ -138,6 +136,7 @@
                 #email="ngModel" type="email" class="form-control"
                 required email
               />
+              <p class="help-block text-danger" style="text-align: right;"></p>
               <div class="alert alert-warning" style="text-align : right;" *ngIf="email.touched && email.errors?.['required']">   خانة  البريد الإلكتروني ضرورية</div>
               <div  class="alert alert-warning" style="text-align : right;" *ngIf="email.touched && email.errors?. ['email']">يجب ادخال كلمة العبور بالشكل الصحيح </div>
             </div>
@@ -189,13 +188,19 @@
                 class="form-submit"
                 style="display: inline-block;margin: 0 2%;"
 
-                [disabled]="f.invalid "
                 (click)="signup(f)"
                   >تسجيل الحساب</button>
 
                   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
-            </div>
 
+
+
+              <!-- <div class="alert alert-warning" style="text-align : right;" *ngIf="f.invalid"> يحب عليك تعمير جميع الخانات المطلوبة</div> -->
+
+               <!-- <div class="alert alert-warning" style="text-align : right;" *ngIf="f.touched && cin.errors?.['required'] || tel.errors?.['required'] || name.errors?.['required']  || prenom.errors?.['required'] || motdepasseConfirm.errors?.['required'] || password.errors?.['required']||  email.errors?.['required']    "> يحب عليك تعمير جميع الخانات المطلوبة</div> -->
+
+
+            </div>
 
 
 
@@ -203,6 +208,5 @@
         </div>
       </div>
     </div>
-  </section>
-</div>
+  </body>
 

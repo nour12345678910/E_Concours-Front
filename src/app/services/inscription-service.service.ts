@@ -82,11 +82,14 @@ export class InscriptionServiceService {
       return this.http.post<User>(`${this.baseUrl}`+ '/login', user);
     }
 
+    login(cin: string, motdepasse: string): Observable<string> {
+      const params = new HttpParams()
+        .set('cin', cin)
+        .set('motdepasse', motdepasse);
 
-    login(params: HttpParams): Observable<User> {
-      this.isLoggedIn = true;
-      return this.http.post<User>(`${this.baseUrl}/login`, params);
+      return this.http.post<string>(`${this.baseUrl}/login`, null, { params });
     }
+
 
 
 

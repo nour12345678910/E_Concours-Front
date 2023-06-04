@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CandidatInfo } from 'src/app/models/CandidatInfo';
-import { Concours } from 'src/app/models/ConcoursResponse';
+import { Concours } from 'src/app/models/Concours';
 import { User } from 'src/app/models/User';
 import { CandidatServiceService } from 'src/app/services/candidat-service.service';
 import { ConcoursService } from 'src/app/services/concours.service';
@@ -28,9 +28,6 @@ export class ProfilCandidatComponent implements OnInit {
   @ViewChild('recu', { static: false }) myModal2!: ElementRef;
   elm2!: HTMLElement;
     constructor( private is:InscriptionServiceService,private us:UserServiceService, private candidatService:CandidatServiceService,private concoursService:ConcoursService, private router:Router) { }
-
-
-
 
     ngOnInit(): void {
       this.u=JSON.parse(localStorage.getItem('user'));

@@ -1,36 +1,56 @@
-<div class="login-box">
-  <div class="signin topline" >
-
+  <div class=" topline">
   <div id="box" style="height: 10px;" *ngFor="let c of listetab; index as i">
-<h1 style="text-align:center"> Données Etablissement </h1><br><br>
-<tr class="table-light" >
-  
-  <th style="width: 600px;">Logo</th>
-  <th style="width: 600px;">Nom</th>
-  <th style="width: 600px;">Adresse</th>
-  <th style="width: 600px;">Email</th>
-  <th style="width: 600px;">Telephone</th>
-  <th style="width: 600px;">Fond</th> </tr>
- <tr  class="table-light" >
-  <td>
-    <img [src]="'data:image/jpeg;base64,' + c.logo" style="width: 180px;height: 120px;" />
-  </td>
+<h2 style="margin-right: 240%; font-size: 400%;" > بيانات المؤسسة </h2><br><br>
+<table >
+  <tr class="table-light" >
 
-  <td >{{c.nom}}</td>
-  <td >{{c.adresse}}</td>
-  <td >{{c.email}}</td>
-  <td >{{c.telephone}}</td>
-  
-  <td>
-    <img [src]="'data:image/jpeg;base64,' + c.imagefond" style="width: 180px;height: 180px;" />
-  </td>  </tr><br><br><br>
- 
+    <th style="height: 50%;">شعار المؤسسة او الشركة</th>
+    <td>
+      <img [src]="'data:image/jpeg;base64,' + c.logo" style="width: 180px;height: 120px;" />
+    </td>
+  </tr>
+  <tr class="table-light">
+    <th style="width: 50%;">اسم المؤسسة</th>
+    <td>{{c.nom}}</td>
+
+  </tr>
+  <tr class="table-light">
+    <th style="width: 50%;">عنوان المؤسسة</th>
+    <td>{{c.adresse}}</td>
+
+  </tr>
+  <tr class="table-light">
+    <th style="width: 50%;">البريد الالكتروني الخاص بالمؤسسة</th>
+    <td>{{c.email}}</td>
+
+  </tr>
+  <tr class="table-light">
+    <th style="width: 50%;">رقم الفاكس</th>
+    <td>{{c.telephone}}</td>
+
+  </tr>
+
+  <tr class="table-light">
+    <th style="width: 50%;">رقم الهاتف</th>
+    <td>{{c.numFix}}</td>
+
+  </tr>
+  <tr class="table-light">
+
+    <th >صورة الخلفية</th>
+    <td>
+      <img [src]="'data:image/jpeg;base64,' + c.imagefond" style="width: 200px;height: 180px;" />
+    </td>
+  </tr>
+</table>
+  <br><br><br>
+
       <div class="form-group row">
-          <div class="col-md-5" style="text-align: center;"><button class="btn btn-warning" role="button" [routerLink]="['/admin/etablissement/', c.id]">modifier</button></div>
+          <div class="col-md-5" style="text-align: center; "><button class="btn btn-warning" role="button" [routerLink]="['/admin/etablissement/', c.id]" style="font-size: 150%;">تغيير البيانات</button></div>
           </div>
-       
 
-</div></div></div>
+
+</div></div>
 
 
 

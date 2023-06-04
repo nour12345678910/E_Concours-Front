@@ -3,12 +3,12 @@
 }
 
 img {
-  opacity: 0.7;
-  transition: opacity 0.5s ease-in-out;
+  /* opacity: 0.7; */
+  /* transition: opacity 0.5s ease-in-out; */
 }
 
 .conteneur-text,img:hover {
-  opacity: 0.5;
+  /* opacity: 0.5; */
   color: gray;
 }
 
@@ -52,7 +52,9 @@ border-radius: 30px;
 
 .dropdown-menu{ width: 50px;margin-right: 200PX;}
 
-
-
+nav ul li a:hover {
+  background: #f2f2f2;
+  color: #fb5958;
+}
 
 

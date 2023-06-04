@@ -55,17 +55,25 @@ export class AgesStatComponent implements OnInit {
         y: {
           title: {
             display: true,
-            text: 'Number of Candidates'
+            text: 'عدد المرشحين'
+          },
+          ticks: {
+            align: 'end',
+            mirror: true
           }
         },
         x: {
           title: {
             display: true,
-            text: 'Age'
+            text: 'العمر'
+          },
+          ticks: {
+            align: 'end'
           }
         }
       }
     };
     return chartOptions;
   }
+
 }

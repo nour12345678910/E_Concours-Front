@@ -8,6 +8,7 @@ import { User } from 'src/app/models/User';
 import { CandidatServiceService } from 'src/app/services/candidat-service.service';
 import { ConcoursService } from 'src/app/services/concours.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lescandidatures',
@@ -16,12 +17,15 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class LescandidaturesComponent {
 term:any
+numberOfCandidatsToShow: number;
   candidatlist:CandidatInfo[]
   candidat:CandidatInfo
   concours:Concours
   candidats:CandidatInfo[]
 users:User[]
 u:User
+accept:boolean=false;
+displayedCandidatEmails: string[] = [];
 @ViewChild('add', { static: true }) myModal1!: ElementRef;
   elm1!: HTMLElement;
   constructor(private candidatService:CandidatServiceService,private concoursService:ConcoursService,private route:ActivatedRoute,private userservice:UserServiceService,private http: HttpClient){}
@@ -29,30 +33,23 @@ u:User
 
 
 
-  // onAccepterClick(candidat: CandidatInfo) {
-  //   this.candidatService.updateCandidatEtat(candidat.id, true)
-  //     .subscribe(updatedCandidat => candidat.etat = updatedCandidat.etat);
-  //     // console.log(candidat.etat);
-  // }
 
-  // onRefuserClick(candidat: CandidatInfo) {
-  //   this.candidatService.updateCandidatEtat(candidat.id, false)
-  //     .subscribe(updatedCandidat => candidat.etat = updatedCandidat.etat);
-  //     // console.log(candidat.etat);
 
-  // }
 
-  onAccepterClick(candidat: CandidatInfo) {
-    this.candidatService.ReussiteCandidat(candidat.id, true)
-      .subscribe(updatedCandidat => candidat.reussite = updatedCandidat.reussite);
-      // console.log(candidat.etat);
-  }
 
-  onRefuserClick(candidat: CandidatInfo) {
-    this.candidatService.ReussiteCandidat(candidat.id, false)
-      .subscribe(updatedCandidat => candidat.reussite = updatedCandidat.reussite);
-      // console.log(candidat.etat);
 
+  updateNumberOfCandidats(): void {
+    this.updateDisplayedCandidatEmails();
+    const num = Number(this.numberOfCandidatsToShow);
+
+    if (!isNaN(num) && num > 0) {
+      this.numberOfCandidatsToShow = num;
+    this.accept=true;
+    }
+    else{
+      this.numberOfCandidatsToShow=this.candidats.length;
+      this.accept=false;
+    }
   }
 
 
@@ -74,15 +71,37 @@ u:User
     this.candidatService.getCandidatsByConcoursId(id)
       .subscribe(candidats => {
         this.candidats = candidats;
-        // Process the list of candidats as needed
+        this.candidats.sort((a, b) => b.score - a.score);
+
+
+        this.updateDisplayedCandidatEmails(); // Update the displayed candidat emails
+
 
         this.userservice.getUsers().subscribe((users)=>{this.users=users})
 
 
       });
 
-
   }
+  updateDisplayedCandidatEmails(): void {
+
+    this.displayedCandidatEmails = [];
+
+
+    for (let i = 0; i < this.numberOfCandidatsToShow && i < this.candidats.length; i++) {
+      const candidat = this.candidats[i];
+      const user = this.users.find((u) => u.id === candidat.userId);
+      if (user) {
+        this.displayedCandidatEmails.push(user.email);
+      }
+    }
+    console.log(this.displayedCandidatEmails)
+  }
+
+  getEmailsOfDisplayedCandidats(): string[] {
+    return this.displayedCandidatEmails;
+  }
+
 
 
 
@@ -103,7 +122,32 @@ u:User
 
 
 
+sendEmail(){
+  const id = +this.route.snapshot.paramMap.get('id');
+  this.userservice.getUsers().subscribe(users => {
+    this.users = users;
+    this.candidatService.getCandidatsByConcoursId(id).subscribe(candidats => {
+      this.candidats = candidats;
 
+      this.candidatService.sendEmailsToCandidats(id, this.getEmailsOfDisplayedCandidats(), this.candidats, this.users).subscribe(
+        () => {
+          console.log('Emails sent successfully');
+          Swal.fire({
+            title: 'قبول المترشحين',
+            text: 'تم ارسال النتيجة بنجاح',
+            icon: 'success'
+          });
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Failed to send emails', error);
+          // Handle error
+        }
+      );
+    });
+  });
+
+ }
 
 getClassForReussite(reussite: boolean | undefined | null): string {
   if (reussite === true) {
@@ -124,4 +168,6 @@ getClassForReussite(reussite: boolean | undefined | null): string {
 
 
   }
+
+
 

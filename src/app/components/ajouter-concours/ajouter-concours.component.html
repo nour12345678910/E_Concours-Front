@@ -2,39 +2,72 @@
   <div class="signin topline" >
 
   <div id="box" style="height: 10px;">
- <h1> Ajouter un Concours </h1>
-<form #addForm="ngForm" (ngSubmit)="onAddConcours(addForm)">
-<div class="row">
-<div class="col">
-<label  class="col-form-label col-form-label-lg">Poste du Concours</label>
-<input type="text"class="form-control form-control-lg"  ngModel name="poste" id="poste" placeholder="Nom de la Poste" required> 
-<p class="help-block text-danger" style="text-align: right;"></p>
+ <h1> إضافة مناظرة </h1>
+<form #addForm="ngForm" (ngSubmit)="onAddConcours(addForm)" style="margin-top: 100px;">
+<div class="row" style="text-align: right;">
 
-<label class="col-form-label col-form-label-lg" > Description du concours</label>
-<textarea type="text" class="form-control form-control-lg" style="height:180px;"  ngModel name="description" id="description" required ></textarea> 
-<p class="help-block text-danger" style="text-align: right;"></p>
+
+  <div class="col" style="text-align: right;">
+    <label  class="col-form-label col-form-label-lg">اسم الوظيفة</label>
+    <input type="text"class="form-control form-control-lg"  ngModel name="poste" id="poste" placeholder="اسم الوظيفة" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+    </div>
+
+
+<div class="col">
+  <form name="diplomes" style="font-size: 30px;">
+    الشهادة العلمية <br><br>
+    <label style="font-weight: bold; font-size:25px;">
+
+      <input type="checkbox" name="diploma" value="شهادة البكالوريا">شهادة البكالوريا
+    </label><br>
+    <label style="font-weight: bold; font-size:25px;">
+      <input type="checkbox" name="diploma" value="شهاده الاجازة">        شهاده الاجازة
+
+    </label><br>
+    <label style="font-weight: bold; font-size:25px;">
+      <input type="checkbox" name="diploma" value="شهاده هندسة">        شهاده هندسة
+
+    </label><br>
+    <label style="font-weight: bold; font-size:25px;">
+      <input type="checkbox" name="diploma" value="شهادة الدكتوراه">        شهادة الدكتوراه
+
+    </label> <br>
+    <label style="font-weight: bold; font-size:25px;">
+      <input type="checkbox" name="diploma" value="شهادة الماجستير">        شهادة الماجستير
+
+    </label><br>
+  </form>
+</div>
+
+
+
+<div class="col">
+    <label class="col-form-label col-form-label-lg"> موعد اجتياز امتحان المناظرة</label>
+    <input type="date"class="form-control form-control-lg"  ngModel name="dateExamen" id="dateExamen" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+
+    <label class="col-form-label col-form-label-lg"> التاريخ النهائي للمناظرة</label>
+    <input type="date"class="form-control form-control-lg"  ngModel name="dateDelais" id="dateDelais" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+
+    <label class="col-form-label col-form-label-lg"> تاريخ النتائج النهائية</label>
+    <input type="date"class="form-control form-control-lg"  ngModel name="dateResultat" id="dateResultat" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+</div>
+
+
+<div class="col">
+
+    <label class="col-form-label col-form-label-lg" > تحميل صورة للمناظرة </label>
+    <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="photo" placeholder="Photo" style="text-align: right;" >
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+</div>
+
+
 
 </div>
-<div class="col">
-<label class="col-form-label col-form-label-lg" > Photo  upload </label>
-<input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"  ngModel name="photo" id="photo" placeholder="Photo" > 
-<img [src]="imgURL" height="200" *ngIf="imgURL">
-<p class="help-block text-danger" style="text-align: right;"></p>
-
-
-
-<label class="col-form-label col-form-label-lg"> Date de l'examen</label>
-<input type="date"class="form-control form-control-lg"  ngModel name="dateExamen" id="dateExamen" required> 
-<p class="help-block text-danger" style="text-align: right;"></p>
-
-<label class="col-form-label col-form-label-lg"> Date délais du concours</label>
-<input type="date"class="form-control form-control-lg"  ngModel name="dateDelais" id="dateDelais" required> 
-<p class="help-block text-danger" style="text-align: left;"></p>
-
-
-<label class="col-form-label col-form-label-lg"></label><button type="button"data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="open()">formule</button>
-<input type="text "class="form-control form-control-lg"  ngModel name="formule" id="formule" required>  
-<p class="help-block text-danger" style="text-align: left;"></p>
 
 
 
@@ -44,7 +77,30 @@
 
 
 
+
+
+
+
+
+
+<div class="row" style="text-align: right;">
+  <div class="col" style="text-align: right;">
+    <label class="col-form-label col-form-label-lg" > تفاصيل عن المناظرة</label>
+    <textarea type="text" class="form-control form-control-lg"   ngModel name="description" id="description" required style="text-align: right;height:280px;"></textarea>
+    <p class="help-block text-danger" style="text-align: right;"></p>
+  </div>
 </div>
+<br><br>
+
+
+
+
+<div class="row" style="text-align: right;">
+  <div class="col" style="text-align: right;">
+    <label class="col-form-label col-form-label-lg"></label><button class="button-44" type="button"data-dismiss="modal" style=" margin: 3px;" (click)="open()">صيغة احتساب النتيجة</button><br><br>
+    <input type="text "class="form-control form-control-lg"  ngModel name="formule" id="formule" required style="text-align: right;">
+    <p class="help-block text-danger" style="text-align: right;"></p>
+  </div>
 </div>
 
 
@@ -55,10 +111,10 @@
 
 <table>
   <tr>
-    <td><button type="submit" style="margin-right:200px;"  class="button-88">ajouter</button><br>
+    <td><button type="submit" style="margin-right:200px;"  class="button-88">اضافة المناظرة</button><br>
 
     </td>
-    <td><button type="reset"  style="margin-left:200px;" class="button-88">réinitialiser</button>
+    <td><button type="reset"  style="margin-left:200px;" class="button-88">إعادة تعيين</button>
     </td>
   </tr>
 </table>
@@ -68,17 +124,17 @@
 </div>
 
 
-<div class="modal fade my-modal" tabindex="-1" role="dialog" #formule>
-  <div class="modal-dialog">
+<div class="modal fade my-modal" tabindex="-10" role="dialog" #formule >
+  <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-body">
 
-<h1>calcul formule</h1>
+<h1>احتساب النتيجة</h1>
 
-<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary"(click)="addBac()">moyenneBac</button>
-<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne1()">moyenne1</button>
-<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne2()">moyenne2</button>
-<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne3()">moyenne3</button><br><br>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary"(click)="addBac()">معدل الباكالوريا</button>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne1()">معدل السنة الاولى</button>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne2()">معدل السنة الثانية</button>
+<button type="button" data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="addmoyenne3()">معدل السنة الثالثة</button><br><br>
 
 <button type="button"  data-dismiss="modal" style=" margin: 3px;" class="btn btn-secondary" (click)="add1()">1</button>
 <button type="button"  data-dismiss="modal" style=" margin: 3px;"class="btn btn-secondary" (click)="add2()">2</button>
@@ -104,7 +160,7 @@
 
 
 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary" (click)="close()">fermer</button>
-<button type="button" id="" data-dismiss="modal" class="btn btn-warning" style="margin-left: 200px;" (click)="reset()" >réinitialiser formule</button>
+<button type="button" id="" data-dismiss="modal" class="btn btn-warning" style="margin-left: 200px;" (click)="reset()" >إعادة تعيين الصياغة</button>
 
       </div></div></div></div>
 

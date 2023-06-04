@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CandidatInfo } from 'src/app/models/CandidatInfo';
-import { Concours } from 'src/app/models/ConcoursResponse';
+import { Concours } from 'src/app/models/Concours';
 import { Etablissement } from 'src/app/models/Etablissement';
 import { User } from 'src/app/models/User';
 import { CandidatServiceService } from 'src/app/services/candidat-service.service';
@@ -31,8 +31,8 @@ candidats:CandidatInfo;
 i:number ;
   constructor(private router:Router,private es:EtablissementService,private route: ActivatedRoute, private concoursService:ConcoursService,private candidatService:CandidatServiceService, private http: HttpClient) { }
 
-  
-  
+
+
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('user'));
 
@@ -44,7 +44,7 @@ i:number ;
         this.candidats = candidats;
         if (this.candidats && this.candidats.id) {
           console.log(this.candidats.id);
-    
+
         }
         this.concoursService.getConcoursById(this.candidats.concoursId).subscribe(concours => {
           this.concours = concours;
@@ -57,11 +57,11 @@ i:number ;
       this.listetab = listetab;
     })
 
-    
 
-  
-  } 
-  
+
+
+  }
+
 
 
   public download(): void {

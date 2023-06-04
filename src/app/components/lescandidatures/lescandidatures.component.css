@@ -13,14 +13,29 @@
   color: white;
 }
 .topline {
-    display:inline-flex;
-    position: relative;
-    bottom: 1000px;
-    left: 230px;
-  padding: 15rem 15rem;
-  background-color:transparent;
+  display:inline-flex;
+  position: relative;
+  bottom: 1600px;
+  left: 3%;
+padding: 2rem 0rem;
+background-color:transparent;
+}
+table {
+  width: 97.5%;
+  border-collapse: collapse;
+
 }
 
+tr {
+  font-size: 20px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid black;
+}
+th{ width:194.5px;background-color: antiquewhite; }
+h1{text-align: center;}
+/* table{text-align: center; margin-left:200px;} */
+img{ width: 100px;height: 100px ;}
 
 #box{
   position: relative;

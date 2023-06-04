@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Concours } from 'src/app/models/Concours';
 import { User } from 'src/app/models/User';
 import { ConcoursService } from 'src/app/services/concours.service';
 import { InscriptionServiceService } from 'src/app/services/inscription-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-liste-concours',
@@ -30,7 +31,7 @@ export class ListeConcoursComponent implements OnInit {
     .subscribe((concoursList) => {
       this.concoursList = concoursList;
     });
-     this.loginStatus=this.is.isLoggedIn;
+     this.loginStatus=this.is.isLoggedInn();
   }
 
   submit(){
@@ -41,4 +42,38 @@ export class ListeConcoursComponent implements OnInit {
     }else{
     this.router.navigate(["/inscription"]);}}
 
+    @ViewChild('add', { static: false }) myModal1!: ElementRef;
+    elm1!: HTMLElement;
+    ngAfterViewInit(): void {
+      this.elm1 = this.myModal1.nativeElement as HTMLElement;
+
+    }
+    open(): void {
+      this.elm1.classList.add('show');
+      this.elm1.style.width = '100vw';
+
+    }
+
+    openDialog(description: string) {
+      Swal.fire({
+        title: 'مزيد من التفاصيل',
+        html: `<div style="font-size: 35px;">${description}</div>`,
+        confirmButtonText: 'حسنًا',
+        customClass: {
+          container: 'custom-swal-container',
+        },
+      });
+    }
+
+
+
+   close(): void {
+      this.elm1.classList.remove('show');
+      setTimeout(() => {
+        this.elm1.style.width = '0';
+      }, 75);
+    }
+
+
 }
+

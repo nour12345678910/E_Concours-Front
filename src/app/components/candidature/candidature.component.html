@@ -4,8 +4,7 @@
 
 <div style="height: 80px; background-color:rgb(222, 243, 247);width: 1200px;margin-left: 350px;"></div>
 <div class="cadre">
-
-<form (submit)="submitForm()" #candidatureForm="ngForm" >
+  <form (submit)="submitForm()" #candidatureForm="ngForm" >
     <div >
       <fieldset>المعطيات الشخصية </fieldset>
     </div>
@@ -144,11 +143,8 @@
       <div class="form-group">
         <label for="scientificCertificate">الشهادة العلمية</label>
         <select class="form-control" type="text" name="diplome{{ i + 1 }}" [(ngModel)]="diplome.diplome" required  id="diplome">
-          <option value="شهادة البكالوريا">شهادة البكالوريا</option>
-          <option value="شهادة الدكتوراه">   شهاده الاجازة</option>
-          <option value="شهادة الدكتوراه">   شهاده هندسة</option>
-          <option value="شهادة الدكتوراه">شهادة الدكتوراه</option>
-          <option value="شهادة الماجستير">شهادة الماجستير</option>
+
+          <option *ngFor="let item of diplomesList" [value]="item">{{ item }}</option>
 
 
         </select>
@@ -180,20 +176,20 @@
       <div class="form-group">
         <!-- <label for="lastYearRate"> معدلات الثلاث سنوات الأخيرة المكللة بالنجاح </label> -->
         <div class="row">
-          <div class="col-sm-4"  *ngIf="diplomes[i].diplome === 'شهادة الدكتوراه' || diplomes[i].diplome === ' شهاده الاجازة' || diplomes[i].diplome === 'شهاده هندسة'"  >
+          <div class="col-sm-4"  *ngIf="diplomes[i].diplome === 'شهادة الدكتوراه' || diplomes[i].diplome === 'شهاده الاجازة' || diplomes[i].diplome === 'شهاده هندسة'"  >
             <label for="lastYearRate3" شهادة الماجستير>السنة الثالثة</label>
             <input type="text" name="moyenne3{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenne3" id="moyenne3">
             <p class="help-block text-danger" style="text-align: right;"></p>
 
           </div>
-          <div class="col-sm-4"  *ngIf="diplomes[i].diplome === 'شهادة الماجستير' || diplomes[i].diplome === 'شهادة الدكتوراه'|| diplomes[i].diplome === ' شهاده الاجازة' || diplomes[i].diplome === 'شهاده هندسة'">
+          <div class="col-sm-4"  *ngIf="diplomes[i].diplome === 'شهادة الماجستير' || diplomes[i].diplome === 'شهادة الدكتوراه'|| diplomes[i].diplome === 'شهاده الاجازة' || diplomes[i].diplome === 'شهاده هندسة'">
             <label for="lastYearRate2">السنة الثانية</label>
             <input type="text" name="moyenne2{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenne2" id="moyenne2">
             <p class="help-block text-danger" style="text-align: right;"></p>
 
           </div>
 
-          <div class="col-sm-4"  *ngIf="diplomes[i].diplome === 'شهادة الماجستير' || diplomes[i].diplome === 'شهادة الدكتوراه'|| diplomes[i].diplome === ' شهاده الاجازة' || diplomes[i].diplome === 'شهاده هندسة'">
+          <div class="col-sm-4"  *ngIf="diplomes[i].diplome === 'شهادة الماجستير' || diplomes[i].diplome === 'شهادة الدكتوراه'|| diplomes[i].diplome === 'شهاده الاجازة' || diplomes[i].diplome === 'شهاده هندسة'">
             <label for="lastYearRate1">السنة الأولى</label>
             <input type="text" name="moyenne1{{ i + 1 }}" [(ngModel)]="diplomes[i].moyenne1" id="moyenne1" >
             <p class="help-block text-danger" style="text-align: right;"></p>
@@ -220,8 +216,7 @@
 <br><br><br><br>
 <button type="submit" class="btn btn-primary">إرسال</button>
   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
-</form>
-</div>
+</form></div>
 <div style="height: 80px; background-color:rgb(222, 243, 247);width: 1200px;margin-left: 350px;"></div>
 
 <div style="height: 100px; "></div>

@@ -26,6 +26,8 @@ import { RecuComponent } from './components/recu/recu.component';
 import { ResultsComponent } from './components/results/results.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfilGuard } from './guards/profil.guard';
+import { HistoriqueComponent } from './components/historique/historique.component';
+import { HistoriqueReclamationComponent } from './components/historique-reclamation/historique-reclamation.component';
 
 const routes: Routes =[
 
@@ -64,11 +66,13 @@ const routes: Routes =[
   {path:'profil', component:ProfilCandidatComponent,canActivate:[ProfilGuard]},
   {path:'candidature/:id', component:CandidatureComponent},
   { path: 'reponse/:id', component:ReponseContactComponent },
-  {path:'results', component:ResultsComponent},
 
   {path:'profil/recu/:id', component:RecuComponent},
   {path:'diplomes/:id', component:LesDiplomesComponent},
 
+  {path:'results', component:ResultsComponent},
+  {path:'concoursHistorique', component:HistoriqueComponent,canActivate:[AuthGuard]},
+  {path:'reclamationsHistorique', component:HistoriqueReclamationComponent,canActivate:[AuthGuard]},
 
 
   {path:'',redirectTo :'home',pathMatch:'full'},

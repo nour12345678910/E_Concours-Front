@@ -70,7 +70,7 @@ export class ModifEtablissementComponent implements OnInit {
       postData.append('adresse', this.etablissement.adresse);
       postData.append('telephone', this.etablissement.telephone);
       postData.append('numfix', this.etablissement.numFix);
-     
+
 
       if (this.imageFile) {
         postData.append('imagefond', this.imageFile, this.imageFile.name);
@@ -80,6 +80,8 @@ export class ModifEtablissementComponent implements OnInit {
       }
       this.es.updateEtablissement(this.etablissement.id, postData).subscribe(etablissement => {
         this.etablissement = etablissement;
+        window.location.reload();
+
       });
       this.router.navigate(['/admin/etablissement']);
     }
@@ -107,7 +109,7 @@ export class ModifEtablissementComponent implements OnInit {
         this.imgURL = reader.result;
       };
     }
-    
+
   }
   onSelectLogo(event): void {
     if (event.target.files.length > 0) {

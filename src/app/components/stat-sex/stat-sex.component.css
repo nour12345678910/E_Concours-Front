@@ -3,10 +3,10 @@
 .topline {
   display: inline-block;
   position: relative;
-  bottom: 900px;
-  left: 500px;
-
-  background-color: white;
+  bottom: 1910px;
+ right: 700px;
+  padding: 10rem 10rem;
+  background-color: transparent;
 }
 
 

@@ -3,46 +3,52 @@
 
   <div id="box" style="height: 10px;">
     <br><br>
-            <div class="text-center">
-                
-                <i style="padding: 20px;" class="fa fa-search "></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث "style="text-align: right;"> 
-            </div><br>
- <h1> les candidats </h1>
+
+ <h1 style="margin-right: 500px;">  قائمة المترشحين </h1>
+
+<br><br><br><br>
+ <div >
+
+  <i  class="fa fa-search" style="color: rgb(3, 4, 4);font-size: 30px;margin-left: 25px;"></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث " style="border-radius: 20px;height: 50px;width: 200px;">
+</div><br><br><br>
  <table>
- <!-- <tr>
-  <th >Candidat</th>
-  <th >Prenom</th>
-  <th >nom</th>
-  <th >email</th>
-  <th>Adresse</th>
-  <th>Date Naissance</th>
-  <th>Sex</th>
-  <th>Statut Civil</th>
-  <th>Ville</th>
-  <th>code Postal</th>
-  <br>
-</tr> -->
+
 <div *ngFor="let c of candidats; index as i" >
   <div *ngFor="let u of users |filterCandidat:term; index as j">
-  <div class="table-light" *ngIf="c.userId==u.id">
+    <div *ngFor="let co of concours;">
+
+  <div class="table-light" *ngIf="c.userId==u.id && c.etat==true && c.concoursId==co.id">
   <tr>
- <th scope="row">  {{i+1}}</th>
+<table>
+  <th scope="row">  {{i+1}}</th>
   <th id="ligne">{{u.prenom}}</th>
   <th id="ligne">{{u.nom}}</th>
   <th id="ligne">{{u.email}}</th>
   <th id="ligne">{{c.adress}}</th>
-  <th id="ligne">{{c.dateNaissance}}</th>
-  <th id="ligne">{{c.sex}}</th>
-  <th id="ligne">{{c.statutCivil}}</th>
+  <th id="ligne">{{c.dateNaissance|date:'yyyy/MM/dd'}} </th>
   <th id="ligne">{{c.ville}}</th>
-  <th id="ligne">{{c.zipCode}}</th>
-  <th id="ligne">{{c.score}}</th>
+  <th id="ligne">المجموع:{{c.score}}</th>
+  <th id="ligne">{{co.poste}}</th>
+
+
+  </table>
+    <th style="font-size: 20px;">
+     النتيجة:
+    </th>
+    <th>
+      <button class="button-5" role="button" *ngIf="accepte&& c.reussite==false || c.reussite==null" (click)="onRefuserClick(c)">رسوب</button>
+    </th>
+    <th>
+      <button  class="button-2" role="button" *ngIf="refuse && c.reussite==true || c.reussite==null"(click)="onAccepterClick(c)">نجاح</button>
+    </th>
+
+
 
 
 
 </tr>
 
-</div></div></div></table>
+</div></div></div></div></table>
 
 </div></div></div>
 

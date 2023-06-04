@@ -141,6 +141,7 @@ body {
     border-bottom: 0.3125rem solid #1254b7;
     -webkit-transition: border 0.3s ease-in-out;
     transition: border 0.3s ease-in-out;
+    cursor: pointer;
   }
 
   .back-to-profile::after {

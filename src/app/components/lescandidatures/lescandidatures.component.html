@@ -1,68 +1,57 @@
 <body>
-<div class="login-box">
-  <div class="signin topline">
-    <div id="box" style="height: 10px;">
-      <br><br>
-            <div class="text-center">
-
-                <i style="padding: 20px;" class="fa fa-search "></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث "style="text-align: right;">
-            </div><br>
-      <h1>les candidatures</h1><br>
-      <table>
-        <div *ngFor="let c of candidats |filterScore:term; index as i">
-          <div *ngFor="let u of users; index as j">
-            <div class="table-light" *ngIf="c.userId==u.id">
-              <tr>
-                <th scope="row">{{i+1}}</th>
-                <th id="ligne">{{u.prenom}}</th>
-                <th id="ligne">{{u.nom}}</th>
-                <th id="ligne">score : {{c.score}}</th>
+  <div class="login-box">
+    <div class="signin topline">
+      <div id="box" style="height: 10px;">
+        <br><br>
+<h1></h1><br><br><br>
+        <h1>  قائمة المترشحين  </h1><br>
+<br>
+              <div class="text-center">
+                <button   [disabled]="!
+                accept" class="btn btn-success" style="padding: 10px;" (click)="sendEmail()">ارسال</button>
+                  <i style="color: rgb(3, 4, 4);font-size: 30px;margin-right: 25px;margin-left: 25px;" class="fa fa-search "></i> <input type="text" [(ngModel)]="numberOfCandidatsToShow" (input)="updateNumberOfCandidats()"  placeholder=" ...بحث "style="border-radius: 20px;">
+            </div>
+              <br>
 
 
-                <th id="ligne">
-                  <div class="form-group row">
-                    L'etat :
+        <table>
+          <div *ngFor="let c of candidats | slice:0:numberOfCandidatsToShow ; index as i">
+            <div *ngFor="let u of users; index as j">
+              <div class="table-light" *ngIf="c.userId==u.id">
+                <tr>
+                  <th id="ligne" *ngIf="accept"><i class="fas fa-check-circle" style="color: green"></i></th>
+                  <th scope="row">{{i+1}}</th>
+                  <th id="ligne">{{u.prenom}}</th>
+                  <th id="ligne">{{u.nom}}</th>
+                  <th id="ligne">المجموع : {{c.score}}</th>
+
+                  <th id="ligne">
+                    <div class="form-group row">
+                      <div class="col-md-5">
+                        <button  style="width: 150px;" class="btn btn-info" role="button" [routerLink]="['/diplomes', c.id]">ملف المترشح  </button>
+                      </div>
+                    </div>
+                  </th>
+                  <th>
                     <ng-container *ngIf="c.etat !== true && c.etat !== false">
-                      <p>En cours</p>
+                      <p>لم يتم الاطلاع بعد</p>
                     </ng-container>
                     <ng-container *ngIf="c.etat === true">
-                      <p>candidat accepted</p>
+                      <p>مقبول</p>
                     </ng-container>
                     <ng-container *ngIf="c.etat === false">
-                      <p>candidat refused</p>
-                    </ng-container>
-                  </div>
-                </th>
-                <th id="ligne">
-                  <div class="form-group row">
-                    <div class="col-md-5">
-                      <button  style="width: 150px;" class="btn btn-info" role="button" [routerLink]="['/diplomes', c.id]">Fichier Candidat </button>
-                    </div>
-                  </div>
-                </th>
-                <th>
-                  La Réusiite
-                </th>
-                <th>
-                  <button  class="button-5" role="button" [ngClass]="{'green-button': c.reussite}" (click)="onAccepterClick(c)">Oui</button>
-                </th>
-                <th>
-                  <button class="button-5" role="button" [ngClass]="{'red-button': !c.reussite}" (click)="onRefuserClick(c)">Non</button>
-                </th>
+                      <p>مرفوض</p>
+                    </ng-container></th>
 
 
 
-
-
-
-
-              </tr>
+                </tr>
+              </div>
             </div>
           </div>
-        </div>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 
-</body>
+  </body>

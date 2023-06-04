@@ -2,50 +2,72 @@
   <div class="signin topline">
 
   <div id="box">
- <h1> Modifier Les Données de l'établissement </h1>
-<form  (submit)="onSubmit()" >
+ <h1> تغيير بيانات المؤسسة </h1>
+<form  (submit)="onSubmit()" style="margin-top: 100px;" >
 
 
-
-  <label class="col-form-label col-form-label-lg">entreprise</label>
+  <div class="row" style="width: 100%;text-align: right;">
+    <div class="col" style="text-align: right;">
+  <label class="col-form-label col-form-label-lg">اسم المؤسسة</label>
   <input type="text" class="form-control form-control-lg" [(ngModel)]="etablissement.nom" name="entrprise" id=""> <br>
+</div>
+</div>
 
-
-
-<label class="col-form-label col-form-label-lg"> Adresse</label>
+<div class="row" style="width: 100%;text-align: right;">
+  <div class="col" style="text-align: right;">
+<label class="col-form-label col-form-label-lg">عنوان المؤسسة</label>
 <input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.adresse" name="prenom"  > <br>
+</div>
+</div>
 
 
 
 
 
-
-
-
-  <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
+<div class="row" style="width: 100%;text-align: right;">
+  <div class="col" style="text-align: right;">
+  <label  class="col-form-label col-form-label-lg">رقم الهاتف</label>
   <input type="text"class="form-control form-control-lg"  [(ngModel)]="etablissement.telephone" name="telelephone"  > <br>
+</div>
+</div>
 
 
-  <label class="col-form-label col-form-label-lg">Numéro Fixe</label>
+  <div class="row" style="width: 100%;text-align: right;">
+    <div class="col" style="text-align: right;">
+
+  <label class="col-form-label col-form-label-lg">رقم الفاكس</label>
   <input type="text"class="form-control form-control-lg"   [(ngModel)]="etablissement.numFix" name="numFix"> <br>
+</div>
+</div>
 
 
 
-
-
- <label class="col-form-label col-form-label-lg"> email</label>
+  <div class="row" style="width: 100%;text-align: right;">
+    <div class="col" style="text-align: right;">
+ <label class="col-form-label col-form-label-lg"> البريد الالكتروني الخاص بالمؤسسة</label>
 <input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="etablissement.email"  name="email" > <br>
-<label class="col-form-label col-form-label-lg">Iamge Fond  </label>
+    </div>
+  </div>
+
+<div class="row" style="width: 100%;text-align: right;">
+  <div class="col" style="text-align: right;">
+<label class="col-form-label col-form-label-lg">صورة الخلفية  </label>
 <input type="file" accept="image/*" (change)="onSelectFile($event)"  class="form-control form-control-lg"    id="" name="logo" (change)="handleFileInput($event)"  > <br>
 <img [src]="imgURL" height="200" *ngIf="imgURL"><br>
+<img [src]="'data:image/jpeg;base64,' + etablissement.imagefond" style="width: 180px;height: 180px;" />
 
-<label class="col-form-label col-form-label-lg">Logo   </label>
+</div>
+<div class="col" style="text-align: right;">
+<label class="col-form-label col-form-label-lg">شعار المؤسسة </label>
 <input type="file" accept="image/*" (change)="onSelectLogo($event)"  class="form-control form-control-lg"    id="" name="imagefond" (change)="handlelogoInput($event)"  > <br>
 <img [src]="logoURL" height="200" *ngIf="logoURL"><br>
+<img [src]="'data:image/jpeg;base64,' + etablissement.logo" style="width: 180px;height: 180px;" />
 
+</div>
+</div>
 
-
-      <button type="submit"  class="btn btn-success"   >Modifier</button>
+<br>
+      <button type="submit"  class="btn btn-success  button-88">تسجيل التغيير</button>
 
 
 

@@ -2,49 +2,65 @@
   <div class="signin topline">
 
   <div id="box">
- <h1>  Profile Admin </h1>
+ <h1>  المعلومات الشخصية للمسؤول  </h1>
+ <br><br><br>
 <form>
-<div class="row">
-<div class="col">
-<label  class="col-form-label col-form-label-lg">Nom</label>
-<input type="text"class="form-control form-control-lg"  [(ngModel)]="user.nom" name="nom"  [disabled]="actif"> <br>
+<div class="row" style="width: 150%;">
+
+
+  <div class="col" style="text-align: right;">
+    <label class="col-form-label col-form-label-lg"> الاسم</label>
+    <input type="text"class="form-control form-control-lg"   [(ngModel)]="user.prenom" name="prenom"  [disabled]="actif" style="text-align: right;"> <br>
+    </div>
+
+
+<div class="col" style="text-align: right;">
+  <label  class="col-form-label col-form-label-lg">اللقب</label>
+  <input type="text"class="form-control form-control-lg"  [(ngModel)]="user.nom" name="nom"  [disabled]="actif" style="text-align: right;"> <br>
 </div>
-<div class="col">
-<label class="col-form-label col-form-label-lg"> prenom</label>
-<input type="text"class="form-control form-control-lg"   [(ngModel)]="user.prenom" name="prenom"  [disabled]="actif"> <br>
-</div>
 
 </div>
 
 
 
-<div class="row">
-  <div class="col">
-  <label  class="col-form-label col-form-label-lg">Numéro de téléphone</label>
-  <input type="text"class="form-control form-control-lg"  [(ngModel)]="user.telephone" name="tel"  [disabled]="actif"> <br>
-  </div>
-  <!-- <div class="col">
-  <label class="col-form-label col-form-label-lg"> photo</label>
-  <input type="text"class="form-control form-control-lg"   [(ngModel)]="user.photo" name="photo"  [disabled]="actif"> <br>
-  </div> -->
-
+<div class="row" style="width: 150%;">
+  <div class="col" style="text-align: right;">
+  <label  class="col-form-label col-form-label-lg" >رقم الهاتف الجوال</label>
+  <input style="text-align: right;" type="text"class="form-control form-control-lg"  [(ngModel)]="user.telephone" name="tel"  [disabled]="actif"> <br>
   </div>
 
+  </div>
 
 
-<label class="col-form-label col-form-label-lg"> email</label>
-<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.email"  name="email" [disabled]="actif"> <br>
-<label class="col-form-label col-form-label-lg"> mot de passe </label>
-<input type="password" ngModel class="form-control form-control-lg" [(ngModel)]="user.motdepasse" name="password" [disabled]="actif"><br>
-
-
-<label class="col-form-label col-form-label-lg"> CIN </label>
-<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.cin" name="cin" [disabled]="actif"> <br>
+<div class="row" style="width: 150%;">
+<div class="col" style="text-align: right;">
+<label class="col-form-label col-form-label-lg"style="text-align: right;" > البريد الالكتروني</label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.email"  name="email" [disabled]="actif"style="text-align: right;"> <br>
+</div>
+</div>
 
 
 
-<button type="submit" class="button-88" (click)="activer()" *ngIf="actif">Modifier</button>
-<button type="submit" class="button-44" (click)="update()" *ngIf="!actif">enregistrer</button>
+<div class="row"style="width: 150%;">
+<div class="col" style="text-align: right;">
+<label class="col-form-label col-form-label-lg"style="text-align: right;"> رقم بطاقة التعريف الوطنية </label>
+<input type="text" ngModel class="form-control form-control-lg"  [(ngModel)]="user.cin" name="cin" [disabled]="actif"style="text-align: right;"> <br>
+</div>
+</div>
+
+
+<div class="row" style="width: 150%;">
+<div class="col" style="text-align: right;">
+<label class="col-form-label col-form-label-lg" style="text-align: right;"> كلمة العبور </label>
+<input type="password" ngModel class="form-control form-control-lg" [(ngModel)]="user.motdepasse" name="password" [disabled]="actif" style="text-align: right;"><br>
+</div>
+</div>
+
+
+
+
+<button type="submit" class="button-88" (click)="activer()" *ngIf="actif">تغيير المعلومات</button>
+<button type="submit" class="button-44" (click)="update()" *ngIf="!actif">تسجيل التغيير</button>
 
 </form>
 </div>

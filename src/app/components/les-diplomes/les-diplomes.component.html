@@ -1,9 +1,7 @@
- <body><br>
 
-  <h1 style="text-align:center"> إستمارة المشاركة </h1><br><br>
+  <h1 style="text-align:center;margin-top: 80px;font-size: 55px;"> إستمارة المشاركة </h1><br><br>
 
 
-    <div class="container">
       <div class="row">
 
 
@@ -13,24 +11,21 @@
             <table >
 
               <tr class="table" *ngFor="let d of diplomes; index as i">
-                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenneBac}}</th>
-                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenne3}}</th>
-                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenne2}}</th>
-                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.moyenne1}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">معدل الباكالوريا {{d.moyenneBac}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">معدل العام الثالث:{{d.moyenne3}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">معدل العام الثاني:{{d.moyenne2}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">معدل العام الاول:{{d.moyenne1}}</th>
                 <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.faculte}}</th>
-                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.anneeObtention}}</th>
-                <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.specialite}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">سنة حصول الشهادة:{{d.anneeObtention}}</th>
+                <th style=" width: 200px ;text-align: center;font-size: 20px;">الاختصاص:{{d.specialite}}</th>
                 <th style=" width: 200px ;text-align: center;font-size: 20px;">{{d.diplome}}</th>
-
-
-
               </tr>
             <br><br>
             <tr>
-            <th></th><th><th>
-              <th >
+            <th></th><th><th><br><br><br>
+              <th style="margin-top: 1000px;">
                 <div class="form-group row">
-                  <button class="button-2" role="button" (click)="onAccepterClick(candidats)">accepter</button>
+                  <button class="button-2" role="button" (click)="onAccepterClick(candidats)">القبول</button>
                 </div>
               </th><th></th>
 
@@ -38,38 +33,54 @@
 
               <th >
                 <div class="form-group row">
-                  <button class="button-5" role="button" (click)="onRefuserClick(candidats)">refuser</button>
+                  <button class="button-5" role="button" (click)="onRefuserClick(candidats)">الرفض</button>
                 </div>
               </th></tr></table></div>
 
 
 
-          <!--La classe bg-info ajoute un fond bleu à l'élément-->
 
           <div class="col-4 ">
             <table><tr>
     <td colspan="3">
-      <img [src]="'data:image/jpeg;base64,' + user.photo" style="width: 180px;height: 180px; text-align: right;" />
+      <img [src]="'data:image/jpeg;base64,' + user.photo" style="width: 250px;height: 250px; text-align: right;" />
     </td></tr><br>
     <tr><th> {{user.prenom}} {{user.nom}} </th>
       <th>: الاسم و اللقب</th>
     </tr>
+
+    <tr><td >{{candidats.sex}}</td>
+      <th> الجنس</th></tr>
+
+      <tr><td >{{candidats.dateNaissance|date:'yyyy/MM/dd'}}</td>
+        <th>  تاريخ الولادة</th></tr>
+
+
+      <tr><td >{{candidats.statutCivil}}</td>
+        <th> : الحالة المدنية</th></tr>
+
     <tr><td >{{candidats.adress}}--{{candidats.ville}}</td>
     <th> : العنوان كامل</th></tr>
     <tr><td >{{candidats.zipCode}}</td>
     <th> : الترقيم البريدي</th></tr>
-    <tr><td >{{candidats.statutCivil}}</td>
-    <th> : الحالة المدنية</th></tr>
+
     <tr><td >{{candidats.score}}</td>
       <th> مجموع النقاط</th></tr>
 
 
 
-  </table></div></div></div>
+        <tr><td >{{candidats.etatVille}}</td>
+          <th> الولاية </th></tr>
+
+
+
+
+
+
+  </table></div></div>
 
 
 
 
 
  <br><br><br><br>
-  </body>

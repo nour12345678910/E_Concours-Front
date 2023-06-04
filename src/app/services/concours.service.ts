@@ -20,7 +20,7 @@ export class ConcoursService {
 
 
     updateConcours(id: number, postData: FormData): Observable<Concours> {
-      return this.http.put<Concours>(`${this.baseUrl}/hhh/${id}`, postData);
+      return this.http.put<Concours>(`${this.baseUrl}/update/${id}`, postData);
     }
 
 
@@ -58,13 +58,15 @@ export class ConcoursService {
       return this.http.get<Concours[]>(this.apiUrl);
     }
 
-    addConcours(poste: string, description: string, formule: string, dateExamen: Date, dateDelais: Date, file: File): Observable<Concours> {
+    addConcours(poste: string, description: string, formule: string,dateExamen: Date, dateDelais: Date,dateResultat: Date, file: File,diplomes:string): Observable<Concours> {
       const formData = new FormData();
       formData.append('poste', poste);
       formData.append('description', description);
       formData.append('formule', formule);
       formData.append('dateExamen', dateExamen.toISOString());
       formData.append('dateDelais', dateDelais.toISOString());
+      formData.append('dateResultat', dateResultat.toISOString());
+      formData.append('diplomes', diplomes);
       formData.append('image', file);
 
     return this.http.post<Concours>(`${this.URL}/api/concours/add`, formData);

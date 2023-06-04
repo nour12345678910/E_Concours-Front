@@ -6,6 +6,7 @@ import { User } from 'src/app/models/User';
 import { CandidatServiceService } from 'src/app/services/candidat-service.service';
 import { ConcoursService } from 'src/app/services/concours.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-liste-candidats',
   templateUrl: './liste-candidats.component.html',
@@ -14,10 +15,12 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class ListeCandidatsComponent {
 
   candidatlist:CandidatInfo[]
-term:any
-  concours:Concours
+  term:any
+  concours:Concours[]=[]
   candidats:CandidatInfo[]
-users:User[]
+  users:User[]
+  public accepte:boolean=true
+   refuse=true
   constructor(private candidatService:CandidatServiceService,private concoursService:ConcoursService,private route:ActivatedRoute,private userservice:UserServiceService){}
 
   ngOnInit(): void {
@@ -25,21 +28,41 @@ users:User[]
     .subscribe((candidatlist) => {
       this.candidatlist = candidatlist;});
 
-      // const id = +this.route.snapshot.paramMap.get('id');
-      // this.concoursService.getConcoursById(id).subscribe(concours => {
-      //   this.concours = concours;
-      //   console.log(this.concours.id)});
 
-   // Replace with the actual concoursId you want to fetch
     this.candidatService.getCandidatInfo()
       .subscribe(candidats => {
         this.candidats = candidats;
         // Process the list of candidats as needed
 
         this.userservice.getUsers().subscribe((users)=>{this.users=users})
-
-
       });
+      this.concoursService.getAllConcours().subscribe(concours=>{this.concours=concours})
+
+  }
+
+  onAccepterClick(candidat: CandidatInfo) {
+    this.candidatService.ReussiteCandidat(candidat.id, true)
+      .subscribe(updatedCandidat => candidat.reussite = updatedCandidat.reussite);
+     this.accepte =false
+
+     Swal.fire({
+      title: 'نجاح المترشح',
+      text: 'تم ارسال النتيجة بنجاح',
+      icon: 'success'
+    })
+    window.location.reload();
+  }
+
+  onRefuserClick(candidat: CandidatInfo) {
+    this.candidatService.ReussiteCandidat(candidat.id, false)
+      .subscribe(updatedCandidat => candidat.reussite = updatedCandidat.reussite);
+    this.refuse=false
+    Swal.fire({
+      title: 'رسوب المترشح',
+      text: 'تم ارسال النتيجة ',
+      icon: 'success'})
+     window.location.reload();
+
   }
 
   }

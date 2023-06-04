@@ -16,6 +16,21 @@ export class CandidatServiceService {
 
 
 
+
+  sendEmailsToCandidats(concoursId: number, candidateEmails: string[], candidats: CandidatInfo[], users: User[]): Observable<any> {
+    const emailRequest = {
+      candidateEmails: candidateEmails,
+      candidats: candidats,
+      users: users,
+    };
+
+   return this.http.post(`${this.url2}/sendEmails/${concoursId}`, emailRequest);}
+
+
+
+
+
+
   getSuccessfulCandidat(): Observable<CandidatInfo[]> {
     return this.http.get<CandidatInfo[]>(`${this.url2}/successful-candidates`);
   }

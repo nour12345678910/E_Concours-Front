@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CandidatInfo } from 'src/app/models/CandidatInfo';
 import { User } from 'src/app/models/User';
@@ -32,6 +31,7 @@ export class CandidatureComponent implements OnInit  {
   newDiplome: Diplome = new Diplome();
   errorMessage = '';
   concours: Concours;
+  diplomesList;
 
   public today: Date;
   public maxBirthDate: Date;
@@ -45,6 +45,7 @@ export class CandidatureComponent implements OnInit  {
 
     i: number = 0; // add this line to define the i variable
 
+    // rest of your component code
     currentPanel = 0;
 
     togglePanel(panelIndex: number) {
@@ -58,12 +59,16 @@ export class CandidatureComponent implements OnInit  {
       const id = +this.route.snapshot.paramMap.get('id');
       this.concoursService.getConcoursById(id).subscribe(concours => {
       this.concours = concours;
+
       console.log(this.concours.id)
       this.today = new Date();
       const minYear = this.today.getFullYear() - 40;
       const maxYear = this.today.getFullYear() - 20;
       this.minBirthDate = new Date(minYear, 0, 1);
       this.maxBirthDate = new Date(maxYear, 11, 31);
+      const diplomes=this.concours.diplomes;
+      this.diplomesList=diplomes.split(",");
+      console.log(this.diplomesList)
   })}
 
   public maxDate(): string {
@@ -101,6 +106,13 @@ export class CandidatureComponent implements OnInit  {
     diplomeInfo: Diplome;
     showMyContainer: boolean = true;
 
+    checkBirthDateValidity(dateString: string): boolean {
+
+      const birthDate = new Date(dateString);
+
+      return birthDate >= this.minBirthDate && birthDate <= this.maxBirthDate;
+    }
+
     submitForm() {
 
       const sex = document.getElementById('sex') as HTMLInputElement;
@@ -116,10 +128,6 @@ export class CandidatureComponent implements OnInit  {
       const faculte = document.getElementById('faculte') as HTMLInputElement;
       const specialite = document.getElementById('specialite') as HTMLInputElement;
       const anneObtention = document.getElementById('anneObtention') as HTMLInputElement;
-      const moyenne1 = document.getElementById('moyenne1') as HTMLInputElement;
-      const moyenne2 = document.getElementById('moyenne2') as HTMLInputElement;
-      const moyenne3 = document.getElementById('moyenne3') as HTMLInputElement;
-      const moyenneBac = document.getElementById('moyenneBac') as HTMLInputElement;
 
 
 
@@ -232,9 +240,10 @@ export class CandidatureComponent implements OnInit  {
 
 
       if (isFormValid) {
+
         this.concoursService.getConcoursById( this.route.snapshot.paramMap.get('id')).subscribe(concours => {
           this.concours = concours;});
-          console.log('Formula:', this.concours.formule);
+
 
         const formules = this.diplomes.map(diplome => {
           const moyenneBac = +diplome.moyenneBac || 0;
@@ -362,12 +371,5 @@ export class CandidatureComponent implements OnInit  {
     }
 
 
-    checkBirthDateValidity(dateString: string): boolean {
-      // Convert dateString to a Date object
-      const birthDate = new Date(dateString);
 
-      // Check if birthDate is between minDate and maxDate
-      return birthDate >= this.minBirthDate && birthDate <= this.maxBirthDate;
-    }
 }
-

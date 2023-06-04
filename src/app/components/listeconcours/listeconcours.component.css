@@ -1,13 +1,57 @@
 
 
-  .topline {
-  display: inline-block;
+.topline {
+  display:inline-flex;
   position: relative;
-  bottom: 900px;
-  left: 500px;
-
-  background-color: white;
+  bottom: 2150px;
+padding: 30rem 30rem;
+background-color:transparent;
 }
+
+input{  
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 50px;
+  padding-right:100px;
+  width: 250px;}
+
+
+input::placeholder {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: bold;
+  font-style: normal;
+  text-transform: none;
+  font-size: 20px;
+}
+
+
+
+table {
+  width: 150%;
+  border-collapse: collapse;
+
+}
+
+th, td {
+  width: 180px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+th:nth-child(1), td:nth-child(1) {
+  width: 100px;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 200px;
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 150px;
+}
+
+
 
 
 
@@ -15,7 +59,7 @@
 
   align-items: center;
   background-clip: padding-box;
-  background-color: #fd36e3;
+  background-color:lightseagreen;
   border: 1px solid transparent;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -60,7 +104,7 @@
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
@@ -79,7 +123,8 @@
 .button-2 {
   align-items: center;
   background-clip: padding-box;
-  background-color:lightseagreen;
+  /* background-color:lightseagreen; */
+  background-color: rgb(85, 153, 217);
   border: 1px solid transparent;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;

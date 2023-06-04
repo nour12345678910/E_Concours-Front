@@ -9,9 +9,10 @@
 
             <a href="index.html" class="navbar-brand text-secondary">
             </a>
-            <div  *ngFor="let c of listetab, index as i">
-            <img style="width: 200px; height: 100px;" [src]="'data:image/jpeg;base64,' + c.logo" alt="logo"></div>
-            <h1 >E-Concours</h1>
+            <div *ngFor="let c of listetab, index as i" style="display: flex; align-items: center;">
+              <img style="width: 200px; height: 100px;" [src]="'data:image/jpeg;base64,' + c.logo" alt="logo">
+              <h1 style="margin-left: 10px;">{{ c.nom }}</h1>
+            </div>
 
 
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -28,23 +29,26 @@
 
 
 
-                    <a href="contact.html" class="nav-item nav-link"  style="font-size: 18px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">للإتصال بنا</a>
+                    <a  class="nav-item nav-link"  style="font-size: 26px;;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" (click)="scrollToSection('contact-section')"
+                    >للإتصال بنا</a>
 
 
 
 
-                  <a  class="nav-item nav-link" style="font-size: 18px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;" routerLink="/results">نتائج المناظرات</a>
+                  <a  class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" routerLink="/results" *ngIf="loginStatus">نتائج المناظرات</a>
+
+                  <a class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;"
+                  (click)="scrollToSection('concours-section')"
+                >
+                  المناظرات المتوفرة
+                </a>
+
+                  <a routerLink="/inscription"  *ngIf="!loginStatus" class="nav-item nav-link"  style="font-size: 26px;;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;">إنشاءحساب شخصي</a>
 
 
-                  <a routerLink="/lesConcours" class="nav-item nav-link" style="font-size: 18px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">المناظرات المتوفرة </a>
-
-
-                  <a routerLink="/inscription"  *ngIf="!loginStatus" class="nav-item nav-link"  style="font-size: 18px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">إنشاءحساب شخصي</a>
-
-
-                  <a routerLink="/login"  *ngIf="!loginStatus" class="nav-item nav-link" style="font-size: 18px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" >تسجيل الدخول</a>
-
-                  <a  class="nav-item nav-link active" style="font-size: 18px;font-weight: bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">الإستقبال</a>
+                  <a routerLink="/login"  *ngIf="!loginStatus" class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" >تسجيل الدخول</a>
+                  <a  class="nav-item nav-link active" style="font-size: 26px;font-weight: bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;">الإستقبال  <i class="fa fa-home"></i>
+                    </a>
 
 
 
@@ -52,16 +56,30 @@
                   </div>
 
             </div>
-            <div class="nav-item dropdown" >
-                <div class="dropdown-menu " style="font-size: 20PX; background-color: transparent;" >
-                    <a  *ngIf="loginStatus" routerLink="/profil" style="color: rgb(5, 138, 16);">معلومات المستعمل</a><br>
-                    <a  *ngIf="loginStatus"  style="color: rgb(255, 136, 0)" (click)="logOut()">غلق الحساب</a>
-                </div>
+            <div class="nav-item dropdown">
                 <a style="font-size: 25px;" class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="loginStatus">
-                    <span style="font-size: 18px; color: #111111;">  {{u.prenom}}  {{u.nom}} </span>
-                    <img style="width: 80px;height: 80px;border-radius: 50%;" [src]="'data:image/jpeg;base64,' + u.photo" alt="Mewy Pawpins" />
+                    <span style="font-size: 26px; color: #111111;cursor: pointer;">  {{u.prenom}}  {{u.nom}} </span>
+                    <img style="width: 150px;height: 150px;border-radius: 50%;" [src]="'data:image/jpeg;base64,' + u.photo" alt="Mewy Pawpins" />
 
                 </a>
+                <ul class="dropdown-menu " style="font-size: 26px; background-color:white;width:200px" >
+                  <li id="l" style="text-align: center;width: 200px;">
+
+                    <a *ngIf="loginStatus" routerLink="/profil" style="color: #111111; text-decoration: none">
+
+
+                      معلومات المستعمل
+                      <i class="fa fa-user"></i>
+                    </a>
+
+                  </li>
+
+                                    <li id="l" style="text-align:center; ;width: 200px;" ><a *ngIf="loginStatus"  style="color: #111111;" (click)="logOut()">
+                                         غلق الحساب
+                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 " style="color:rgba(255, 21, 21, 0.741);" ></i>
+
+                                    </a></li>
+              </ul>
 
               </div>
         </nav>
@@ -73,8 +91,7 @@
     <div class="bg" style="margin-bottom: 90px;"  *ngFor="let c of listetab, index as i">
         <div class="row mx-0 align-items-center bg">
             <div class="conteneur-texte">
-                <h1 style="color:rgb(179, 183, 61);text-shadow: -1px -1px 0 black, 4px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;font-size: 50px;">{{c.nom}}</h1><br><br><br>
-               <button  class="button-black" onclick="window.location.href='#etapes'"style="scroll-behavior: smooth;">كيفية المشاركة </button>
+
 
             </div><br>
 
@@ -84,26 +101,7 @@
         </div>
     </div>
 
-    <!-- Header End -->
 
-
-    <!-- About Start -->
-    <!-- <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <img class="img-fluid mb-4 mb-lg-0" src="img/about.jpg" alt="">
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="display-4 text-uppercase mb-4">Best digital agency in downtown</h1>
-                    <h5 class="text-uppercase text-primary mb-3">Clita elitr et amet et ipsum sea. Ipsum stet kasd ea et no est duo diam. Lorem dolores eos ut nonumy ipsum sit clita lorem no amet dolor dolore, stet sit dolor justo</h5>
-                    <p class="mb-4">Eirmod est dolor nonumy sea amet dolore erat sit dolor et dolor vero. Tempor ipsum at justo amet at ipsum justo. Aiam kasd sea sit dolor duo elitr dolor amet, justo est ipsum amet dolor ut ipsum. Labore diam et nonumy amet dolores. Volup sit labore dolores erat, magna justo sed lorem kasd ea dolor. Labore sit clita invidunt, est dolores lorem sed ipsum kasd no amet ipsum.</p>
-                    <a href="" class="btn btn-primary text-uppercase py-3 px-5">Read More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    About End -->
 
 
     <!-- Services Start -->
@@ -144,66 +142,43 @@
     </div>
     <!-- Services End -->
 
-    <app-liste-concours></app-liste-concours>
+    <app-liste-concours id="concours-section"></app-liste-concours>
 
-    <app-reclamation></app-reclamation>
+    <app-reclamation id="contact-section"></app-reclamation>
 
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 mt-n2 text-white display-4">DOT.NET</h1>
-                </a>
-                <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
-                <h6 class="text-uppercase text-white py-2">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-primary btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5"  *ngFor="let c of listetab, index as i">
-                <h4 class="text-uppercase text-white mb-4">Get In Touch</h4>
-                <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
-                <p><i class="fa fa-map-marker-alt text-white mr-2"></i>{{c.adresse}}</p>
-                <p><i class="fa fa-phone-alt text-white mr-2"></i>{{c.telephone }}--{{c.numFix}}</p>
-                <p><i class="fa fa-envelope text-white mr-2"></i>{{c.email}}</p>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-white mb-4">Quick Links</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Home</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>About Us</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Our Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Pricing Plan</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Meet The Team</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Contact Us</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
-                <p class="mb-4">Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
-                <div class="w-100 mb-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 18px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-                <i>Lorem sit sed elitr sed kasd et</i>
+   <!-- Footer Start -->
+   <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-4">
+
+            <h4 class="text-uppercase text-white py-2"  >تابعنا</h4><br>
+            <div class="d-flex justify-content-start">
+
+                <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="http://www.cni.tn/index.php/fr/?view=page&id=44"><i class="fab fa-google"></i></a>
+                <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="https://www.facebook.com/CNITUNISI"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="https://www.linkedin.com/company/centre-national-de-l'informatique/"><i class="fab fa-linkedin-in"></i></a>
+
             </div>
         </div>
+        <div   class="col-4" *ngFor="let c of listetab, index as i" style="text-align: center;">
+            <h4 class="text-uppercase text-white mb-4" style="text-align: center;">ابقى على تواصل</h4>
+           <p><i class="fa fa-map-marker-alt text-white mr-2"></i>{{c.adresse}}</p>
+            <p><i class="fa fa-phone-alt text-white mr-2"></i>{{c.telephone }}--{{c.numFix}}</p>
+            <p><i class="fa fa-envelope text-white mr-2"></i>{{c.email}}</p>
+        </div>
+
     </div>
-    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="mb-2 text-center text-white-50">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.</p>
-        <p class="m-0 text-center text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
-    </div>
-    <!-- Footer End -->
+
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;"  *ngFor="let c of listetab, index as i">
+    <p class="mb-2 text-center text-white-50">&copy; <a href="#">  {{c.nom}}</a>. كل الحقوق محفوظة.</p>
+
+</div>
+<!-- Footer End -->
+
 
 
     <!-- Back to Top -->

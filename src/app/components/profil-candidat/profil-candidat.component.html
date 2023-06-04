@@ -37,17 +37,11 @@
       <ng-container *ngIf="c.etat === false">
         <p>مرفوض</p>
       </ng-container></th>
-      <th id="ligne">{{c.score}}</th>
-      <th id="ligne">{{co.dateDelais}}</th>
-      <th id="ligne">{{co.description}}</th>
-      <th id="ligne">{{co.dateExamen}}</th>
-      <th id="ligne">{{co.poste}}</th>
-
-
-
-
-
-
+      <th >المجموع :{{c.score}}</th>
+      <th >الأجل الأقصى :{{co.dateDelais}}</th>
+      <!-- <th id="ligne">{{co.description}}</th> -->
+      <th>موعد الامتحان :{{co.dateExamen}}</th>
+      <th  >الوظيفة :{{co.poste}}</th>
 
   </tr></div></div></div>
 
@@ -86,10 +80,9 @@
 
 
           </div>
-          <p>   <button class="back-to-profile" (click)="open()" >تغيير الحساب</button> <br> <br>
-            <button  class="back-to" (click)="logOut()" >غلق الحساب </button>
+          <p><button class="back-to-profile" (click)="open()" >تغيير الحساب</button> <br> <br>
+            <button  class="back-to" (click)="logOut()"style="cursor:pointer;" >غلق الحساب </button>
           </p>
-
         </footer>
       </div>
     </section>
@@ -106,7 +99,7 @@
           <div class="form-group">
             <label>رقم بطاقة التعريف</label>
             <input type="text"  [(ngModel)]="u.cin" name="cin" class="form-control" id="cin" placeholder="cin" style="text-align: right;">
-         </div>
+           </div>
 
 
           <div class="form-group">

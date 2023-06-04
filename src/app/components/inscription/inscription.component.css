@@ -5,8 +5,8 @@
 
 
 
-.inscri{
-  background-color: rgb(223, 227, 202);
+body{
+  background-color: rgb(201, 201, 193);
 }
 
 
@@ -378,15 +378,6 @@
   outline: none;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #DDD;
-  font-size: 16px;
-  color: #222;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-}
 
 
 
@@ -394,7 +385,8 @@ body {
 
 
 
-input[type="submit"]:hover,
+
+input[type="submit"]:hover,y
 input[type="submit"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);

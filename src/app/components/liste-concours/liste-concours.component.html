@@ -1,56 +1,35 @@
-  <!-- Portfolio Start -->
-              <!-- <div class="container-fluid py-5">
-                <div class="container pt-5 pb-3">
-                    <h1 class="display-4 text-uppercase text-center mb-5" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">قائمة المناظرات المتوفرة  </h1>
-                    <div class="row">
-                        <div class="col-12 text-center mb-2">
-                            <ul class="list-inline mb-4" id="portfolio-flters">
-                                <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
-                                    <i class="fa fa-star text-primary mr-2"></i>All
-                                </li>
-                                <li class="btn btn-outline-dark text-uppercase py-2 px-4" data-filter=".first">
-                                    <i class="fa fa-laptop-code text-primary mr-2"></i>Design
-                                </li>
-                                <li class="btn btn-outline-dark text-uppercase py-2 px-4" data-filter=".second">
-                                    <i class="fa fa-mobile-alt text-primary mr-2"></i>Development
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-<br><br>
-            <div class="text-center">
 
-                <i style="padding: 20px;" class="fa fa-search "></i> <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder=" ...بحث "style="text-align: right;">
-            </div><br>
-<table  *ngFor="let c of concoursList |filter:term, index as i" style="text-align: center;">
-<tr style="text-align: center; margin-bottom: 1000px;" >
-
-  <td style="width: 200px;">
-    </td>
-
-<td style="width: 1000px;">
-
-    <h1 style="text-align : right;">  إسم الوظيفة المطلوبة : <strong>{{c.poste}}</strong> </h1><br>
-    <div style="text-align : right; font-size: 27px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"><strong>موعد إجتياز الإمتحان : </strong>{{c.dateExamen}}</div><br>
-    <div  style="text-align : right; font-size: 27px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"><strong> الموعد النهائي :</strong>{{c.dateDelais}}</div><br>
-    <div  style="text-align : right; font-size: 27px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{c.description}}</div><br><br><br>
-    <button style="width: 200px;height:50px;  margin-right:0px;border-radius: 14px; text-align: center;" class="btn btn-primary" *ngIf="loginStatus"  [routerLink]="['/candidature', c.id]"> طلب المشاركة في المناظرة</button>
-    <button *ngIf="!loginStatus" style="background-color: rgb(241, 167, 48); height: 70px; text-align: center; color: white;font-size: 25px; border-radius:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" routerLink="/login">للتمكن من المشاركة في المناظرة يجب عليك تسجيل حسابك الخاص والمشاركة به</button>
-
-</td>
-
-<td style="width: 1000px;">
-  <h1 style="font-family:'Courier New', Courier, monospace;">{{i+1}}:المناظرة عدد</h1>
-  <!-- <img  src="" alt="{{c.photo}}"> -->
-  <img [src]="'data:image/jpeg;base64,' + c.imageData" style="width: 50%;height: 50%;" />
+<div class="text-center">
+  <!-- <span><i style="padding: 20px;" class="fa fa-search "></i></span> -->
+  <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}" placeholder="&#xf002;...بحث" style="text-align: right;">
+</div>
 
 
 
-</td>
 
-</tr>
-</table>
+<br>
+<div class="projcard-container">
+  <div class="projcard projcard-blue" *ngFor="let c of concoursList | filter:term, index as i">
+    <div class="projcard-bar"></div>
+      <div class="projcard-innerbox">
+          <img class="projcard-img" [src]="'data:image/jpeg;base64,' + c.image" />
+          <div class="projcard-textbox">
+              <div class="projcard-title">إسم الوظيفة المطلوبة: {{ c.poste }}</div><br>
+              <div class="projcard-subtitle"><strong style="color: rgb(43, 42, 42);font-family: 'Courier New', Courier, monospace;">موعد إجتياز الإمتحان : </strong>{{ c.dateExamen }}</div>
+              <div class="projcard-subtitle"><strong style="color: black;font-family: 'Courier New', Courier, monospace;">موعد إنتهاء المناظرة:</strong> {{ c.dateDelais }}</div>
+              <div class="projcard-subtitle"><strong style="color: black;font-family: 'Courier New', Courier, monospace;">موعد الإعلان عن النتائج: </strong>{{ c.dateResultat }}</div>
+<div><br>
+  <button style="width: 200px;height:50px; margin-right:0px;border-radius: 14px; text-align: center;margin-right: 250px;" class="btn btn-info" (click)="openDialog(c.description)">مزيد من التفاصيل</button><br><br>
+
+                <button style="width: 200px;height:50px; margin-right:0px;border-radius: 14px; text-align: center;margin-right: 250px;" class="btn btn-primary" *ngIf="loginStatus" [routerLink]="['/candidature', c.id]">طلب المشاركة في المناظرة</button>
+                <button *ngIf="!loginStatus" style="background-color: rgb(220, 184, 126);border:none;margin-right: 100px;border-radius: 5px;" routerLink="/login">للتمكن من المشاركة في المناظرة يجب عليك تسجيل حسابك الخاص والمشاركة به</button>
+              <br>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
 
 

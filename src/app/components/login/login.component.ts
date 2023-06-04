@@ -20,6 +20,63 @@ typeUser=Object.values(ERole);
 
   constructor(private is: InscriptionServiceService, private router: Router) {}
   ngOnInit(): void {}
+
+  login(): void {
+    console.log(localStorage.getItem('user'));
+
+    this.is.login(this.cin, this.motdepasse).subscribe(
+      (response: any) => {
+        const data = response; // Assuming the response is the token
+
+        localStorage.setItem('user', JSON.stringify(data));
+        sessionStorage.setItem('isconnecte', 'true');
+        console.log(data);
+
+        const role = data.role; // Assuming the token contains a 'role' property
+        console.log(role);
+
+        if (role === 'CANDIDAT') {
+          this.router.navigate(['/home']);
+          Swal.fire({
+            title: 'تعريف بالمستعمل بنجاح',
+            text: 'تمت عملية التعريف بالمستغمل بنجاح',
+            icon: 'success'
+          });
+        } else {
+          Swal.fire({
+            title: 'المساحة الإدارية',
+            text: 'تم العبور الى المساحة الإدارية بنجاح',
+            icon: 'success'
+          });
+          this.router.navigate(['/admin']);
+        }
+      },
+      (err) => {
+        this.wrongCred = true;
+        // if (err.error === 'Invalid username or password') {
+        // }
+        console.log(err.error);
+
+      }
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   resetPassword() {
     Swal.fire({
       title: 'الرجاء إدخال بريدك الإلكتروني',
@@ -80,42 +137,7 @@ typeUser=Object.values(ERole);
 
 
 
-  login() {
-    console.log(localStorage.getItem('user'));
 
-    const params = new HttpParams()
-      .set('cin', this.cin)
-      .set('motdepasse', this.motdepasse);
-
-    this.is.login(params).subscribe(
-      (data) => {
-        localStorage.setItem('user', JSON.stringify(data));
-        sessionStorage.setItem("isconnecte", "true");
-        console.log(data);
-        this.role = data.role;
-        if (this.role == "CANDIDAT") {
-          this.router.navigate(["/home"]);
-          // alert("Vous avez s'authentifié avec succès");
-          Swal.fire({
-            title: 'تعريف بالمستعمل بنجاح',
-            text: '  تمت عملية التعريف بالمستغمل بنجاح',
-            icon: 'success'
-          });
-        } else {
-          Swal.fire({
-            title: 'المساحة  الإدارية',
-            text: '  تم العبور الى المساحة الإدارية بنجاح',
-            icon: 'success'
-          });
-          this.router.navigate(["/admin"]);
-        }
-      },
-      (err) => {
-        if (err.error == 'Invalid CIN or password') this.wrongCred = true;
-        console.log(err.error);
-      }
-    );
-  }
 
 
 

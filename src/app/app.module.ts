@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,9 @@ import { ListeReclamationComponent } from './components/liste-reclamation/liste-
 import { ReclamationComponent } from './components/reclamation/reclamation.component';
 import { DiplomeFilterPipe } from './pipes/diplome-filter.pipe';
 import { ResultsComponent } from './components/results/results.component';
+import { HistoriqueComponent } from './components/historique/historique.component';
+import { HistoriqueReclamationComponent } from './components/historique-reclamation/historique-reclamation.component';
+import { DateFilterPipe } from './pipes/date-filter.pipe';
 
 
 
@@ -75,6 +79,9 @@ import { ResultsComponent } from './components/results/results.component';
     ReclamationComponent,
     DiplomeFilterPipe,
     ResultsComponent,
+    HistoriqueComponent,
+    HistoriqueReclamationComponent,
+    DateFilterPipe,
 
 
 
@@ -87,7 +94,8 @@ import { ResultsComponent } from './components/results/results.component';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPageScrollModule
 
 
   ],
