@@ -55,4 +55,17 @@ this.rs.getReclamation().subscribe(
     );
   }
 
+
+  openDialog(description: string) {
+    Swal.fire({
+      title:'محتوى التساؤل ',
+      html: `<div style="font-size: 35px;">${description}</div>`,
+      confirmButtonText: 'حسنًا',
+      customClass: {
+        container: 'custom-swal-container',
+      },
+    });
+  }
+
+
 }

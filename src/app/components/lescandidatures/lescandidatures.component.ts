@@ -67,19 +67,13 @@ displayedCandidatEmails: string[] = [];
         this.concours = concours;
         console.log(this.concours.id)});
 
-   // Replace with the actual concoursId you want to fetch
-    this.candidatService.getCandidatsByConcoursId(id)
+   //  remplacer avec l'actuel concoursId que je veux l'apporter
+      this.candidatService.getCandidatsByConcoursId(id)
       .subscribe(candidats => {
         this.candidats = candidats;
         this.candidats.sort((a, b) => b.score - a.score);
-
-
-        this.updateDisplayedCandidatEmails(); // Update the displayed candidat emails
-
-
+        this.updateDisplayedCandidatEmails();
         this.userservice.getUsers().subscribe((users)=>{this.users=users})
-
-
       });
 
   }
@@ -141,7 +135,6 @@ sendEmail(){
         },
         (error) => {
           console.error('Failed to send emails', error);
-          // Handle error
         }
       );
     });
@@ -158,15 +151,6 @@ getClassForReussite(reussite: boolean | undefined | null): string {
     return 'yellow-button';
   }
 }
-
-
-
-
-
-
-
-
-
   }
 
 

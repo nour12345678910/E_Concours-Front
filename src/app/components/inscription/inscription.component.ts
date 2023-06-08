@@ -45,7 +45,6 @@ export class InscriptionComponent implements OnInit{
 
     let isFormValid = true;
 
-    // Check if any input is empty, and display an error message if it is
     if (!email.value) {
       email.style.borderColor = 'red';
       email.nextElementSibling.textContent = 'خانة البريد الالكتروني ضرورية *' ;
@@ -127,7 +126,6 @@ export class InscriptionComponent implements OnInit{
     this.is.inscrire(this.par,this.selectedFile).subscribe(
       (data) => {
         localStorage.setItem('user', JSON.stringify(data));
-        // this.toastr.success('تم إنشاء الحساب بنجاح!', 'تم بنجاح');
         Swal.fire({
           title: 'إنشاء الحساب بنجاح',
           text: 'تم إنشاء الحساب بنجاح',
@@ -140,7 +138,6 @@ export class InscriptionComponent implements OnInit{
 
       (err) => {
         if (err.error == 'NAME_TAKEN') this.exist = true;
-        // this.toastr.error('لم يتم إنشاء الحساب. يرجى المحاولة مرة أخرى!', 'خطأ');
 
         this.errorMessage=("حسٖٖاب موجود")
         Swal.fire({
@@ -165,7 +162,6 @@ console.log("remplir tout les champs ")}
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.selectedFile = file;
-      //this.f['profile'].setValue(file);
 
       const mimeType = event.target.files[0].type;
       if (!mimeType.match(/image\/*/)) {

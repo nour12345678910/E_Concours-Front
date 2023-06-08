@@ -19,7 +19,7 @@ export class ReclamationService {
   constructor(private http:HttpClient) { }
 
   sendMessage(reclamationId: number, response: Response): Observable<Reclamation> {
-    return this.http.post<Reclamation>(`${this.RECLAMATION_API2}/add/${reclamationId}`, response);
+    return this.http.post<Reclamation>(`${this.RECLAMATION_API2}/answer/${reclamationId}`, response);
 }
 
 

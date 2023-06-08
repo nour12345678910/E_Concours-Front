@@ -27,7 +27,6 @@ reclamation: Reclamation=new Reclamation();
 
     let isFormValid = true;
 
-    // Check if any input is empty, and display an error message if it is
     if (!emailInput.value) {
       emailInput.style.borderColor = 'red';
       emailInput.nextElementSibling.textContent = 'خانة البريد الالكتروني ضرورية *' ;
@@ -68,14 +67,12 @@ reclamation: Reclamation=new Reclamation();
       messageInput.nextElementSibling.textContent = '';
     }
 
-    // If the form is valid, submit the reclamation
     if (isFormValid) {
       this.rs.addReclamation(this.reclamation).subscribe(
         () => {
           this.router.navigate(['/home']); // navigate to the home page
           Swal.fire({
             title: 'تمت إضافة تساؤلك بنجاح',
-            // text: '  تم العبور الى المساحة الإدارية بنجاح',
             icon: 'success'
           });
         },

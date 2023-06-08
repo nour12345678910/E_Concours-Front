@@ -1,7 +1,7 @@
 import { Diplome } from "./Diplome";
 
 export class CandidatInfo {
-  [x: string]: any;
+
   id: number;
   userId: number;
   concoursId: number;

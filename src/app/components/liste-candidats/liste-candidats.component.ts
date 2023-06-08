@@ -32,8 +32,6 @@ export class ListeCandidatsComponent {
     this.candidatService.getCandidatInfo()
       .subscribe(candidats => {
         this.candidats = candidats;
-        // Process the list of candidats as needed
-
         this.userservice.getUsers().subscribe((users)=>{this.users=users})
       });
       this.concoursService.getAllConcours().subscribe(concours=>{this.concours=concours})

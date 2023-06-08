@@ -5,13 +5,12 @@
   display:inline-flex;
   position: relative;
   bottom: 1680px;
-  right: 27%;
+  right: 26%;
 
 background-color:transparent;
 }
 table {
   border-collapse: collapse;
-  width: 30px;
 
 }
 
@@ -19,7 +18,7 @@ tr,td {
 
   border: 1px solid black;
 }
-th{ width:200px;background-color: antiquewhite; }
+th{ background-color: antiquewhite; }
 
 
 

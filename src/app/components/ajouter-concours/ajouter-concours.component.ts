@@ -18,11 +18,6 @@ export class AjouterConcoursComponent {
   public imagePath;
   public message: string;
   selectedDiplomas :string []=[];
-
-
-
-
-
   dateE
   dateD
   dateR
@@ -153,9 +148,10 @@ export class AjouterConcoursComponent {
       .subscribe((data) => {
         console.log(data);
         addForm.resetForm();
-        this.router.navigate(['/admin/concours/listeconcours']);
+        this.router.navigate(['/admin/listeconcours']);
        // Log the add action in historique
-       const concoursId = data.id; // Assuming the response contains the ID of the added concours
+       //l'id du concours
+       const concoursId = data.id;
        this.actionHistoriqueService.logAction('الإضافة', concoursId).subscribe(
          response => {
            console.log('Action logged successfully');

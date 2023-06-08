@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etablissement } from 'src/app/models/Etablissement';
-import { User } from 'src/app/models/User';
 import { EtablissementService } from 'src/app/services/etablissement.service';
 
 @Component({
@@ -21,18 +20,18 @@ listetab: Etablissement[];
 
   constructor(private router:Router,private es:EtablissementService,private formBuilder:FormBuilder,private activatedRoute: ActivatedRoute) { }
 
-  
-  
+
+
   ngOnInit(): void {
     this.es.getEtablissement().subscribe((listetab) => {
       this.listetab = listetab;
     })
-  } 
-  
+  }
+
   activer(){
     this.actif=false;
   }
-  
+
 
 
 
@@ -46,8 +45,8 @@ listetab: Etablissement[];
       }
     );
     }
-   
 
 
- 
+
+
 }

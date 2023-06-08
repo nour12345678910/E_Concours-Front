@@ -48,14 +48,6 @@ export class HistoriqueComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
   deleteLog(id: number) {
     Swal.fire({
       title: 'تأكيد',

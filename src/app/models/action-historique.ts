@@ -1,4 +1,4 @@
-export interface ActionHistorique {
+export class ActionHistorique {
   id: number;
   date: Date;
   action: string;

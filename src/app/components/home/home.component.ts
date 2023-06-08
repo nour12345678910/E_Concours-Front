@@ -32,12 +32,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  /*isLoggedIn() {
-    if (localStorage.getItem('user')) {
-      return true;
-    }
-    return false;
-  }*/
+
 
   logOut(){
 

@@ -17,14 +17,10 @@ import * as math from 'mathjs';
   styleUrls: ['./candidature.component.css']
 })
 export class CandidatureComponent implements OnInit  {
-  isPanelOpen = false; // initialize isPanelOpen property to false
-
-  diplomeInfoVisible: boolean[] = [true]; // by default, show the first diploma's information
   candidat: CandidatInfo = new CandidatInfo();
   candidatureForm: FormGroup;
   lesCandidats:CandidatInfo[]=[]
   user:User;
-
   diplome: Diplome = new Diplome();
   actif=true;
   diplomes: Diplome[] = [new Diplome()];
@@ -42,10 +38,6 @@ export class CandidatureComponent implements OnInit  {
     private formBuilder: FormBuilder,
     private http: HttpClient, private concoursService:ConcoursService,private route: ActivatedRoute
     ) { }
-
-    i: number = 0; // add this line to define the i variable
-
-    // rest of your component code
     currentPanel = 0;
 
     togglePanel(panelIndex: number) {
@@ -250,13 +242,12 @@ export class CandidatureComponent implements OnInit  {
           const moyenne1 = +diplome.moyenne1 || 0;
           const moyenne2 = +diplome.moyenne2 || 0;
           const moyenne3 = +diplome.moyenne3 || 0;
-          const formule = this.concours.formule // Get the formule from the concours object
+          const formule = this.concours.formule
 
           if (!formule) {
             throw new Error('formule is undefined');
           }
 
-          // Evaluate the formule using mathjs
           const scope = {
             moyenneBac,
             moyenne1,
@@ -268,11 +259,9 @@ export class CandidatureComponent implements OnInit  {
           return evaluatedformule;
         });
 
-        // Calculate overall formule
         const overallformule = formules.reduce((sum, formule) => sum + formule, 0);
 
 
-        // Do something with the overall formule, such as saving it to a database
         console.log(`Overall formule: ${overallformule}`);
 
 
@@ -287,7 +276,6 @@ export class CandidatureComponent implements OnInit  {
       .subscribe(
         (candidat) => {
           console.log('Candidat ajouté avec succès:', candidat);
-          // alert(`Candidat ajouté avec succès \n \r Votre  formule est égale à : ${candidat.formule}`);
 
           Swal.fire({
             title: `إضافة طلب ترشحك بنجاح بمعدل: ${candidat.score}`,
@@ -302,11 +290,9 @@ export class CandidatureComponent implements OnInit  {
 
           Swal.fire({
             title: `أنت مسجل في هذه المناظرة من قبل`,
-            // text: 'تم إنشاء الحساب بنجاح',
             icon: 'error'
           });
 
-          // alert(`user existant`);
         }
       );
     }

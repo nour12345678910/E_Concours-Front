@@ -21,12 +21,7 @@ export class AdminComponent implements OnInit {
     this.loginStatus=this.is.isLoggedIn;
   }
 
-  /*isLoggedIn() {
-    if (localStorage.getItem('user')) {
-      return true;
-    }
-    return false;
-  }*/
+
 
   logOut(){
     this.router.navigate(["/home"]);

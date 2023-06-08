@@ -1,9 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etablissement } from 'src/app/models/Etablissement';
-import { User } from 'src/app/models/User';
 import { EtablissementService } from 'src/app/services/etablissement.service';
 
 @Component({
@@ -37,7 +35,6 @@ export class ModifEtablissementComponent implements OnInit {
     ngOnInit() {
       const id = +this.activatedRoute.snapshot.paramMap.get('id');
       this.es.getEtablissementById(id).subscribe(etablissement => {
-        // Parse date strings into Date objects
         this.etablissement = etablissement;
       });
     }
@@ -94,8 +91,6 @@ export class ModifEtablissementComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.selectedFile = file;
-      //this.f['profile'].setValue(file);
-
       const mimeType = event.target.files[0].type;
       if (!mimeType.match(/image\/*/)) {
         this.message = 'Only images are supported.';
@@ -115,7 +110,6 @@ export class ModifEtablissementComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.selectedLogo = file;
-      //this.f['profile'].setValue(file);
 
       const mimeType = event.target.files[0].type;
       if (!mimeType.match(/image\/*/)) {
@@ -130,29 +124,6 @@ export class ModifEtablissementComponent implements OnInit {
         this.logoURL = reader.result;
       };
     }
-
-
 }
-
-
-
-    // onUpdateInfosEtablissement(){
-    //   this.es.updateEtab(this.etablis).subscribe(
-    //     (response:Etablissement)=>{
-    //       console.log(response);
-    //       console.log(this.etablis)
-    //       localStorage.setItem('etablissement', JSON.stringify(response));
-    //     },
-    //     (error:HttpErrorResponse)=> {
-    //       alert(error.message)
-    //     }
-
-    //   )
-    //   this.actif=true; }
-
-
-
-
-
   }
 

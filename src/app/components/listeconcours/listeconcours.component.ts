@@ -7,7 +7,6 @@ import { InscriptionServiceService } from 'src/app/services/inscription-service.
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { ActionHistoriqueServiceService } from 'src/app/services/action-historique-service.service';
 
 @Component({
   selector: 'app-listeconcours',
@@ -41,9 +40,8 @@ export class ListeconcoursComponent implements OnInit {
     constructor(
       private cs: ConcoursService,
       private router: Router,
-      private is:InscriptionServiceService,
       private http: HttpClient,private route:ActivatedRoute,
-      private sanitizer: DomSanitizer  ) {
+      ) {
         this.concoursListe = [];
         this.lesConcours = [];
       }
@@ -109,7 +107,6 @@ export class ListeconcoursComponent implements OnInit {
         if (event.target.files.length > 0) {
           const file = event.target.files[0];
           this.selectedFile = file;
-          //this.f['profile'].setValue(file);
 
           const mimeType = event.target.files[0].type;
           if (!mimeType.match(/image\/*/)) {
@@ -148,66 +145,6 @@ export class ListeconcoursComponent implements OnInit {
 
 
 
-
-      // editConcours(id: number) {
-      //   const formData = new FormData();
-      //   // Add the updated data to the formData object
-      //   formData.append('poste', 'new poste');
-      //   formData.append('description', 'new description');
-      //   formData.append('dateExamen', '2023-04-05');
-      //   formData.append('dateDelais', '2023-04-10');
-      //   formData.append('image', this.selectedFile);
-
-      //   // Call the updateConcours method passing the id and formData
-      //   this.cs.updateConcours(id, formData).subscribe((data) => {
-      //     console.log(data);
-      //   });
-      // }
-
-
-
-      // ngOnInit(): void {
-      //   // console.log(this.concours.photo)
-      //   // this.getAllConcoursWithImages();
-      //   this.cs.getConcours().subscribe(response => this.lesConcours=response);
-      //   this.loginStatus=this.is.isLoggedIn;
-      // }
-
-    // ngOnInit(): void {
-    //   this.cs.getAllConcours().subscribe((concoursList) => {
-    //     this.lesConcours = concoursList;
-    //   });
-    // }
-
-
-    // ngOnInit(): void {
-    //   this.getImage();
-    // }
-    getConcour() {
-      // this.cs.getConcours().subscribe(
-      //   data => {
-      //     this.lesConcours = data;
-      //     for (let i = 0; i < this.lesConcours.length; i++) {
-      //       if (this.lesConcours[i].photo) {
-      //         // Convert the byte array to a base64 string
-      //         let binary = '';
-      //         let bytes = new Uint8Array(this.lesConcours[i].photo.data);
-      //         bytes.forEach((b) => binary += String.fromCharCode(b));
-      //         const base64String = window.btoa(binary);
-      //         // Create a SafeUrl from the base64 string
-      //         // Create a SafeUrl from the base64 string
-      //         this.lesConcours[i]['safeImageUrl'] = this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + base64String);
-      //       }::
-      //     }
-      //     console.log(this.lesConcours); // log the updated array
-      //   },
-      //   error => console.error(error)
-      // );
-    }
-
-
-
-
     dataURItoBlob(dataURI: string): Blob {
       const byteString = atob(dataURI.split(',')[1]);
       const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
@@ -229,7 +166,6 @@ export class ListeconcoursComponent implements OnInit {
       this.router.navigate(["/inscription"]);}}
 
   getImage() {
-      //Make a call to Sprinf Boot to get the Image Bytes.
       this.http.get('http://localhost:8087/api/concours/all')
         .subscribe(
           res => {
@@ -240,14 +176,6 @@ export class ListeconcoursComponent implements OnInit {
         );
     }
 
-    // ngOnInit(): void {
-    //   this.cs.getConcour().subscribe(
-    //     (concoursList: Concours[]) => {
-    //       this.concoursListe = concoursList;
-    //       console.log(this.concoursListe); // log the Concours objects to the console
-    //     }
-    //   );
-    // }
 
 
 

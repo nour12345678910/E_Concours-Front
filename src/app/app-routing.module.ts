@@ -9,7 +9,6 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { ListeConcoursComponent } from './components/liste-concours/liste-concours.component';
 import { ListeconcoursComponent } from './components/listeconcours/listeconcours.component';
 import { LoginComponent } from './components/login/login.component';
-import { MenuConcoursComponent } from './components/menu-concours/menu-concours.component';
 import { ModifEtablissementComponent } from './components/modif-etablissement/modif-etablissement.component';
 import { ProfilAdminComponent } from './components/profil-admin/profil-admin.component';
 import { ProfilCandidatComponent } from './components/profil-candidat/profil-candidat.component';
@@ -28,6 +27,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ProfilGuard } from './guards/profil.guard';
 import { HistoriqueComponent } from './components/historique/historique.component';
 import { HistoriqueReclamationComponent } from './components/historique-reclamation/historique-reclamation.component';
+import { ErrorComponent } from './comonents/error/error.component';
 
 const routes: Routes =[
 
@@ -43,18 +43,11 @@ const routes: Routes =[
     {path:'reussis', component:ListeCandidatsReussisComponent},
 
 
-
-    {path:'concours', component:MenuConcoursComponent,
-
-  children:[
     {path:'ajouterconcours', component:AjouterConcoursComponent},
     {path:'listeconcours', component:ListeconcoursComponent},
     {path:'listeCandidats', component:ListeCandidatsComponent},
     {path:'modifConcours/:id', component:ModifConcoursComponent},
     {path:'candidats/:id', component:LescandidaturesComponent},
-
-  ]},
-  // {path:'MonProfile',component:ProfileAdminComponent},
 
   ]},
   {path:'inscription', component:InscriptionComponent},
@@ -76,6 +69,7 @@ const routes: Routes =[
 
 
   {path:'',redirectTo :'home',pathMatch:'full'},
+  {path:'**',component:ErrorComponent}
 
   ]
 

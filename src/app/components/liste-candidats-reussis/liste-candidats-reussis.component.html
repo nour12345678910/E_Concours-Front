@@ -6,7 +6,7 @@
 
   <div id="box" style="height: 10px;">
 <br> <h1 style="margin-right: 450px;"> قائمة المترشحين الناجحين   </h1>
- <table style="width: 0px; margin-top: 120px;">
+ <table style="width: 1px; margin-top: 120px;">
 
 <div *ngFor="let c of successfulCandidates; index as i">
   <div *ngFor="let u of users; index as j">
@@ -22,12 +22,7 @@
         <th id="ligne">{{u.email}}</th>
         <th id="ligne">{{u.telephone}}</th>
 
-        <!-- <th id="ligne">{{c.adress}}</th> -->
         <th id="ligne"> ب.ت.و : {{u.cin}}</th>
-        <!-- <th id="ligne">{{c.sex}}</th> -->
-        <!-- <th id="ligne">{{c.statutCivil}}</th> -->
-        <!-- <th id="ligne">{{c.ville}}</th> -->
-        <!-- <th id="ligne">{{c.zipCode}}</th> -->
         <th id="ligne"> المجموع:{{c.score}}</th>
         <th id="ligne"> الوظيفة:{{co.poste}}</th>
 

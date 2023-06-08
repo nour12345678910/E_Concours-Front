@@ -28,18 +28,16 @@ submitForm() {
   // get the ID of the reclamation from the route parameter
   this.reclamation.id = +this.route.snapshot.paramMap.get('id');
 
-  // create a new response object with the message entered by the user
   const response = new Response();
   response.message = this.response.message;
 
-  // send the response to the server using the ReclamationService
+  //envoyer réponse au serveur avec the ReclamationService
   this.rs.sendMessage(this.reclamation.id, response)
   .subscribe(
     (reclamation) => {
       console.log('Response sent successfully:', reclamation);
       Swal.fire({
         title: `تم إرسال الرد بنجاح`,
-        // text: 'تم إنشاء الحساب بنجاح',
         icon: 'success'
       });
     },

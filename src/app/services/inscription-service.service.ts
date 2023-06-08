@@ -70,16 +70,7 @@ export class InscriptionServiceService {
       formData.append('email',user.email );
       formData.append('photo',image );
       formData.append('role',"CANDIDAT" );
-      return this.http.post<User>(`${this.baseUrl}`, formData);
-    }
-
-
-
-
-
-
-    ajouter(user: User): Observable<User> {
-      return this.http.post<User>(`${this.baseUrl}`+ '/login', user);
+      return this.http.post<User>(`${this.baseUrl}`+ '/signUp', formData);
     }
 
     login(cin: string, motdepasse: string): Observable<string> {
@@ -87,7 +78,7 @@ export class InscriptionServiceService {
         .set('cin', cin)
         .set('motdepasse', motdepasse);
 
-      return this.http.post<string>(`${this.baseUrl}/login`, null, { params });
+      return this.http.post<string>(`${this.baseUrl}/signIn`, null, { params });
     }
 
 

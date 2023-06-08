@@ -20,17 +20,13 @@
           <td id="ligne">{{r.nom}}</td>
           <td id="ligne">{{r.email}}</td>
           <td id="ligne">{{r.sujet}}</td>
-          <td id="ligne">{{r.message}}</td>
+          <td>  <button  class="btn btn-info" style="text-align: center;"   (click)="openDialog(r.message)">مزيد من التفاصيل</button><br><br> </td>
           <td style="text-align: center;">
             <button class="btn btn-success"  routerLink="/reponse/{{r.id}}" style="font-size: 100%;">الاجابة</button>
           </td>
           <td style="text-align: center;">
             <button class="btn btn-danger" role="button" (click)="deleteQuestion(r.id)" >الازالة</button>
           </td>
-
-
-
-
         </tr>
       </table>
     </div>

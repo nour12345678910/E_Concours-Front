@@ -185,7 +185,7 @@ export class ModifConcoursComponent implements OnInit {
     }
     this.concoursService.updateConcours(this.concours.id, postData).subscribe(concours => {
       this.concours = concours;
-      this.router.navigate(['/admin/concours/listeconcours']);
+      this.router.navigate(['/admin/listeconcours']);
 
 // Log the modify action in historique
 this.actionHistoriqueService.logAction('التعديل', this.concours.id).subscribe(

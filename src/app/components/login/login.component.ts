@@ -26,13 +26,13 @@ typeUser=Object.values(ERole);
 
     this.is.login(this.cin, this.motdepasse).subscribe(
       (response: any) => {
-        const data = response; // Assuming the response is the token
+        const data = response;
 
         localStorage.setItem('user', JSON.stringify(data));
         sessionStorage.setItem('isconnecte', 'true');
         console.log(data);
 
-        const role = data.role; // Assuming the token contains a 'role' property
+        const role = data.role;
         console.log(role);
 
         if (role === 'CANDIDAT') {
@@ -53,8 +53,6 @@ typeUser=Object.values(ERole);
       },
       (err) => {
         this.wrongCred = true;
-        // if (err.error === 'Invalid username or password') {
-        // }
         console.log(err.error);
 
       }
@@ -119,75 +117,5 @@ typeUser=Object.values(ERole);
       }
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // resetPassword() {
-  //   Swal.fire({
-  //     title: 'Enter your name',
-  //     input: 'text',
-  //     inputAttributes: {
-  //       autocapitalize: 'off'
-  //     },
-  //     showCancelButton: true,
-  //     confirmButtonText: 'Submit',
-  //     showLoaderOnConfirm: true,
-  //     preConfirm: (name) => {
-  //       return new Promise((resolve) => {
-  //         setTimeout(() => {
-  //           if (name === 'example') {
-  //             Swal.showValidationMessage('This name is not available');
-  //           } else {
-  //             resolve(name);
-  //           }
-  //         }, 2000);
-  //       });
-  //     },
-  //     allowOutsideClick: () => !Swal.isLoading()
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire({
-  //         title: `Hello, ${result.value}!`,
-  //         icon: 'success'
-  //       });
-  //     }
-  //   });
-  // }
-
-
-
-
-
-
-
-
-
-
-
 }
 

@@ -1,5 +1,5 @@
 
-export interface Concours {
+export class Concours {
   id: number;
   poste: string;
   description: string;

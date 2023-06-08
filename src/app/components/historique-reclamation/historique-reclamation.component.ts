@@ -38,7 +38,9 @@ export class HistoriqueReclamationComponent implements OnInit {
       const dateB = new Date(b.date);
       return dateB.getTime() - dateA.getTime();
     });
-    this.actionLogsReclamation = this.actionLogsReclamation.filter(log => new Date(log.date) <= currentDate); // Filter logs with dates equal to or earlier than the current date
+
+    // Filter logs with dates equal to or earlier than the current date
+    this.actionLogsReclamation = this.actionLogsReclamation.filter(log => new Date(log.date) <= currentDate);
   }
 
 

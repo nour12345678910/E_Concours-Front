@@ -25,6 +25,8 @@ export class ProfilAdminComponent implements OnInit {
         console.log(response);
         console.log(this.user)
         localStorage.setItem('user', JSON.stringify(response));
+        window.location.reload();
+
       },
       (error:HttpErrorResponse)=> {
         alert(error.message)

@@ -11,6 +11,7 @@ import { HistoriqueReclamation } from '../models/historique-reclamation';
 export class ActionHistoriqueServiceService {
 
   private baseUrl = 'http://localhost:8087/api';
+  private baseUrl3 = 'http://localhost:8087/api/historiquesConcours';
   private baseUrl2 = 'http://localhost:8087/api/historiquesReclamations';
 
 
@@ -22,7 +23,7 @@ export class ActionHistoriqueServiceService {
   }
 
   getActionLogs(): Observable<ActionHistorique[]> {
-    return this.http.get<ActionHistorique[]>(this.baseUrl);
+    return this.http.get<ActionHistorique[]>(this.baseUrl3);
   }
 
 

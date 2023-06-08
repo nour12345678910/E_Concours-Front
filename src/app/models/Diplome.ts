@@ -11,7 +11,7 @@ export class Diplome {
   moyenne3: string;
   moyenneBac: string;
   candidat: CandidatInfo;
-  collapsed: boolean; // add this line to include the collapsed property
+  collapsed: boolean;
 
 
 }

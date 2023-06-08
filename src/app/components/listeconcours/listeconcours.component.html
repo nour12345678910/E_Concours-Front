@@ -19,7 +19,6 @@
     <th>التفاصيل</th>
     <th>قائمة المشاركين</th>
     <th>الازالة\التغيير</th>
-    <!-- <th>معلومات عن المناظرة</th> -->
 
 
   </tr>
@@ -40,7 +39,7 @@
 </td>
 
   <td> <div class="col-md-5"><button class="button-2" role="button"
-    [routerLink]="['/admin/concours/candidats', c.id]">المترشحين </button></div>
+    [routerLink]="['/admin/candidats', c.id]">المترشحين </button></div>
  </td>
 
 
@@ -48,7 +47,7 @@
       <div class="form-group row">
         <div class="col-md-5"><button class="button-5" role="button" (click)="deletConcours(c.id)">الازالة</button></div>
 
-          <div class="col-md-5"><button class="button-1" role="button" [routerLink]="['/admin/concours/modifConcours', c.id]">التغيير</button></div>
+          <div class="col-md-5"><button class="button-1" role="button" [routerLink]="['/admin/modifConcours', c.id]">التغيير</button></div>
       </div>
   </td>
 
