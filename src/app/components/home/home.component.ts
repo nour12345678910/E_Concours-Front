@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   lesConcours: Concours[]=[];
   user:User;
   u:User;
-  listetab: Etablissement[];
+  c: Etablissement;
 
   constructor(private cs:ConcoursService ,private  router:Router,private is:InscriptionServiceService,private es:EtablissementService,private pageScrollService: PageScrollService) { }
 
@@ -27,12 +27,17 @@ export class HomeComponent implements OnInit {
     this.cs.getAllConcours().subscribe(response => this.lesConcours=response);
     this.loginStatus=this.is.isLoggedInn();
 
-    this.es.getEtablissement().subscribe((listetab) => {
-      this.listetab = listetab;
+    this.es.getEtablissementById(1).subscribe((listetab) => {
+      this.c = listetab;
     })
   }
 
-
+  /*isLoggedIn() {
+    if (localStorage.getItem('user')) {
+      return true;
+    }
+    return false;
+  }*/
 
   logOut(){
 
@@ -51,8 +56,5 @@ export class HomeComponent implements OnInit {
   }
 
 }
-
-
-
 
 

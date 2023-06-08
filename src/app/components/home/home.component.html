@@ -1,193 +1,184 @@
 
 
+<!-- Navbar Start -->
+<div class="container-fluid bg-white position-relative" >
+  <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
 
 
-    <!-- Navbar Start -->
-    <div class="container-fluid bg-white position-relative" >
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+      <a href="index.html" class="navbar-brand text-secondary">
+      </a>
+      <div style="display: flex; align-items: center;">
+        <img style="width: 200px; height: 100px;" [src]="'data:image/jpeg;base64,' + c.logo" alt="logo">
+        <h1 style="margin-left: 10px;">{{ c.nom }}</h1>
+      </div>
 
 
-            <a href="index.html" class="navbar-brand text-secondary">
-            </a>
-            <div *ngFor="let c of listetab, index as i" style="display: flex; align-items: center;">
-              <img style="width: 200px; height: 100px;" [src]="'data:image/jpeg;base64,' + c.logo" alt="logo">
-              <h1 style="margin-left: 10px;">{{ c.nom }}</h1>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ml-auto py-0 pr-3 border-right">
+              <!-- <a href="index.html" class="nav-item nav-link">procédures</a> -->
+              <!-- <a href="about.html" class="nav-item nav-link">A propos</a> -->
+
+
+
+
+
+
+
+              <a  class="nav-item nav-link"  style="font-size: 26px;;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" (click)="scrollToSection('contact-section')"
+              >للإتصال بنا</a>
+
+
+
+
+            <a  class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" routerLink="/results" *ngIf="loginStatus">نتائج المناظرات</a>
+
+            <a class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;"
+            (click)="scrollToSection('concours-section')"
+          >
+            المناظرات المتوفرة
+          </a>
+
+            <a routerLink="/inscription"  *ngIf="!loginStatus" class="nav-item nav-link"  style="font-size: 26px;;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;">إنشاءحساب شخصي</a>
+
+
+            <a routerLink="/login"  *ngIf="!loginStatus" class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" >تسجيل الدخول</a>
+            <a  class="nav-item nav-link active" style="font-size: 26px;font-weight: bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;">الإستقبال  <i class="fa fa-home"></i>
+              </a>
+
+
+
+
             </div>
 
+      </div>
+      <div class="nav-item dropdown">
+          <a style="font-size: 25px;" class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="loginStatus">
+              <span style="font-size: 26px; color: #111111;cursor: pointer;">  {{u.prenom}}  {{u.nom}} </span>
+              <img style="width: 150px;height: 150px;border-radius: 50%;" [src]="'data:image/jpeg;base64,' + u.photo" alt="Mewy Pawpins" />
 
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ml-auto py-0 pr-3 border-right">
-              
+          </a>
+          <ul class="dropdown-menu " style="font-size: 26px; background-color:white;width:200px" >
+            <li id="l" style="text-align: center;width: 200px;">
 
-
-
-
-
-
-
-                    <a  class="nav-item nav-link"  style="font-size: 26px;;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" (click)="scrollToSection('contact-section')"
-                    >للإتصال بنا</a>
+              <a *ngIf="loginStatus" routerLink="/profil" style="color: #111111; text-decoration: none">
 
 
+                معلومات المستعمل
+                <i class="fa fa-user"></i>
+              </a>
 
+            </li>
 
-                  <a  class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" routerLink="/results" *ngIf="loginStatus">نتائج المناظرات</a>
+                              <li id="l" style="text-align:center; ;width: 200px;" ><a *ngIf="loginStatus"  style="color: #111111;" (click)="logOut()">
+                                   غلق الحساب
+                                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 " style="color:rgba(255, 21, 21, 0.741);" ></i>
 
-                  <a class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;"
-                  (click)="scrollToSection('concours-section')"
-                >
-                  المناظرات المتوفرة
-                </a>
-
-                  <a routerLink="/inscription"  *ngIf="!loginStatus" class="nav-item nav-link"  style="font-size: 26px;;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;">إنشاءحساب شخصي</a>
-
-
-                  <a routerLink="/login"  *ngIf="!loginStatus" class="nav-item nav-link" style="font-size: 26px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;" >تسجيل الدخول</a>
-                  <a  class="nav-item nav-link active" style="font-size: 26px;font-weight: bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;cursor: pointer;">الإستقبال  <i class="fa fa-home"></i>
-                    </a>
-
-
-
-
-                  </div>
-
-            </div>
-            <div class="nav-item dropdown">
-                <a style="font-size: 25px;" class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="loginStatus">
-                    <span style="font-size: 26px; color: #111111;cursor: pointer;">  {{u.prenom}}  {{u.nom}} </span>
-                    <img style="width: 150px;height: 150px;border-radius: 50%;" [src]="'data:image/jpeg;base64,' + u.photo" alt="Mewy Pawpins" />
-
-                </a>
-                <ul class="dropdown-menu " style="font-size: 26px; background-color:white;width:200px" >
-                  <li id="l" style="text-align: center;width: 200px;">
-
-                    <a *ngIf="loginStatus" routerLink="/profil" style="color: #111111; text-decoration: none">
-
-
-                      معلومات المستعمل
-                      <i class="fa fa-user"></i>
-                    </a>
-
-                  </li>
-
-                                    <li id="l" style="text-align:center; ;width: 200px;" ><a *ngIf="loginStatus"  style="color: #111111;" (click)="logOut()">
-                                         غلق الحساب
-                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 " style="color:rgba(255, 21, 21, 0.741);" ></i>
-
-                                    </a></li>
-              </ul>
-
-              </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
-
-
-    <!-- Header Start -->
-    <div class="bg" style="margin-bottom: 90px;"  *ngFor="let c of listetab, index as i">
-        <div class="row mx-0 align-items-center bg">
-            <div class="conteneur-texte">
-
-
-            </div><br>
-
-
-                <img  style=" width: 100%;height: 700px;" [src]="'data:image/jpeg;base64,' + c.imagefond" alt="">
+                              </a></li>
+        </ul>
 
         </div>
+  </nav>
+</div>
+<!-- Navbar End -->
+
+
+<!-- Header Start -->
+<div class="bg" style="margin-bottom: 90px;"  >
+  <div class="row mx-0 align-items-center bg">
+      <div class="conteneur-texte">
+
+
+      </div><br>
+
+
+          <img  style=" width: 100%;height: 700px;" [src]="'data:image/jpeg;base64,' + c.imagefond" alt="">
+
+  </div>
+</div>
+
+
+
+
+<!-- Services Start -->
+<div class="container-fluid py-5" id="etapes">
+  <div class="container pt-5 pb-3">
+      <h1 class="display-4 text-uppercase text-center mb-5">مراحل المشاركة في المناظرة</h1>
+      <div class="row" style="text-align:right;">
+        <div class="col-lg-3 mb-2">
+          <div class="service-item rounded p-5 mb-4">
+              <i class="fa fa-3x fa-edit text-primary mb-4"></i>
+              <h4 class="text-uppercase mb-4" style="text-align: center;">4 المرحلة الرابعة</h4>
+              <p class="m-0" style="font-size: 27px;text-align: right;">تعمير إستمارة طلب الترشح للمناظرة   </p>
+          </div>
+      </div>
+      <div class="col-lg-3 mb-2">
+        <div class="service-item rounded p-5 mb-4">
+            <i class="fa fa-3x fa-edit text-primary mb-4"></i>
+            <h4 class="text-uppercase mb-4" style="text-align: center;">3 المرحلة الثالثة</h4>
+            <p class="m-0" style="font-size: 27px;text-align: right;">إختيار المناظرة المناسبة للمشاركة فيها</p>
+        </div>
     </div>
-
-
-
-
-    <!-- Services Start -->
-    <div class="container-fluid py-5" id="etapes">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5">مراحل المشاركة في المناظرة</h1>
-            <div class="row" style="text-align:right;">
-              <div class="col-lg-3 mb-2">
-                <div class="service-item rounded p-5 mb-4">
-                    <i class="fa fa-3x fa-edit text-primary mb-4"></i>
-                    <h4 class="text-uppercase mb-4" style="text-align: center;">4 المرحلة الرابعة</h4>
-                    <p class="m-0" style="font-size: 27px;text-align: right;">تعمير إستمارة طلب الترشح للمناظرة   </p>
-                </div>
-            </div>
-            <div class="col-lg-3 mb-2">
+    <div class="col-lg-3 mb-2">
+      <div class="service-item rounded p-5 mb-4">
+          <i class="fa fa-3x fa-edit text-primary mb-4"></i>
+          <h4 class="text-uppercase mb-4" style="text-align: center;">2 المرحلة الثانية  </h4>
+          <p class="m-0" style="font-size: 27px;text-align: right;">إلقاء نظرة على مختلف المناظرات المتوفرة</p>
+      </div>
+  </div>
+          <div class="col-lg-3 mb-2">
               <div class="service-item rounded p-5 mb-4">
                   <i class="fa fa-3x fa-edit text-primary mb-4"></i>
-                  <h4 class="text-uppercase mb-4" style="text-align: center;">3 المرحلة الثالثة</h4>
-                  <p class="m-0" style="font-size: 27px;text-align: right;">إختيار المناظرة المناسبة للمشاركة فيها</p>
+                  <h4 class="text-uppercase mb-4" style="text-align: center;">1 المرحلة الأولى</h4>
+                  <p class="m-0" style="font-size: 27px;text-align: right;">إنشاء حسابك الخاص</p>
               </div>
           </div>
-          <div class="col-lg-3 mb-2">
-            <div class="service-item rounded p-5 mb-4">
-                <i class="fa fa-3x fa-edit text-primary mb-4"></i>
-                <h4 class="text-uppercase mb-4" style="text-align: center;">2 المرحلة الثانية  </h4>
-                <p class="m-0" style="font-size: 27px;text-align: right;">إلقاء نظرة على مختلف المناظرات المتوفرة</p>
-            </div>
-        </div>
-                <div class="col-lg-3 mb-2">
-                    <div class="service-item rounded p-5 mb-4">
-                        <i class="fa fa-3x fa-edit text-primary mb-4"></i>
-                        <h4 class="text-uppercase mb-4" style="text-align: center;">1 المرحلة الأولى</h4>
-                        <p class="m-0" style="font-size: 27px;text-align: right;">إنشاء حسابك الخاص</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Services End -->
+      </div>
+  </div>
+</div>
+<!-- Services End -->
 
-    <app-liste-concours id="concours-section"></app-liste-concours>
+<app-liste-concours id="concours-section"></app-liste-concours>
 
-    <app-reclamation id="contact-section"></app-reclamation>
+<app-reclamation id="contact-section"></app-reclamation>
 
 
 
-   <!-- Footer Start -->
-   <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
-    <div class="row ">
-        <div class="col-2"></div>
-        <div class="col-4">
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
+<div class="row ">
+  <div class="col-2"></div>
+  <div class="col-4">
 
-            <h4 class="text-uppercase text-white py-2"  >تابعنا</h4><br>
-            <div class="d-flex justify-content-start">
+      <h4 class="text-uppercase text-white py-2"  >تابعنا</h4><br>
+      <div class="d-flex justify-content-start">
 
-                <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="http://www.cni.tn/index.php/fr/?view=page&id=44"><i class="fab fa-google"></i></a>
-                <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="https://www.facebook.com/CNITUNISI"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="https://www.linkedin.com/company/centre-national-de-l'informatique/"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="http://www.cni.tn/index.php/fr/?view=page&id=44"><i class="fab fa-google"></i></a>
+          <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="https://www.facebook.com/CNITUNISI"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-lg btn-primary btn-lg-square mr-2" href="https://www.linkedin.com/company/centre-national-de-l'informatique/"><i class="fab fa-linkedin-in"></i></a>
 
-            </div>
-        </div>
-        <div   class="col-4" *ngFor="let c of listetab, index as i" style="text-align: center;">
-            <h4 class="text-uppercase text-white mb-4" style="text-align: center;">ابقى على تواصل</h4>
-           <p><i class="fa fa-map-marker-alt text-white mr-2"></i>{{c.adresse}}</p>
-            <p><i class="fa fa-phone-alt text-white mr-2"></i>{{c.telephone }}--{{c.numFix}}</p>
-            <p><i class="fa fa-envelope text-white mr-2"></i>{{c.email}}</p>
-        </div>
-
-    </div>
+      </div>
+  </div>
+  <div   class="col-4" style="text-align: center;">
+      <h4 class="text-uppercase text-white mb-4" style="text-align: center;">ابقى على تواصل</h4>
+     <p><i class="fa fa-map-marker-alt text-white mr-2"></i>{{c.adresse}}</p>
+      <p><i class="fa fa-phone-alt text-white mr-2"></i>{{c.telephone }}--{{c.numFix}}</p>
+      <p><i class="fa fa-envelope text-white mr-2"></i>{{c.email}}</p>
+  </div>
 
 </div>
-<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;"  *ngFor="let c of listetab, index as i">
-    <p class="mb-2 text-center text-white-50">&copy; <a href="#">  {{c.nom}}</a>. كل الحقوق محفوظة.</p>
+
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;"  >
+<p class="mb-2 text-center text-white-50">&copy; <a href="#">  {{c.nom}}</a>. كل الحقوق محفوظة.</p>
 
 </div>
 <!-- Footer End -->
 
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-up"></i></a>
-
-
-
-
-
-
-
-
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-up"></i></a>
 
